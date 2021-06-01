@@ -14,6 +14,7 @@ public class Product {
         return name;
     }
 
+    //apdpvndpd
 
     public int getRequired_space() {
         return required_space;
