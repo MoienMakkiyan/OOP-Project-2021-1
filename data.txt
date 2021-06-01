@@ -1,0 +1,13 @@
+celling price
+egg 15
+full 20
+milk 25
+flour 40
+cloth 50
+milk 60
+bread 80
+shirt 100
+icecream 120
+lion 300
+bear 400
+tiger 500
