@@ -9,6 +9,10 @@ public class Product {
     }
     /* TODO */
 
+    public void sth(){
+        //TODO
+    }
+
     public String getName() {
         return name;
     }
