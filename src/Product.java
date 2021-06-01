@@ -17,6 +17,10 @@ public class Product {
         return name;
     }
 
+    public void chrtoprt(String name){
+        System.out.println("Hi "+name);
+    }
+
     public int getRequired_space() {
         return required_space;
     }
