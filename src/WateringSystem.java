@@ -3,6 +3,7 @@ public class WateringSystem {
     private int amount = 5;
     private int timeOfFilling = 3;
 
+
     private boolean checkTime() {
         if (this.timeOfFilling == 0)
             return true;
