@@ -1,3 +1,6 @@
+import Functions.Variable_Reading;
+import Objects.Products.Product;
+
 import java.util.ArrayList;
 
 public class Warehouse {
@@ -12,14 +15,8 @@ public class Warehouse {
     }
 
     public boolean add_product(Product product){
-        if (product.getRequired_space()+current_inventory<=capacity){
-            //TODO
-            return true;
-        }
-        else{
-            //TODO
-            return false;
-        }
+        //TODO
+        return false;
     }
 
     public int getCurrent_inventory() {
