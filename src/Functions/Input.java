@@ -1,5 +1,6 @@
 package Functions;
 
+import Objects.User;
 import com.sun.tools.javac.Main;
 
 import java.util.Scanner;
@@ -7,6 +8,7 @@ import java.util.Scanner;
 public class Input {
 
     GAME_ORDERS game_orders = new GAME_ORDERS();
+    User user;
 
     public void run(){
         Scanner scanner = new Scanner(System.in);
@@ -30,7 +32,12 @@ public class Input {
 
     public void Game_Ordres (String [] input){
         if (input[0].equalsIgnoreCase("BUY")){
-
+            if (game_orders.Buy(input[1],user)){
+                //TODO
+            }
+            else {
+                //TODO
+            }
         }
 
         if (input[0].equalsIgnoreCase("PICKUP")){

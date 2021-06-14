@@ -13,5 +13,6 @@ public class TurkeyFeather extends Product{
         this.InWerehouse = false;
         this.Processing = false;
         this.transporting = false;
+        this.isDone = false;
     }
 }

@@ -12,6 +12,7 @@ public class Product {
     protected boolean InWerehouse;
     protected boolean Processing;
     protected boolean transporting;
+    protected boolean isDone;
     protected Random_Location random_location;
     protected Variable_Reading variable_reading;
 }

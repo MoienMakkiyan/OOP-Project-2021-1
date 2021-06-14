@@ -2,18 +2,21 @@ package Objects;
 
 public class WateringSystem {
 
-    private int amount = 5;
-    private int timeOfFilling = 3;
+    int time_needed;
+    Bucket_of_Water bucket_of_water;
 
+    public WateringSystem(int time_needed, Bucket_of_Water bucket_of_water) {
+        this.time_needed = time_needed;
+        this.bucket_of_water = bucket_of_water;
+    }
 
     private boolean checkTime() {
-        if (this.timeOfFilling == 0)
-            return true;
-        else return false;
+        //TODO
+        return true;
     }
 
     private boolean checkEmptiness() {
-        if (this.amount == 0) {
+        if (bucket_of_water.getCerrunt_amount() == 0) {
             return true;
         } else return false;
     }
@@ -30,7 +33,7 @@ public class WateringSystem {
 
     public boolean fillWell() {
         if (startFilling() && checkTime()) {
-            this.amount = 5;
+            bucket_of_water.setCerrunt_amount(bucket_of_water.getMAX_AMOUNT());
             System.out.println("Well is full!");
             return true;
         }
@@ -41,16 +44,47 @@ public class WateringSystem {
     }
 
     public void reduceWater() {
-        this.amount = this.amount - 1;
+        bucket_of_water.setCerrunt_amount(bucket_of_water.getCerrunt_amount()-1);
     }
+
+    public boolean isEmpty(){
+        if (bucket_of_water.getCerrunt_amount()==0){
+            return true;
+        }
+        else return false;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private static WateringSystem wellInstance;
 
+
+
+
+
+    public WateringSystem() {
+        this.time_needed = time_needed;
+        this.bucket_of_water = bucket_of_water;
+    }
     public static WateringSystem getInstance() {
         if (wellInstance == null) {
             wellInstance = new WateringSystem();
         }
         return wellInstance;
     }
-    //TestingGit
 }

@@ -49,4 +49,28 @@ public class Variable_Reading {
         //TODO
         return tmporary_variable;
     }
+
+    public int truck_capacity(){
+        int tmporary_variable=0;
+        //TODO
+        return tmporary_variable;
+    }
+
+    public int truck_time(){
+        int tmporary_variable=0;
+        //TODO
+        return tmporary_variable;
+    }
+
+    public int Well_info(){
+        int tmporary_variable=0;
+        //TODO
+        return tmporary_variable;
+    }
+
+    public int Well_Time(){
+        int tmporary_variable=0;
+        //TODO
+        return tmporary_variable;
+    }
 }

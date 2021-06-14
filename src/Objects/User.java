@@ -5,6 +5,7 @@ import Functions.Variable_Reading;
 public class User {
     Variable_Reading variable_reading = new Variable_Reading();
     String Name;
+
     String Password;
     int level;
     int coin;
@@ -30,5 +31,9 @@ public class User {
 
     public void setCoin(int coin) {
         this.coin = coin;
+    }
+
+    public String getName() {
+        return Name;
     }
 }
