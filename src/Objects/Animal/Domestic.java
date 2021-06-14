@@ -10,17 +10,17 @@ public class Domestic extends Animal {
     protected int lives = 10;
     public static ArrayList<Domestic> domestics = new ArrayList<>(0);
 
-    Domestic(int type) {
+    Domestic(String type) {
         super(type);
-        if (type == 4) {
+        if (type .equalsIgnoreCase("Chicken")) {
             this.product = Product.egg;
             this.timeToProduce = 2;
             this.typeD = TypeD.chicken;
-        } else if (type == 5) {
+        } else if (type.equalsIgnoreCase("Ostrich")) {
             this.product = Product.feather;
             this.timeToProduce = 3;
             this.typeD = TypeD.Ostrich;
-        } else if (type == 6) {
+        } else if (type.equalsIgnoreCase("Buffalo")) {
             this.product = Product.milk;
             this.timeToProduce = 5;
             this.typeD = TypeD.Buffalo;

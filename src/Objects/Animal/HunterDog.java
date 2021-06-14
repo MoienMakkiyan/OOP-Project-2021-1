@@ -7,7 +7,7 @@ public class HunterDog extends Animal {
     public static ArrayList<HunterDog> hunterDogs = new ArrayList<>(0);
 
 
-    HunterDog(int type) {
+    HunterDog(String type) {
         super(type);
     }
 }

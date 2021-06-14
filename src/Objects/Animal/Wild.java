@@ -10,15 +10,15 @@ public class Wild extends Animal {
 
     public static ArrayList<Wild> wilds = new ArrayList<>(0);
 
-    Wild(int type) {
+    Wild(String type) {
         super(type);
-        if (type == 1) {
+        if (type.equalsIgnoreCase("LION")) {
             this.lives = 3;
             this.typeW = TypeW.tiger;
-        } else if (type == 2) {
+        } else if (type.equalsIgnoreCase("BEAR")) {
             this.lives = 4;
             this.typeW = TypeW.tiger;
-        } else if (type == 3) {
+        } else if (type.equalsIgnoreCase("TIGER")) {
             this.lives = 4;
             this.typeW = TypeW.bear;
         }
