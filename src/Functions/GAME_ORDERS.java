@@ -152,7 +152,6 @@ public class GAME_ORDERS {
 
     public boolean Pickup (int x , int y , User user){
         return true;
-
     }
 
     public boolean Well (User user){
@@ -179,7 +178,6 @@ public class GAME_ORDERS {
 
     public boolean Work (String name , User user){
         return true;
-
     }
 
     public boolean Cage (int x , int y , User user){
@@ -210,10 +208,24 @@ public class GAME_ORDERS {
     }
 
     public boolean Truck_Unload (String name , User user){
-        return main_manager.Truck_Unload(name);
+        if (main_manager.Truck_Unload(name)){
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
     }
 
     public boolean Truck_Go (User user){
-        return main_manager.Truck_Go();
+        if (main_manager.Truck_Go()){
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
     }
 }
