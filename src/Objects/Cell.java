@@ -1,4 +1,7 @@
+package Objects;
+
 import Objects.Animal.Animal;
+import Objects.Products.Product;
 
 public class Cell {
     public static Cell cells[];
@@ -7,6 +10,7 @@ public class Cell {
     protected int y;
     protected Animal animal;
     protected Product products;
+    protected boolean hasGrass;
 
     private boolean HasProduct() {
         return true;

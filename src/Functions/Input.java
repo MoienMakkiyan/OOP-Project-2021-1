@@ -1,8 +1,13 @@
 package Functions;
 
+import com.sun.tools.javac.Main;
+
 import java.util.Scanner;
 
 public class Input {
+
+    GAME_ORDERS game_orders = new GAME_ORDERS();
+
     public void run(){
         Scanner scanner = new Scanner(System.in);
         String input = "";

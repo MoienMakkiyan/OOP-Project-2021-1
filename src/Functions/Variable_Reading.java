@@ -26,7 +26,7 @@ public class Variable_Reading {
         return tmporary_variable;
     }
 
-    public int item_cost_establishing(String name){
+    public int item_cost_buying(String name){
         int tmporary_variable=0;
         //TODO
         return tmporary_variable;
@@ -39,6 +39,12 @@ public class Variable_Reading {
     }
 
     public int each_time_needed(String name){
+        int tmporary_variable=0;
+        //TODO
+        return tmporary_variable;
+    }
+
+    public int starting_coin(){
         int tmporary_variable=0;
         //TODO
         return tmporary_variable;

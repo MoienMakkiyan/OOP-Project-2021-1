@@ -5,35 +5,16 @@ import java.util.Random;
 
 public class Animal {
 
-    public static ArrayList<Animal> animals = new ArrayList<>(0);
     protected int x;
     protected int y;
-    protected int value;
-    protected int type;
+    protected String type;
 
-    Animal(int type) {
+    public Animal(String type) {
         Random randomX = new Random();
         this.x = randomX.nextInt();
         Random randomY = new Random();
         this.y = randomY.nextInt();
         this.type = type;
-        if (type == 1) {
-            this.value = 150;
-        } else if (type == 2) {
-            this.value = 250;
-        } else if (type == 3) {
-            this.value = 450;
-        } else if (type == 4) {
-            this.value = 100;
-        } else if (type == 5) {
-            this.value = 200;
-        } else if (type == 6) {
-            this.value = 400;
-        } else if (type == 7) {
-            this.value = 100;
-        } else if (type == 8) {
-            this.value = 150;
-        }
     }
 
     private void walkDirection1(Animal animal) {
@@ -102,7 +83,7 @@ public class Animal {
             animal.y += speed;
         }
     }
-
+/*
     public void walk(Animal animal) {
         if (animal instanceof Domestic) {
             walkDirection1(animal);
@@ -118,5 +99,7 @@ public class Animal {
             walkDirection1(animal);
         }
     }
+
+ */
 }
 
