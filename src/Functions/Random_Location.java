@@ -1,16 +1,16 @@
 package Functions;
 
-import Objects.XY;
+import Objects.X_Y;
 
 public class Random_Location {
 
-    public XY random(){
+    public X_Y random(){
         //TODO
-        return new XY(1,1);
+        return new X_Y(1,1);
     }
 
-    public XY base_random(int x, int y){
+    public X_Y base_random(int x, int y){
         //TODO
-        return new XY(1,1);
+        return new X_Y(1,1);
     }
 }

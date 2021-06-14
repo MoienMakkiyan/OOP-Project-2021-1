@@ -1,10 +1,10 @@
 package Objects;
 
-public class XY {
+public class X_Y {
     int x;
     int y;
 
-    public XY(int x, int y) {
+    public X_Y(int x, int y) {
         this.x = x;
         this.y = y;
     }

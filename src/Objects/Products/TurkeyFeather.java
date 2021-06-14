@@ -1,10 +1,10 @@
 package Objects.Products;
 
-import Objects.XY;
+import Objects.X_Y;
 
 public class TurkeyFeather extends Product{
     public TurkeyFeather() {
-        XY xy = random_location.random();
+        X_Y xy = random_location.random();
         this.x = xy.getX();
         this.y = xy.getY();
         this.price = variable_reading.item_price("TurkeyFeather");

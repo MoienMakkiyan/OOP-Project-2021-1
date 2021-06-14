@@ -1,10 +1,9 @@
 package Objects.Products;
-import Functions.Random_Location;
-import Objects.XY;
+import Objects.X_Y;
 
 public class Bread extends Product{
     public Bread() {
-        XY xy = random_location.random();
+        X_Y xy = random_location.random();
         this.x = xy.getX();
         this.y = xy.getY();
         this.price = variable_reading.item_price("Bread");
