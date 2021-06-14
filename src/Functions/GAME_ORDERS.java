@@ -1,12 +1,12 @@
 package Functions;
 
-import Objects.Cell;
 import Objects.User;
 
 public class GAME_ORDERS {
 
-    Main_Manager main_manager = new Main_Manager();
     Variable_Reading variable_reading = new Variable_Reading();
+    Main_Manager main_manager = new Main_Manager(variable_reading.map_size(),variable_reading);
+
 
     String Animal_Name = "Chicken Ostrich Buffalo Cat Dog";
     String Workshops_Name = "MilkPacking Mill Textile Bakery IcecreamShop Tailoring";
@@ -156,15 +156,25 @@ public class GAME_ORDERS {
     }
 
     public boolean Well (User user){
-        main_manager.Well();
-
-        return true;//must be Edited in debuging
+        if (main_manager.Well()){
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
     }
 
     public boolean Plant (int x , int y , User user){
-        Cell.cells[(int) (Math.sqrt(Cell.cells.length)*(x-1))+y-1].setHasGrass(true);
-        return true;
-
+        if (main_manager.AddGrass(x,y)){
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
     }
 
     public boolean Work (String name , User user){

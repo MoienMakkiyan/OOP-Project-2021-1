@@ -1,7 +1,8 @@
 package Functions;
 
 import Objects.Animal.Animal;
-import Objects.Products.Product;
+import Objects.Bucket_of_Water;
+import Objects.Cell;
 import Objects.Truck;
 import Objects.WateringSystem;
 import Objects.WorkShops.*;
@@ -10,6 +11,11 @@ import java.util.ArrayList;
 
 public class Main_Manager {
 
+    Variable_Reading variable_reading;
+    public Main_Manager(int []a ,Variable_Reading variable_reading) {
+        make_map(a[0],a[1]);
+        this.variable_reading = variable_reading;
+    }
 
     ArrayList<Animal> animals = new ArrayList<>();
     public void Add_Animal(String name){
@@ -88,11 +94,6 @@ public class Main_Manager {
         }
     }
 
-    WateringSystem wateringSystem = new WateringSystem();
-    public void Well(){
-        wateringSystem.fillWell();
-    }
-
     Truck truck = new Truck();
     public boolean Truck_Load(String name){
         return truck.Load(name);
@@ -108,4 +109,38 @@ public class Main_Manager {
         //TODO
         return false;
     }
+
+    Cell cell[][];
+    private void make_map(int n, int m){
+        cell = new Cell[n][m];
+        for (int i=0;i<n;i++){
+            for (int j=0;j<m;j++){
+                cell[i][j] = new Cell(i+1,j+1);
+            }
+        }
+    }
+
+    Bucket_of_Water bucket_of_water = new Bucket_of_Water(variable_reading.Well_info());
+    WateringSystem wateringSystem = new WateringSystem(variable_reading.Well_Time(),bucket_of_water);
+    public boolean AddGrass(int x, int y){
+        if (bucket_of_water.getCerrunt_amount()>0){
+            cell[x][y].setHasGrass(true);
+            wateringSystem.reduceWater();
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
+    }
+
+    public boolean Well(){
+        if (wateringSystem.isEmpty()){
+            wateringSystem.fillWell();
+            return true;
+        }
+        else return false;
+    }
+
 }
