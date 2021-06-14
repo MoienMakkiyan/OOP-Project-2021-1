@@ -11,6 +11,4 @@ public class PrimaryWorksop_MilkPacking extends Workshop {
     public void Upgrade(){
         this.level = this.level + 1;
     }
-
-
 }
