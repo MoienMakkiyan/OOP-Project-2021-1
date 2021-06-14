@@ -12,15 +12,15 @@ public class Domestic extends Animal {
 
     Domestic(String type) {
         super(type);
-        if (type .equalsIgnoreCase("Chicken")) {
+        if (type .equalsIgnoreCase("CHICKEN")) {
             this.product = Product.egg;
             this.timeToProduce = 2;
             this.typeD = TypeD.chicken;
-        } else if (type.equalsIgnoreCase("Ostrich")) {
+        } else if (type.equalsIgnoreCase("OSTRICH")) {
             this.product = Product.feather;
             this.timeToProduce = 3;
             this.typeD = TypeD.Ostrich;
-        } else if (type.equalsIgnoreCase("Buffalo")) {
+        } else if (type.equalsIgnoreCase("BUFFALO")) {
             this.product = Product.milk;
             this.timeToProduce = 5;
             this.typeD = TypeD.Buffalo;

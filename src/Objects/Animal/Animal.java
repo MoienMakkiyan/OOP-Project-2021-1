@@ -83,14 +83,14 @@ public class Animal {
             animal.y += speed;
         }
     }
-/*
+
     public void walk(Animal animal) {
         if (animal instanceof Domestic) {
             walkDirection1(animal);
         } else if (animal instanceof Wild) {
-            if (animal.type == 1 || animal.type == 2) {
+            if (animal.type.equalsIgnoreCase("LION") || animal.type.equalsIgnoreCase("BEAR")) {
                 walkDirection1(animal);
-            } else if (animal.type == 3) {
+            } else if (animal.type.equalsIgnoreCase("TIGER")) {
                 walkDirection2(animal);
             }
         } else if (animal instanceof HunterDog) {
@@ -99,7 +99,5 @@ public class Animal {
             walkDirection1(animal);
         }
     }
-
- */
 }
 

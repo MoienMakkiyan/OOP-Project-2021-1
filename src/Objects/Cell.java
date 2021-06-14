@@ -6,11 +6,19 @@ import Objects.Products.Product;
 public class Cell {
     public static Cell cells[];
 
-    protected int x;
-    protected int y;
-    protected Animal animal;
-    protected Product products;
-    protected boolean hasGrass;
+    private int x;
+    private int y;
+    private Animal animal;
+    private Product products;
+    private boolean hasGrass;
+
+    public boolean isHasGrass() {
+        return hasGrass;
+    }
+
+    public void setHasGrass(boolean hasGrass) {
+        this.hasGrass = hasGrass;
+    }
 
     private boolean HasProduct() {
         return true;
@@ -31,6 +39,7 @@ public class Cell {
             cells[i].y = i % size + 1;
         }
     }
-
-
+    public void deleteGrass(int x,int y){
+        Cell.cells[(int) (Math.sqrt(Cell.cells.length)*(x-1))+y-1].setHasGrass(false);
+    }
 }

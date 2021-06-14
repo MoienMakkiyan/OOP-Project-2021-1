@@ -1,5 +1,6 @@
 package Functions;
 
+import Objects.Cell;
 import Objects.User;
 
 public class GAME_ORDERS {
@@ -161,6 +162,7 @@ public class GAME_ORDERS {
     }
 
     public boolean Plant (int x , int y , User user){
+        Cell.cells[(int) (Math.sqrt(Cell.cells.length)*(x-1))+y-1].setHasGrass(true);
         return true;
 
     }
