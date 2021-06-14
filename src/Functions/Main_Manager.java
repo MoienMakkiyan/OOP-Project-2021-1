@@ -2,6 +2,7 @@ package Functions;
 
 import Objects.Animal.Animal;
 import Objects.Products.Product;
+import Objects.Truck;
 import Objects.WateringSystem;
 import Objects.WorkShops.*;
 
@@ -9,7 +10,6 @@ import java.util.ArrayList;
 
 public class Main_Manager {
 
-    ArrayList<Product> products = new ArrayList<>();
 
     ArrayList<Animal> animals = new ArrayList<>();
     public void Add_Animal(String name){
@@ -91,5 +91,21 @@ public class Main_Manager {
     WateringSystem wateringSystem = new WateringSystem();
     public void Well(){
         wateringSystem.fillWell();
+    }
+
+    Truck truck = new Truck();
+    public boolean Truck_Load(String name){
+        return truck.Load(name);
+    }
+    public boolean Truck_Unload(String name){
+        return truck.Unload(name);
+    }
+    public boolean Truck_Go(){
+        return truck.Go();
+    }
+
+    public boolean inWerehouse(String name){
+        //TODO
+        return false;
     }
 }

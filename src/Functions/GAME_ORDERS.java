@@ -183,17 +183,27 @@ public class GAME_ORDERS {
     }
 
     public boolean Truck_Load (String name , User user){
-        return true;
-
+        if (main_manager.inWerehouse(name)){
+            if (main_manager.Truck_Load(name)){
+                //TODO
+                return true;
+            }
+            else {
+                //TODO
+                return false;
+            }
+        }
+        else {
+            //TODO
+            return false;
+        }
     }
 
     public boolean Truck_Unload (String name , User user){
-        return true;
-
+        return main_manager.Truck_Unload(name);
     }
 
     public boolean Truck_Go (User user){
-        return true;
-
+        return main_manager.Truck_Go();
     }
 }
