@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c9d9e29-d0c6-4075-b7d9-7b5d6114857b" name="Default Changelist" comment="" />
+    <list default="true" id="1c9d9e29-d0c6-4075-b7d9-7b5d6114857b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Objects/Animal/Bear.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Objects/Animal/Buffalo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Objects/Animal/Chicken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Objects/Animal/Lion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Objects/Animal/Ostrich.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Objects/Animal/Tiger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Objects/Animal/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/Animal/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Objects/Animal/Domestic.java" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/Animal/Domestic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Objects/Animal/Wild.java" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/Animal/Wild.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -32,6 +50,7 @@
       <option name="presentableId" value="Default" />
       <updated>1623615618149</updated>
       <workItem from="1623615620655" duration="21000" />
+      <workItem from="1623699289849" duration="4122000" />
     </task>
     <servers />
   </component>
@@ -48,5 +67,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Objects/Animal/Animal.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

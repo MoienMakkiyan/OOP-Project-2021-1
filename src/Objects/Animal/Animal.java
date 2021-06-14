@@ -88,9 +88,9 @@ public class Animal {
         if (animal instanceof Domestic) {
             walkDirection1(animal);
         } else if (animal instanceof Wild) {
-            if (animal.type.equalsIgnoreCase("LION") || animal.type.equalsIgnoreCase("BEAR")) {
+            if (animal instanceof Lion || animal instanceof Bear) {
                 walkDirection1(animal);
-            } else if (animal.type.equalsIgnoreCase("TIGER")) {
+            } else if (animal instanceof Bear) {
                 walkDirection2(animal);
             }
         } else if (animal instanceof HunterDog) {
