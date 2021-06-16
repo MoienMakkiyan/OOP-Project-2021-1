@@ -1,10 +1,11 @@
 package Functions;
 
-import Objects.Animal.Wild;
-import Objects.Cell;
+import Objects.Logger;
 import Objects.User;
 
 public class GAME_ORDERS {
+
+    Logger logger = new Logger();
 
     Variable_Reading variable_reading = new Variable_Reading();
     Main_Manager main_manager = new Main_Manager(variable_reading.map_size(),variable_reading);
@@ -19,6 +20,7 @@ public class GAME_ORDERS {
                 if (user.getCoin()-variable_reading.item_cost_buying("Chicken")>0){
                     user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Chicken"));
                     main_manager.Add_Animal("Chicken");
+                    //TODO
                     return true;
                 }
                 else {
@@ -30,6 +32,7 @@ public class GAME_ORDERS {
                 if (user.getCoin()-variable_reading.item_cost_buying("Ostrich")>0){
                     user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Ostrich"));
                     main_manager.Add_Animal("Ostrich");
+                    //TODO
                     return true;
                 }
                 else {
@@ -41,6 +44,7 @@ public class GAME_ORDERS {
                 if (user.getCoin()-variable_reading.item_cost_buying("Buffalo")>0){
                     user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Buffalo"));
                     main_manager.Add_Animal("Buffalo");
+                    //TODO
                     return true;
                 }
                 else {
@@ -52,6 +56,7 @@ public class GAME_ORDERS {
                 if (user.getCoin()-variable_reading.item_cost_buying("Cat")>0){
                     user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Cat"));
                     main_manager.Add_Animal("Cat");
+                    //TODO
                     return true;
                 }
                 else {
@@ -63,6 +68,7 @@ public class GAME_ORDERS {
                 if (user.getCoin()-variable_reading.item_cost_buying("Dog")>0){
                     user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Dog"));
                     main_manager.Add_Animal("Dog");
+                    //TODO
                     return true;
                 }
                 else {
@@ -76,6 +82,7 @@ public class GAME_ORDERS {
                 if (user.getCoin()-variable_reading.item_cost_buying("MilkPacking")>0){
                     user.setCoin(user.getCoin()-variable_reading.item_cost_buying("MilkPacking"));
                     main_manager.Add_WorkShop("MilkPacking");
+                    //TODO
                     return true;
                 }
                 else {
@@ -88,6 +95,7 @@ public class GAME_ORDERS {
                     if (user.getCoin()-variable_reading.item_cost_buying("Mill")>0){
                         user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Mill"));
                         main_manager.Add_WorkShop("Mill");
+                        //TODO
                         return true;
                     }
                     else {
@@ -101,6 +109,7 @@ public class GAME_ORDERS {
                     if (user.getCoin()-variable_reading.item_cost_buying("Textile")>0){
                         user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Textile"));
                         main_manager.Add_WorkShop("Textile");
+                        //TODO
                         return true;
                     }
                     else {
@@ -114,6 +123,7 @@ public class GAME_ORDERS {
                     if (user.getCoin()-variable_reading.item_cost_buying("Bakery")>0){
                         user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Bakery"));
                         main_manager.Add_WorkShop("Bakery");
+                        //TODO
                         return true;
                     }
                     else {
@@ -127,6 +137,7 @@ public class GAME_ORDERS {
                     if (user.getCoin()-variable_reading.item_cost_buying("IcecreamShop")>0){
                         user.setCoin(user.getCoin()-variable_reading.item_cost_buying("IcecreamShop"));
                         main_manager.Add_WorkShop("IcecreamShop");
+                        //TODO
                         return true;
                     }
                     else {
@@ -140,6 +151,7 @@ public class GAME_ORDERS {
                     if (user.getCoin()-variable_reading.item_cost_buying("Tailoring")>0){
                         user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Tailoring"));
                         main_manager.Add_WorkShop("Tailoring");
+                        //TODO
                         return true;
                     }
                     else {

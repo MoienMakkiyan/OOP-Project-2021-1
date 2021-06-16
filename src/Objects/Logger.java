@@ -6,7 +6,12 @@ import java.util.logging.SimpleFormatter;
 
 public class Logger {
 
-    java.util.logging.Logger logger;
+    java.util.logging.Logger logger = java.util.logging.Logger.getLogger("MyLog");;
+
+    public Logger() {
+
+        setLogger();
+    }
 
     private void setLogger(){
         FileHandler fileHandler;
@@ -21,5 +26,9 @@ public class Logger {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public java.util.logging.Logger getLogger() {
+        return logger;
     }
 }
