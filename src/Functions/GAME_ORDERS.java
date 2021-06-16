@@ -186,6 +186,24 @@ public class GAME_ORDERS {
     }
 
     public boolean Work (String name , User user){
+        if (name.equalsIgnoreCase("MilkPacking")){
+
+        }
+        else if (name.equalsIgnoreCase("Mill")){
+
+        }
+        else if (name.equalsIgnoreCase("Textile")){
+
+        }
+        else if (name.equalsIgnoreCase("Bakery")){
+
+        }
+        else if (name.equalsIgnoreCase("IcecreamShop")){
+
+        }
+        else if (name.equalsIgnoreCase("Tailoring")){
+
+        }
         return true;
     }
 
@@ -199,9 +217,9 @@ public class GAME_ORDERS {
             return false;
         }
     }
+
     public boolean Turn (int n , User user){
         return true;
-
     }
 
     public boolean Truck_Load (String name , User user){

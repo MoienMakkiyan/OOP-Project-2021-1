@@ -3,6 +3,7 @@ package Functions;
 import Objects.*;
 import Objects.Animal.Animal;
 import Objects.Animal.Wild;
+import Objects.Products.*;
 import Objects.WorkShops.*;
 
 import java.util.ArrayList;
@@ -29,18 +30,14 @@ public class Main_Manager {
 
     private ArrayList<ArrayList> workshops = new ArrayList<>();
 
-    public ArrayList<ArrayList> getWorkshops() {
-        return workshops;
-    }
+    ArrayList<PrimaryWorksop_MilkPacking>  primaryWorksop_milkPackings = new ArrayList<>();
+    ArrayList<PrimaryWorksop_Mill> primaryWorksop_mills = new ArrayList<>();
+    ArrayList<PrimaryWorksop_Textile> primaryWorksop_textiles = new ArrayList<>();
+    ArrayList<SecondaryWorkshop_Bakery> secondaryWorkshop_bakeries = new ArrayList<>();
+    ArrayList<SecondaryWorkshop_IcecreamShop> secondaryWorkshop_icecreamShops = new ArrayList<>();
+    ArrayList<SecondaryWorkshop_Tailoring> secondaryWorkshop_tailorings = new ArrayList<>();
 
     public void Add_WorkShop(String name){
-
-        ArrayList<PrimaryWorksop_MilkPacking>  primaryWorksop_milkPackings = new ArrayList<>();
-        ArrayList<PrimaryWorksop_Mill> primaryWorksop_mills = new ArrayList<>();
-        ArrayList<PrimaryWorksop_Textile> primaryWorksop_textiles = new ArrayList<>();
-        ArrayList<SecondaryWorkshop_Bakery> secondaryWorkshop_bakeries = new ArrayList<>();
-        ArrayList<SecondaryWorkshop_IcecreamShop> secondaryWorkshop_icecreamShops = new ArrayList<>();
-        ArrayList<SecondaryWorkshop_Tailoring> secondaryWorkshop_tailorings = new ArrayList<>();
 
         workshops.add(primaryWorksop_milkPackings);
         workshops.add(primaryWorksop_mills);
@@ -152,6 +149,7 @@ public class Main_Manager {
     public boolean add_to_warehouse(int x, int y){
         String product = cell[x][y].takeProduct();
         if (!product.equals("")){
+
             warehouse.Add(product,variable_reading.item_capacity(product));
             //TODO
             return true;
@@ -161,6 +159,11 @@ public class Main_Manager {
             return false;
         }
     }
+
+    //private void Add
+
+
+
     public boolean Cage (int x , int y ) {
         if (animals.size() != 0) {
             for (int i = 0; i < animals.size(); i++) {
@@ -177,4 +180,22 @@ public class Main_Manager {
         }
         return true;
     }
+    //MilkPacking Mill Textile Bakery IcecreamShop Tailoring;
+
+    ArrayList<Bread> breads = new ArrayList<>();
+    ArrayList<BuffaloMilk> buffaloMilks = new ArrayList<>();
+    ArrayList<Egg> eggs = new ArrayList<>();
+    ArrayList<Flour> flours = new ArrayList<>();
+    ArrayList<Icecream> icecreams = new ArrayList<>();
+    ArrayList<PocketMilk> pocketMilks = new ArrayList<>();
+    ArrayList<Product> products = new ArrayList<>();
+    ArrayList<Textile> textiles = new ArrayList<>();
+    ArrayList<Throwable> throwables = new ArrayList<>();
+
+
+   // public boolean MilkPacking_Work(){
+//
+   // }
+
+
 }
