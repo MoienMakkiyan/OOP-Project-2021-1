@@ -1,31 +1,64 @@
 package Objects;
 
-import Functions.Variable_Reading;
-import Objects.Products.Product;
-
 import java.util.ArrayList;
 
 public class Warehouse {
-    final int capacity;
-    private int current_inventory = 0;
-    static ArrayList<Product> warehouse_product = new ArrayList<Product>();
+    private int MAX_CAPACITY;
+    private int CURRENT_CAPACITY;
+    ArrayList<String> inWerehouse;
 
-    Variable_Reading variable_reading = new Variable_Reading();
-
-    public Warehouse() {
-        this.capacity = variable_reading.warehouse_info();
+    public Warehouse(int MAX_CAPACITY) {
+        this.MAX_CAPACITY = MAX_CAPACITY;
+        this.CURRENT_CAPACITY = 0;
+        inWerehouse = new ArrayList<>();
     }
 
-    public boolean add_product(Product product){
-        //TODO
-        return false;
+    public boolean Add (String name,int capacity){
+        if (haveSpace(name, capacity)){
+            inWerehouse.add(name);
+            CURRENT_CAPACITY+=capacity;
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
     }
 
-    public int getCurrent_inventory() {
-        return current_inventory;
+    private boolean haveSpace (String name,int capacity){
+        if (CURRENT_CAPACITY+capacity<=MAX_CAPACITY){
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
     }
 
-    public void setCurrent_inventory(int current_inventory) {
-        this.current_inventory = current_inventory;
+    public boolean Remove (String name,int capacity){
+        if (haveSTH(name)){
+            inWerehouse.remove(name);
+            CURRENT_CAPACITY-=capacity;
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
+    }
+
+    private boolean haveSTH (String name){
+        boolean found = false;
+        for (int i=0;i<inWerehouse.size();i++){
+            if (inWerehouse.get(i).equals(name)){
+                found = true;
+                //TODO
+                break;
+            }
+        }
+        return found;
     }
 }

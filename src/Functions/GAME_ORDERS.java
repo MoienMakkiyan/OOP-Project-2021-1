@@ -182,7 +182,6 @@ public class GAME_ORDERS {
 
     public boolean Cage (int x , int y , User user){
         return true;
-
     }
 
     public boolean Turn (int n , User user){
