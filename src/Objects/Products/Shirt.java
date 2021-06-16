@@ -2,7 +2,7 @@ package Objects.Products;
 
 import Objects.X_Y;
 
-public class Shirt {
+public class Shirt extends Product{
     public shirt {
         X_Y xy = random_location.random();
         this.x = xy.getX();
