@@ -2,6 +2,7 @@ package Functions;
 
 import Objects.*;
 import Objects.Animal.Animal;
+import Objects.Animal.Wild;
 import Objects.WorkShops.*;
 
 import java.util.ArrayList;
@@ -15,6 +16,8 @@ public class Main_Manager {
     }
 
     ArrayList<Animal> animals = new ArrayList<>();
+
+
     public void Add_Animal(String name){
         if (animals.add(new Animal(name))){
             //TODO
@@ -24,7 +27,12 @@ public class Main_Manager {
         }
     }
 
-    ArrayList<ArrayList> workshops = new ArrayList<>();
+    private ArrayList<ArrayList> workshops = new ArrayList<>();
+
+    public ArrayList<ArrayList> getWorkshops() {
+        return workshops;
+    }
+
     public void Add_WorkShop(String name){
 
         ArrayList<PrimaryWorksop_MilkPacking>  primaryWorksop_milkPackings = new ArrayList<>();
@@ -152,5 +160,21 @@ public class Main_Manager {
             //TODO
             return false;
         }
+    }
+    public boolean Cage (int x , int y ) {
+        if (animals.size() != 0) {
+            for (int i = 0; i < animals.size(); i++) {
+                if (animals.get(i).getX() == x) {
+                    if (animals.get(i).getY() == y) {
+                        if (animals.get(i).isActivation()==true)
+                            if (animals.get(i) instanceof Wild){
+//                                animals.get(i).cage();
+//                                animals.get(i).setActivation(false);//TODO
+                            }
+                    }
+                }
+            }
+        }
+        return true;
     }
 }

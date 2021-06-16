@@ -1,13 +1,13 @@
 package Objects.Animal;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Animal {
 
-    protected int x;
-    protected int y;
+    private int x;
+    private int y;
     protected String type;
+    private boolean activation;
 
     public Animal(String type) {
         Random randomX = new Random();
@@ -15,6 +15,23 @@ public class Animal {
         Random randomY = new Random();
         this.y = randomY.nextInt();
         this.type = type;
+        this.activation=true;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public boolean isActivation() {
+        return activation;
+    }
+
+    public void setActivation(boolean activation) {
+        this.activation = activation;
     }
 
     private void walkDirection1(Animal animal) {

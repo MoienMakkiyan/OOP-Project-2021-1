@@ -6,8 +6,8 @@ public class Cell {
 
     private int x;
     private int y;
-    ArrayList<String> animals;
-    ArrayList<String> products;
+    private ArrayList<String> animals;
+    private ArrayList<String> products;
     private int hasGrass;
 
     public Cell(int x , int y) {
@@ -32,5 +32,9 @@ public class Cell {
             //TODO
         }
         return back;
+    }
+
+    public ArrayList<String> getAnimals() {
+        return animals;
     }
 }

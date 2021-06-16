@@ -1,5 +1,7 @@
 package Functions;
 
+import Objects.Animal.Wild;
+import Objects.Cell;
 import Objects.User;
 
 public class GAME_ORDERS {
@@ -187,10 +189,16 @@ public class GAME_ORDERS {
         return true;
     }
 
-    public boolean Cage (int x , int y , User user){
-        return true;
+    public boolean Cage (int x , int y , User user) {
+        if (main_manager.Cage(x,y)){
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
     }
-
     public boolean Turn (int n , User user){
         return true;
 

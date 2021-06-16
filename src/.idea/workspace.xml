@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c9d9e29-d0c6-4075-b7d9-7b5d6114857b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Objects/Animal/Bear.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Objects/Animal/Buffalo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Objects/Animal/Chicken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Objects/Animal/Lion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Objects/Animal/Ostrich.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Objects/Animal/Tiger.java" afterDir="false" />
+    <list default="true" id="1c9d9e29-d0c6-4075-b7d9-7b5d6114857b" name="Default Changelist" comment="edit animal">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Functions/GAME_ORDERS.java" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/GAME_ORDERS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Functions/Main_Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/Main_Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Objects/Animal/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/Animal/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Objects/Animal/Domestic.java" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/Animal/Domestic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Objects/Animal/Wild.java" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/Animal/Wild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Objects/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/Objects/Cell.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,8 +45,18 @@
       <option name="presentableId" value="Default" />
       <updated>1623615618149</updated>
       <workItem from="1623615620655" duration="21000" />
-      <workItem from="1623699289849" duration="4122000" />
+      <workItem from="1623699289849" duration="4467000" />
+      <workItem from="1623704055425" duration="1589000" />
+      <workItem from="1623834593224" duration="5129000" />
     </task>
+    <task id="LOCAL-00001" summary="edit animal">
+      <created>1623703534502</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1623703534502</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -68,6 +73,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="edit animal" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit animal" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
