@@ -151,7 +151,14 @@ public class GAME_ORDERS {
     }
 
     public boolean Pickup (int x , int y , User user){
-        return true;
+        if (main_manager.add_to_warehouse(x-1,y-1)){
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
     }
 
     public boolean Well (User user){

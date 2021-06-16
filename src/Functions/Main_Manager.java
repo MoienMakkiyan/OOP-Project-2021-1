@@ -1,10 +1,7 @@
 package Functions;
 
+import Objects.*;
 import Objects.Animal.Animal;
-import Objects.Bucket_of_Water;
-import Objects.Cell;
-import Objects.Truck;
-import Objects.WateringSystem;
 import Objects.WorkShops.*;
 
 import java.util.ArrayList;
@@ -124,7 +121,7 @@ public class Main_Manager {
     WateringSystem wateringSystem = new WateringSystem(variable_reading.Well_Time(),bucket_of_water);
     public boolean AddGrass(int x, int y){
         if (bucket_of_water.getCerrunt_amount()>0){
-            cell[x][y].setHasGrass(true);
+            cell[x][y].addGrass();
             wateringSystem.reduceWater();
             //TODO
             return true;
@@ -143,4 +140,17 @@ public class Main_Manager {
         else return false;
     }
 
+    Warehouse warehouse = new Warehouse(variable_reading.warehouse_info());
+    public boolean add_to_warehouse(int x, int y){
+        String product = cell[x][y].takeProduct();
+        if (!product.equals("")){
+            warehouse.Add(product,variable_reading.item_capacity(product));
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
+    }
 }
