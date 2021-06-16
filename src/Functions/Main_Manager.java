@@ -30,24 +30,24 @@ public class Main_Manager {
 
     private ArrayList<ArrayList> workshops = new ArrayList<>();
 
-    ArrayList<PrimaryWorksop_MilkPacking>  primaryWorksop_milkPackings = new ArrayList<>();
-    ArrayList<PrimaryWorksop_Mill> primaryWorksop_mills = new ArrayList<>();
-    ArrayList<PrimaryWorksop_Textile> primaryWorksop_textiles = new ArrayList<>();
+    ArrayList<PrimaryWorksop_MilkPacking>  primaryWorkshop_milkPackings = new ArrayList<>();
+    ArrayList<PrimaryWorksop_Mill> primaryWorkshop_mills = new ArrayList<>();
+    ArrayList<PrimaryWorksop_Textile> primaryWorkshop_textiles = new ArrayList<>();
     ArrayList<SecondaryWorkshop_Bakery> secondaryWorkshop_bakeries = new ArrayList<>();
     ArrayList<SecondaryWorkshop_IcecreamShop> secondaryWorkshop_icecreamShops = new ArrayList<>();
     ArrayList<SecondaryWorkshop_Tailoring> secondaryWorkshop_tailorings = new ArrayList<>();
 
     public void Add_WorkShop(String name){
 
-        workshops.add(primaryWorksop_milkPackings);
-        workshops.add(primaryWorksop_mills);
-        workshops.add(primaryWorksop_textiles);
+        workshops.add(primaryWorkshop_milkPackings);
+        workshops.add(primaryWorkshop_mills);
+        workshops.add(primaryWorkshop_textiles);
         workshops.add(secondaryWorkshop_bakeries);
         workshops.add(secondaryWorkshop_icecreamShops);
         workshops.add(secondaryWorkshop_tailorings);
 
         if (name.equalsIgnoreCase("MilkPacking")){
-            if (primaryWorksop_milkPackings.add(new PrimaryWorksop_MilkPacking())){
+            if (primaryWorkshop_milkPackings.add(new PrimaryWorksop_MilkPacking())){
                 //TODO
             }
             else {
@@ -55,7 +55,7 @@ public class Main_Manager {
             }
         }
         else if (name.equalsIgnoreCase("Mill")){
-            if (primaryWorksop_mills.add(new PrimaryWorksop_Mill())){
+            if (primaryWorkshop_mills.add(new PrimaryWorksop_Mill())){
                 //TODO
             }
             else {
@@ -63,7 +63,7 @@ public class Main_Manager {
             }
         }
         else if (name.equalsIgnoreCase("Textile")){
-            if (primaryWorksop_textiles.add(new PrimaryWorksop_Textile())){
+            if (primaryWorkshop_textiles.add(new PrimaryWorksop_Textile())){
                 //TODO
             }
             else {
@@ -193,7 +193,7 @@ public class Main_Manager {
     ArrayList<Throwable> throwables = new ArrayList<>();
 
     public boolean MilkPacking_Work(){
-        if (is_sth_in_Werehouse("BuffaloMilk")){
+        if (is_sth_in_WereHouse("BuffaloMilk")){
 
             //TODO
             return true;
@@ -205,7 +205,7 @@ public class Main_Manager {
     }
 
     public boolean Mill_Work(){
-        if (is_sth_in_Werehouse("Egg")){
+        if (is_sth_in_WereHouse("Egg")){
 
             //TODO
             return true;
@@ -217,7 +217,7 @@ public class Main_Manager {
     }
 
     public boolean Textile_Work(){
-        if (is_sth_in_Werehouse("TurkeyFeather")){
+        if (is_sth_in_WereHouse("TurkeyFeather")){
 
             //TODO
             return true;
@@ -229,7 +229,7 @@ public class Main_Manager {
     }
 
     public boolean Bakery_Work(){
-        if (is_sth_in_Werehouse("Flour")){
+        if (is_sth_in_WereHouse("Flour")){
 
             //TODO
             return true;
@@ -241,7 +241,7 @@ public class Main_Manager {
     }
 
     public boolean IcecreamShop_Work(){
-        if (is_sth_in_Werehouse("PocketMilk")){
+        if (is_sth_in_WereHouse("PocketMilk")){
 
             //TODO
             return true;
@@ -253,7 +253,7 @@ public class Main_Manager {
     }
 
     public boolean Tailoring_Work(){
-        if (is_sth_in_Werehouse("Textile")){
+        if (is_sth_in_WereHouse("Textile")){
 
             //TODO
             return true;
@@ -264,7 +264,7 @@ public class Main_Manager {
         }
     }
 
-    private boolean is_sth_in_Werehouse(String name){
+    private boolean is_sth_in_WereHouse(String name){
         if (warehouse.haveSTH(name)){
             //TODO
             return true;
@@ -273,5 +273,9 @@ public class Main_Manager {
             //TODO
             return false;
         }
+    }
+    private int turn;
+    public void changeTurn(){
+        this.turn++;
     }
 }

@@ -12,9 +12,10 @@ public class Input {
 
     public void run(){
         Scanner scanner = new Scanner(System.in);
-        String input = "";
-        while (!(input = scanner.nextLine()).equalsIgnoreCase("exit")){
-
+        String allParts = "";
+        while (!(allParts = scanner.nextLine()).equalsIgnoreCase("exit")){
+            String input[]=allParts.split(" ");
+            Game_Orders(input,scanner);
         }
     }
 
@@ -30,52 +31,41 @@ public class Input {
         }
     }
 
-    public void Game_Ordres (String [] input){
-        if (input[0].equalsIgnoreCase("BUY")){
-            if (game_orders.Buy(input[1],user)){
-                //TODO
+    public void Game_Orders (String [] input,Scanner scanner) {
+        if (input[0].equalsIgnoreCase("TURN")) {
+            game_orders.change_turn(user);
+        } else {
+            if (input[0].equalsIgnoreCase("BUY")) {
+                if (game_orders.Buy(input[1], user)) {
+                    //TODO
+                } else {
+                    //TODO
+                }
+            } else if (input[0].equalsIgnoreCase("PICKUP")) {
+
+            } else if (input[0].equalsIgnoreCase("WELL")) {
+
+            } else if (input[0].equalsIgnoreCase("PLANT")) {
+
+            } else if (input[0].equalsIgnoreCase("WORK")) {
+
+            } else if (input[0].equalsIgnoreCase("CAGE")) {
+
+            } else if (input[0].equalsIgnoreCase("TRUCK")) {
+                if (input[1].equalsIgnoreCase("LOAD")) {
+
+                }
+
+                if (input[1].equalsIgnoreCase("UNLOAD")) {
+
+                }
+
+                if (input[1].equalsIgnoreCase("GO")) {
+
+                }
             }
-            else {
-                //TODO
-            }
-        }
-
-        if (input[0].equalsIgnoreCase("PICKUP")){
-
-        }
-
-        if (input[0].equalsIgnoreCase("WELL")){
-
-        }
-
-        if (input[0].equalsIgnoreCase("PLANT")){
-
-        }
-
-        if (input[0].equalsIgnoreCase("WORK")){
-
-        }
-
-        if (input[0].equalsIgnoreCase("CAGE")){
-
-        }
-
-        if (input[0].equalsIgnoreCase("TURN")){
-
-        }
-
-        if (input[0].equalsIgnoreCase("TRUCK")){
-            if (input[1].equalsIgnoreCase("LOAD")){
-
-            }
-
-            if (input[1].equalsIgnoreCase("UNLOAD")){
-
-            }
-
-            if (input[1].equalsIgnoreCase("GO")){
-
-            }
+            input = scanner.nextLine().split(" ");
+            Game_Orders(input, scanner);
         }
     }
 

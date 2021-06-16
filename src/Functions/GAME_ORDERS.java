@@ -231,6 +231,7 @@ public class GAME_ORDERS {
     }
 
     public boolean Turn (int n , User user){
+        main_manager.changeTurn();
         return true;
     }
 
@@ -271,5 +272,9 @@ public class GAME_ORDERS {
             //TODO
             return false;
         }
+    }
+
+    public void change_turn(User user){
+            main_manager.changeTurn();
     }
 }
