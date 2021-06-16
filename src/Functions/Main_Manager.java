@@ -192,10 +192,86 @@ public class Main_Manager {
     ArrayList<Textile> textiles = new ArrayList<>();
     ArrayList<Throwable> throwables = new ArrayList<>();
 
+    public boolean MilkPacking_Work(){
+        if (is_sth_in_Werehouse("BuffaloMilk")){
 
-   // public boolean MilkPacking_Work(){
-//
-   // }
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
+    }
 
+    public boolean Mill_Work(){
+        if (is_sth_in_Werehouse("Egg")){
 
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
+    }
+
+    public boolean Textile_Work(){
+        if (is_sth_in_Werehouse("TurkeyFeather")){
+
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
+    }
+
+    public boolean Bakery_Work(){
+        if (is_sth_in_Werehouse("Flour")){
+
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
+    }
+
+    public boolean IcecreamShop_Work(){
+        if (is_sth_in_Werehouse("PocketMilk")){
+
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
+    }
+
+    public boolean Tailoring_Work(){
+        if (is_sth_in_Werehouse("Textile")){
+
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
+    }
+
+    private boolean is_sth_in_Werehouse(String name){
+        if (warehouse.haveSTH(name)){
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
+    }
 }

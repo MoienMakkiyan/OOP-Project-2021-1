@@ -50,7 +50,7 @@ public class Warehouse {
         }
     }
 
-    private boolean haveSTH (String name){
+    public boolean haveSTH (String name){
         boolean found = false;
         for (int i=0;i<inWerehouse.size();i++){
             if (inWerehouse.get(i).equals(name)){

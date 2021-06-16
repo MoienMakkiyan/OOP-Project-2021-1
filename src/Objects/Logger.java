@@ -1,6 +1,7 @@
 package Objects;
 
 import java.io.IOException;
+import java.util.Formatter;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
 
