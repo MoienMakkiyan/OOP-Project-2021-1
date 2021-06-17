@@ -5,19 +5,21 @@ import Objects.Animal.Animal;
 import Objects.Animal.Wild;
 import Objects.Products.*;
 import Objects.WorkShops.*;
-
 import java.util.ArrayList;
 
 public class Main_Manager {
 
     Variable_Reading variable_reading;
+
+    Timer timer;
+
     public Main_Manager(int []a ,Variable_Reading variable_reading) {
         make_map(a[0],a[1]);
         this.variable_reading = variable_reading;
+        this.timer = new Timer(variable_reading);
     }
 
     ArrayList<Animal> animals = new ArrayList<>();
-
 
     public void Add_Animal(String name){
         if (animals.add(new Animal(name))){
@@ -193,8 +195,7 @@ public class Main_Manager {
     ArrayList<Textile> textiles = new ArrayList<>();
 
     public boolean MilkPacking_Work(){
-        if (is_sth_in_WereHouse("BuffaloMilk")){
-
+        if (is_sth_in_WereHouse("BuffaloMilk")&&timer.checkMilkPackingTime()){
             //TODO
             return true;
         }
@@ -205,7 +206,7 @@ public class Main_Manager {
     }
 
     public boolean Mill_Work(){
-        if (is_sth_in_WereHouse("Egg")){
+        if (is_sth_in_WereHouse("Egg")&&timer.checkMillTime()){
 
             //TODO
             return true;
@@ -217,7 +218,7 @@ public class Main_Manager {
     }
 
     public boolean Textile_Work(){
-        if (is_sth_in_WereHouse("TurkeyFeather")){
+        if (is_sth_in_WereHouse("TurkeyFeather")&&timer.checkTextileTime()){
 
             //TODO
             return true;
@@ -229,7 +230,7 @@ public class Main_Manager {
     }
 
     public boolean Bakery_Work(){
-        if (is_sth_in_WereHouse("Flour")){
+        if (is_sth_in_WereHouse("Flour")&&timer.checkBakeryTime()){
 
             //TODO
             return true;
@@ -241,7 +242,7 @@ public class Main_Manager {
     }
 
     public boolean IcecreamShop_Work(){
-        if (is_sth_in_WereHouse("PocketMilk")){
+        if (is_sth_in_WereHouse("PocketMilk")&&timer.checkIcecreamTime()){
 
             //TODO
             return true;
@@ -253,7 +254,7 @@ public class Main_Manager {
     }
 
     public boolean Tailoring_Work(){
-        if (is_sth_in_WereHouse("Textile")){
+        if (is_sth_in_WereHouse("Textile")&&timer.checkTailoringTime()){
 
             //TODO
             return true;

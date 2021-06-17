@@ -73,4 +73,10 @@ public class Variable_Reading {
         //TODO
         return tmporary_variable;
     }
+
+    public int Get_WorkShops_Time(String name){
+        int tmporary_variable=0;
+        //TODO
+        return tmporary_variable;
+    }
 }
