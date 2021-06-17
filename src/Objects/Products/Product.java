@@ -15,4 +15,12 @@ public class Product {
     protected boolean isDone;
     protected Random_Location random_location;
     protected Variable_Reading variable_reading;
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }

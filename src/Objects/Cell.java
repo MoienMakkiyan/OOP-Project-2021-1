@@ -37,4 +37,9 @@ public class Cell {
     public ArrayList<String> getAnimals() {
         return animals;
     }
+
+    public void AddProduct (String name,int index){
+        name+=String.valueOf(index);
+        products.add(name);
+    }
 }

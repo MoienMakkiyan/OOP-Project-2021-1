@@ -3,8 +3,8 @@ package Objects.Products;
 import Objects.X_Y;
 
 public class TurkeyFeather extends Product{
-    public TurkeyFeather() {
-        X_Y xy = random_location.random();
+    public TurkeyFeather(int animal_x , int animal_y) {
+        X_Y xy = random_location.base_random(animal_x,animal_y);
         this.x = xy.getX();
         this.y = xy.getY();
         this.price = variable_reading.item_price("TurkeyFeather");

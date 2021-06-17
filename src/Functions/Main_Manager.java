@@ -188,9 +188,9 @@ public class Main_Manager {
     ArrayList<Flour> flours = new ArrayList<>();
     ArrayList<Icecream> icecreams = new ArrayList<>();
     ArrayList<PocketMilk> pocketMilks = new ArrayList<>();
-    ArrayList<Product> products = new ArrayList<>();
+    ArrayList<TurkeyFeather> turkeyFeathers = new ArrayList<>();
+    ArrayList<Shirt> shirts = new ArrayList<>();
     ArrayList<Textile> textiles = new ArrayList<>();
-    ArrayList<Throwable> throwables = new ArrayList<>();
 
     public boolean MilkPacking_Work(){
         if (is_sth_in_WereHouse("BuffaloMilk")){
@@ -274,6 +274,32 @@ public class Main_Manager {
             return false;
         }
     }
+
+    private void Add_Primary_Products(int x, int y,String animal){
+        if (animal.equalsIgnoreCase("chicken")){
+            eggs.add(new Egg(x,y));
+            cell[eggs.get(eggs.size()-1).getX()-1][eggs.get(eggs.size()-1).getY()-1].AddProduct("egg",eggs.size());
+        } else if (animal.equalsIgnoreCase("Buffalo")){
+            buffaloMilks.add(new BuffaloMilk(x,y));
+            cell[x-1][y-1].AddProduct("buffaloMilk",eggs.size());
+        } else if (animal.equalsIgnoreCase("Ostrich")){
+            turkeyFeathers.add(new TurkeyFeather(x,y));
+            cell[x-1][y-1].AddProduct("turkeyFeather",eggs.size());
+        } else {
+            //TODO
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
     private int turn;
     public void changeTurn(){
         this.turn++;
