@@ -281,10 +281,10 @@ public class Main_Manager {
             cell[eggs.get(eggs.size()-1).getX()-1][eggs.get(eggs.size()-1).getY()-1].AddProduct("egg",eggs.size());
         } else if (animal.equalsIgnoreCase("Buffalo")){
             buffaloMilks.add(new BuffaloMilk(x,y));
-            cell[x-1][y-1].AddProduct("buffaloMilk",eggs.size());
+            cell[buffaloMilks.get(buffaloMilks.size()-1).getX()-1][buffaloMilks.get(buffaloMilks.size()-1).getY()-1].AddProduct("buffaloMilk",eggs.size());
         } else if (animal.equalsIgnoreCase("Ostrich")){
             turkeyFeathers.add(new TurkeyFeather(x,y));
-            cell[x-1][y-1].AddProduct("turkeyFeather",eggs.size());
+            cell[turkeyFeathers.get(turkeyFeathers.size()-1).getX()-1][turkeyFeathers.get(turkeyFeathers.size()-1).getY()-1].AddProduct("turkeyFeather",eggs.size());
         } else {
             //TODO
         }
