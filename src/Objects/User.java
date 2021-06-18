@@ -4,8 +4,8 @@ import Functions.Variable_Reading;
 
 public class User {
     Variable_Reading variable_reading = new Variable_Reading();
-    String Name;
 
+    String Name;
     String Password;
     int level;
     int coin;
@@ -35,5 +35,9 @@ public class User {
 
     public String getName() {
         return Name;
+    }
+
+    public String getPassword() {
+        return Password;
     }
 }

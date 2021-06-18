@@ -10,7 +10,7 @@ public class Main {
         Main_Manager main_manager = new Main_Manager(variable_reading.map_size(),variable_reading);
         Logger logger = new Logger();
         GAME_ORDERS game_orders = new GAME_ORDERS(logger,variable_reading,main_manager);
-        Input input = new Input(game_orders,logger);
+        Input input = new Input(game_orders,logger,variable_reading,variable_reading.getUsersINFO());
         input.run();
     }
 }

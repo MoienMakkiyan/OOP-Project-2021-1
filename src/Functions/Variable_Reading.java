@@ -1,5 +1,7 @@
 package Functions;
 
+import Objects.User;
+
 public class Variable_Reading {
 
     public int[] map_size(){
@@ -78,5 +80,9 @@ public class Variable_Reading {
         int tmporary_variable=0;
         //TODO
         return tmporary_variable;
+    }
+
+    public User[] getUsersINFO(){
+
     }
 }
