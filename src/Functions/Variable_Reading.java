@@ -2,6 +2,8 @@ package Functions;
 
 import Objects.User;
 
+import java.util.ArrayList;
+
 public class Variable_Reading {
 
     public int[] map_size(){
@@ -82,7 +84,7 @@ public class Variable_Reading {
         return tmporary_variable;
     }
 
-    public User[] getUsersINFO(){
+    public ArrayList<User> getUsersINFO(){
 
     }
 }

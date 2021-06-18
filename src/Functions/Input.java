@@ -4,20 +4,22 @@ import Objects.Logger;
 import Objects.User;
 import com.sun.tools.javac.Main;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Input {
 
     GAME_ORDERS game_orders;
-    User user[];
+    ArrayList<User> users;
     User CURRENT_USER;
     Logger logger;
     Variable_Reading variable_reading;
 
-    public Input(GAME_ORDERS game_orders, Logger logger, Variable_Reading variable_reading,User user[]) {
+    public Input(GAME_ORDERS game_orders, Logger logger, Variable_Reading variable_reading,ArrayList<User> users) {
         this.game_orders = game_orders;
         this.logger = logger;
         this.variable_reading = variable_reading;
+        this.users = users;
     }
 
     public void run(){
@@ -38,7 +40,8 @@ public class Input {
                 LOGGING = LogIN(scanner);
             }
             if ((input = scanner.nextLine()).equalsIgnoreCase("SIGN UP")||(input = scanner.nextLine()).equalsIgnoreCase("2")){
-
+                LOGGING = SignUP(scanner);
+                LOGGING = false;
             }
         }
 
@@ -52,9 +55,9 @@ public class Input {
             //TODO
             System.out.print("Please Enter Your PASSWORD : ");
             String password = scanner.nextLine();
-            if (password.equalsIgnoreCase(user[backUserINDEX(username)].getPassword())){
+            if (password.equalsIgnoreCase(users.get(backUserINDEX(username)).getPassword())){
                 System.out.print("PASSWORD ACCEPTED ...");
-                CURRENT_USER = user[backUserINDEX(username)];
+                CURRENT_USER = users.get(backUserINDEX(username));
                 pass = true;
             }
             else {
@@ -69,10 +72,28 @@ public class Input {
         return pass;
     }
 
+    public boolean SignUP(Scanner scanner){
+        boolean pass = false;
+        System.out.print("Please Enter Your USERNAME");
+        String username = scanner.nextLine();
+        if (backUserINDEX(username)==-1){
+            System.out.print("Please Enter Your PASSWORD : ");
+            String password = scanner.nextLine();
+            users.add(new User(username, password));
+            System.out.println("Added ...");
+            pass = true;
+        }
+        else {
+            //TODO
+            System.out.println("This USERNAME exist, Please try again ...");
+        }
+        return pass;
+    }
+
     public int backUserINDEX(String name){
         int a=-1;
-        for (int i=0;i<user.length;i++){
-            if (name.equalsIgnoreCase(user[i].getName())){
+        for (int i=0;i<users.size();i++){
+            if (name.equalsIgnoreCase(users.get(i).getName())){
                 a=i;
                 break;
             }

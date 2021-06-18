@@ -17,6 +17,11 @@ public class User {
         this.coin = variable_reading.starting_coin();
     }
 
+    public User(String name, String password) {
+        Name = name;
+        Password = password;
+    }
+
     public int getLevel() {
         return level;
     }
