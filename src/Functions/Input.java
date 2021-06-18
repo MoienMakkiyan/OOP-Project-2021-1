@@ -1,5 +1,6 @@
 package Functions;
 
+import Objects.Logger;
 import Objects.User;
 import com.sun.tools.javac.Main;
 
@@ -7,15 +8,22 @@ import java.util.Scanner;
 
 public class Input {
 
-    GAME_ORDERS game_orders = new GAME_ORDERS();
+    GAME_ORDERS game_orders;
     User user;
+    Logger logger;
+
+    public Input(GAME_ORDERS game_orders, Logger logger) {
+        this.game_orders = game_orders;
+        this.logger = logger;
+    }
 
     public void run(){
         Scanner scanner = new Scanner(System.in);
         String allParts = "";
         while (!(allParts = scanner.nextLine()).equalsIgnoreCase("exit")){
-            String input[]=allParts.split(" ");
-            Game_Orders(input,scanner);
+
+            //String input[]=allParts.split(" ");
+            //Game_Orders(input,scanner);
         }
     }
 

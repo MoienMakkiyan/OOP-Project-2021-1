@@ -5,11 +5,16 @@ import Objects.User;
 
 public class GAME_ORDERS {
 
-    Logger logger = new Logger();
+    Logger logger;
 
-    Variable_Reading variable_reading = new Variable_Reading();
-    Main_Manager main_manager = new Main_Manager(variable_reading.map_size(),variable_reading);
+    Variable_Reading variable_reading;
+    Main_Manager main_manager;
 
+    public GAME_ORDERS(Logger logger, Variable_Reading variable_reading, Main_Manager main_manager) {
+        this.logger = logger;
+        this.variable_reading = variable_reading;
+        this.main_manager = main_manager;
+    }
 
     String Animal_Name = "Chicken Ostrich Buffalo Cat Dog";
     String Workshops_Name = "MilkPacking Mill Textile Bakery IcecreamShop Tailoring";

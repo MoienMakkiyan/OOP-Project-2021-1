@@ -2,10 +2,14 @@ package Functions;
 
 import Objects.X_Y;
 
+import java.util.Random;
+
 public class Random_Location {
 
+    Random random = new Random();
+
     public X_Y random(){
-        //TODO
+
         return new X_Y(1,1);
     }
 

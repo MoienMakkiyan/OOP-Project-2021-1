@@ -7,10 +7,11 @@ import java.util.logging.SimpleFormatter;
 
 public class Logger {
 
-    java.util.logging.Logger logger = java.util.logging.Logger.getLogger("MyLog");;
+    java.util.logging.Logger logger = java.util.logging.Logger.getLogger("MyLog");
+
+    User user;
 
     public Logger() {
-
         setLogger();
     }
 
@@ -27,6 +28,10 @@ public class Logger {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setUser(User user){
+        this.user = user;
     }
 
     public java.util.logging.Logger getLogger() {
