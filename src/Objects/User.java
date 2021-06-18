@@ -20,6 +20,7 @@ public class User {
     public User(String name, String password) {
         Name = name;
         Password = password;
+        this.level = 1;
     }
 
     public int getLevel() {

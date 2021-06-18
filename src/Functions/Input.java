@@ -27,6 +27,7 @@ public class Input {
         String input = "";
         while (!(input = scanner.nextLine()).equalsIgnoreCase("exit")){
             start_menu(scanner);
+            second_menu(scanner);
         }
     }
 
@@ -44,7 +45,6 @@ public class Input {
                 LOGGING = false;
             }
         }
-
     }
 
     public boolean LogIN(Scanner scanner){
@@ -101,42 +101,122 @@ public class Input {
         return a;
     }
 
-    public void Game_Orders (String [] input,Scanner scanner) {
-        if (input[0].equalsIgnoreCase("TURN")) {
-            game_orders.change_turn(user);
-        } else {
-            if (input[0].equalsIgnoreCase("BUY")) {
-                if (game_orders.Buy(input[1], user)) {
-                    //TODO
-                } else {
-                    //TODO
-                }
-            } else if (input[0].equalsIgnoreCase("PICKUP")) {
-
-            } else if (input[0].equalsIgnoreCase("WELL")) {
-
-            } else if (input[0].equalsIgnoreCase("PLANT")) {
-
-            } else if (input[0].equalsIgnoreCase("WORK")) {
-
-            } else if (input[0].equalsIgnoreCase("CAGE")) {
-
-            } else if (input[0].equalsIgnoreCase("TRUCK")) {
-                if (input[1].equalsIgnoreCase("LOAD")) {
-
-                }
-
-                if (input[1].equalsIgnoreCase("UNLOAD")) {
-
-                }
-
-                if (input[1].equalsIgnoreCase("GO")) {
-
-                }
+    public void second_menu(Scanner scanner){
+        boolean end = false;
+        while (!end){
+            System.out.println("1) START [level]");
+            System.out.println("2) LOG OUT");
+            System.out.println("3) SETTING");
+            System.out.print("Enter Your Command : ");
+            String input = scanner.nextLine();
+            if (input.toLowerCase().startsWith("start")){
+                Game_Orders(scanner,Integer.parseInt(input.split("\\s")[1]));
             }
-            input = scanner.nextLine().split(" ");
-            Game_Orders(input, scanner);
+            else if (input.equalsIgnoreCase("log out")){
+                //TODO
+                end = true;
+            }
+            else if (input.equalsIgnoreCase("setting")){
+                System.out.println("Setting Method is ran !");
+            }
+            else {
+                System.out.println("Invalid Command, Please try again ...");
+            }
         }
     }
 
+    public void Game_Orders (Scanner scanner,int level) {
+        game_orders.set_level_tasks(level,CURRENT_USER);
+        String input = "";
+        while (!(input = scanner.nextLine()).equalsIgnoreCase("LOG OUT")){
+            if (input.split("\\s")[0].equalsIgnoreCase("BUY")){
+                if (game_orders.Buy(input.split("\\s")[1],CURRENT_USER)){
+                    //TODO
+                }
+                else {
+                    //TODO
+                }
+            }
+            else if (input.split("\\s")[0].equalsIgnoreCase("PICKUP")){
+                if (game_orders.Pickup(Integer.parseInt(input.split("\\s")[1]),Integer.parseInt(input.split("\\s")[2]),CURRENT_USER)){
+                    //TODO
+                }
+                else {
+                    //TODO
+                }
+            }
+            else if (input.split("\\s")[0].equalsIgnoreCase("WELL")){
+                if (game_orders.Well(CURRENT_USER)){
+                    //TODO
+                }
+                else {
+                    //TODO
+                }
+            }
+            else if (input.split("\\s")[0].equalsIgnoreCase("PLANT")){
+                if (game_orders.Plant(Integer.parseInt(input.split("\\s")[1]),Integer.parseInt(input.split("\\s")[2]),CURRENT_USER)){
+                    //TODO
+                }
+                else {
+                    //TODO
+                }
+            }
+            else if (input.split("\\s")[0].equalsIgnoreCase("WORK")){
+                if (game_orders.Work(input.split("\\s")[1],CURRENT_USER)){
+                    //TODO
+                }
+                else {
+                    //TODO
+                }
+            }
+            else if (input.split("\\s")[0].equalsIgnoreCase("CAGE")){
+                if (game_orders.Cage(Integer.parseInt(input.split("\\s")[1]),Integer.parseInt(input.split("\\s")[2]),CURRENT_USER)){
+                    //TODO
+                }
+                else {
+                    //TODO
+                }
+            }
+            else if (input.split("\\s")[0].equalsIgnoreCase("TURN")){
+                if (game_orders.Turn(Integer.parseInt(input.split("\\s")[1]),CURRENT_USER)){
+                    //TODO
+                }
+                else {
+                    //TODO
+                }
+            }
+            else if (input.split("\\s")[0].equalsIgnoreCase("TRUCK")){
+                if (input.split("\\s")[1].equalsIgnoreCase("LOAD")){
+                    if (game_orders.Truck_Load(input.split("\\s")[2],CURRENT_USER)){
+                        //TODO
+                    }
+                    else {
+                        //TODO
+                    }
+                }
+
+                if (input.split("\\s")[1].equalsIgnoreCase("UNLOAD")){
+                    if (game_orders.Truck_Unload(input.split("\\s")[2],CURRENT_USER)){
+                        //TODO
+                    }
+                    else {
+                        //TODO
+                    }
+                }
+
+                if (input.split("\\s")[1].equalsIgnoreCase("GO")){
+                    if (game_orders.Truck_Go(CURRENT_USER)){
+                        //TODO
+                    }
+                    else {
+                        //TODO
+                    }
+                }
+            }
+            else {
+                System.out.println("Invalid Command, Please try again ...");
+                //TODO
+            }
+        }
+    }
 }

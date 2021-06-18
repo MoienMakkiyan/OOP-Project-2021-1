@@ -279,6 +279,10 @@ public class GAME_ORDERS {
         }
     }
 
+    public void set_level_tasks(int level, User user){
+
+    }
+
     public void change_turn(User user){
             main_manager.changeTurn();
     }
