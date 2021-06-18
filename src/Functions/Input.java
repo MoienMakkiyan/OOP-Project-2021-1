@@ -112,7 +112,7 @@ public class Input {
             if (input.toLowerCase().startsWith("start")){
                 Game_Orders(scanner,Integer.parseInt(input.split("\\s")[1]));
             }
-            else if (input.equalsIgnoreCase("log out")){
+            else if (input.equalsIgnoreCase("log out")||input.equalsIgnoreCase("Exit")){
                 //TODO
                 end = true;
             }
