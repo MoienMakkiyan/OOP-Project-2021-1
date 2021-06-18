@@ -4,8 +4,10 @@ import Functions.Main_Manager;
 import Functions.Variable_Reading;
 import Objects.Logger;
 
+import java.io.FileNotFoundException;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Variable_Reading variable_reading = new Variable_Reading();
         Main_Manager main_manager = new Main_Manager(variable_reading.map_size(),variable_reading);
         Logger logger = new Logger();

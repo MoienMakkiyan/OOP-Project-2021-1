@@ -4,6 +4,7 @@ import Objects.Logger;
 import Objects.User;
 import com.sun.tools.javac.Main;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -41,7 +42,11 @@ public class Input {
                 LOGGING = LogIN(scanner);
             }
             if ((input = scanner.nextLine()).equalsIgnoreCase("SIGN UP")||(input = scanner.nextLine()).equalsIgnoreCase("2")){
-                LOGGING = SignUP(scanner);
+                try {
+                    LOGGING = SignUP(scanner);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
                 LOGGING = false;
             }
         }
@@ -72,7 +77,7 @@ public class Input {
         return pass;
     }
 
-    public boolean SignUP(Scanner scanner){
+    public boolean SignUP(Scanner scanner) throws FileNotFoundException {
         boolean pass = false;
         System.out.print("Please Enter Your USERNAME");
         String username = scanner.nextLine();

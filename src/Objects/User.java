@@ -2,6 +2,8 @@ package Objects;
 
 import Functions.Variable_Reading;
 
+import java.io.FileNotFoundException;
+
 public class User {
     Variable_Reading variable_reading = new Variable_Reading();
 
@@ -10,14 +12,15 @@ public class User {
     int level;
     int coin;
 
-    public User(String name, String password, int level) {
+
+    public User(String name, String password, int level) throws FileNotFoundException {
         Name = name;
         Password = password;
         this.level = level;
         this.coin = variable_reading.starting_coin();
     }
 
-    public User(String name, String password) {
+    public User(String name, String password) throws FileNotFoundException {
         Name = name;
         Password = password;
         this.level = 1;
