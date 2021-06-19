@@ -1,5 +1,6 @@
 package Functions;
 
+import Objects.Products.BuffaloMilk;
 import Objects.Products.PocketMilk;
 import Objects.User;
 
@@ -17,39 +18,46 @@ public class Variable_Reading {
     private int map_size[] = new int[2];
     ArrayList<User> users = new ArrayList<>();
 
-    int warehouse_capacity;
-    int bread_capacity;
-    int buffalomilk_capacity;
-    int egg_capacity;
-    int flour_capacity;
-    int icecream_capacity;
-    int pocketmilk_capacity;
-    int shirt_capacity;
-    int textile_capacity;
-    int turkeyfeather_capacity;
+    private int warehouse_capacity;
+    private int bread_capacity;
+    private int buffalomilk_capacity;
+    private int egg_capacity;
+    private int flour_capacity;
+    private int icecream_capacity;
+    private int pocketmilk_capacity;
+    private int shirt_capacity;
+    private int textile_capacity;
+    private int turkeyfeather_capacity;
 
-    int bread_cost;
-    int buffalomilk_cost;
-    int egg_cost;
-    int flour_cost;
-    int icecream_cost;
-    int pocketmilk_cost;
-    int shirt_cost;
-    int textile_cost;
-    int turkeyfeather_cost;
+    private int bread_cost;
+    private int buffalomilk_cost;
+    private int egg_cost;
+    private int flour_cost;
+    private int icecream_cost;
+    private int pocketmilk_cost;
+    private int shirt_cost;
+    private int textile_cost;
+    private int turkeyfeather_cost;
 
-    int milkpacking_upgrade_cost;
-    int mill_upgrade_cost;
-    int textile_upgrade_cost;
-    int bakery_upgrade_cost;
-    int icecream_shop_upgrade_cost;
-    int tailpring_upgrade_cost;
+    private int milkpacking_upgrade_cost;
+    private int mill_upgrade_cost;
+    private int textile_upgrade_cost;
+    private int bakery_upgrade_cost;
+    private int icecream_shop_upgrade_cost;
+    private int tailpring_upgrade_cost;
 
-    int starting_coin;
-    int truck_capacity;
-    int truck_time;
-    int Well_Time;
-    int Well_info;
+    private int milkpacking_cost;
+    private int mill_cost;
+    private int textileWorkshop_cost;
+    private int bakery_cost;
+    private int icecream_shop_cost;
+    private int tailpring_cost;
+
+    private int starting_coin;
+    private int truck_capacity;
+    private int truck_time;
+    private int Well_Time;
+    private int Well_info;
 
     private void initializing() {
         read_capacities();
@@ -105,10 +113,25 @@ public class Variable_Reading {
         else return turkeyfeather_cost;//its obvious that its a turkeyfeather cost
     }
 
+    private int egg_time;
+    private int buffalomilk_time;
+    private int turkeyfeather_time;
+
+
+
     public int item_cost_buying(String name) {
-        int tmporary_variable = 0;
-        //TODO
-        return tmporary_variable;
+        if (name.equalsIgnoreCase("MilkPacking"))
+            return milkpacking_cost;
+        else if (name.equalsIgnoreCase("Mill"))
+            return mill_cost;
+        else if (name.equalsIgnoreCase("textile"))
+            return textileWorkshop_cost;
+        else if (name.equalsIgnoreCase("bakery"))
+            return bakery_cost;
+        else if (name.equalsIgnoreCase("icecreamshop"))
+            return icecream_shop_cost;
+        else
+            return tailpring_cost;
     }
 
     public int item_cost_upgrading(String name) {
@@ -120,16 +143,18 @@ public class Variable_Reading {
             return textile_upgrade_cost;
         else if (name.equalsIgnoreCase("bakery"))
             return bakery_upgrade_cost;
-        else if (name.equalsIgnoreCase("icecream"))
+        else if (name.equalsIgnoreCase("icecreamshop"))
             return icecream_shop_upgrade_cost;
         else
             return tailpring_upgrade_cost;
     }
 
     public int each_time_needed(String name) {
-        int tmporary_variable = 0;
-        //TODO
-        return tmporary_variable;
+        if (name.equalsIgnoreCase("Egg"))
+            return egg_time;
+        else if (name.equalsIgnoreCase("BuffaloMilk"))
+            return buffalomilk_time;
+        else return turkeyfeather_time;
     }
 
     public int starting_coin() {
@@ -152,10 +177,26 @@ public class Variable_Reading {
         return Well_Time;
     }
 
+    int Mill_time;
+    int Milkpacking_time;
+    int textile_time;
+    int bakery_time;
+    int icecreamshop_time;
+    int tailoring_time;
+
     public int Get_WorkShops_Time(String name) {
-        int tmporary_variable = 0;
-        //TODO
-        return tmporary_variable;
+        if (name.equalsIgnoreCase("MilkPacking"))
+            return Milkpacking_time;
+        else if (name.equalsIgnoreCase("Mill"))
+            return Mill_time;
+        else if (name.equalsIgnoreCase("textile"))
+            return textile_time;
+        else if (name.equalsIgnoreCase("bakery"))
+            return bakery_time;
+        else if (name.equalsIgnoreCase("icecreamshop"))
+            return icecreamshop_time;
+        else
+            return tailoring_time;
     }
 
     private void read_capacities(){

@@ -236,8 +236,14 @@ public class GAME_ORDERS {
     }
 
     public boolean Turn (int n , User user){
-        main_manager.changeTurn();
-        return true;
+        if (main_manager.changeTurn(n)){
+            //TODO
+            return true;
+        }
+        else {
+            //TODO
+            return false;
+        }
     }
 
     public boolean Truck_Load (String name , User user){
@@ -281,9 +287,5 @@ public class GAME_ORDERS {
 
     public void set_level_tasks(int level, User user){
 
-    }
-
-    public void change_turn(User user){
-            main_manager.changeTurn();
     }
 }

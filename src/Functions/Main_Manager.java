@@ -152,7 +152,7 @@ public class Main_Manager {
         }
     }
 
-    //private void Add
+
 
 
     public boolean Cage(int x, int y) {
@@ -276,7 +276,78 @@ public class Main_Manager {
 
     private int turn;
 
-    public void changeTurn() {
-        this.turn++;
+    private boolean filling_well = false;
+    private boolean add_egg = false;
+    private boolean add_turkeyfeather = false;
+    private boolean add_buffalomilk = false;
+    private boolean mill_work = false;
+    private boolean textile_work = false;
+    private boolean milkpacking_work = false;
+    private boolean bakery_work = false;
+    private boolean tailoring_work = false;
+    private boolean icecreamshop_work = false;
+    private boolean truck_working = false;
+
+    private int filling_well_MAX = variable_reading.Well_Time();
+    private int add_egg_MAX = variable_reading.each_time_needed("egg");
+    private int add_turkeyfeather_MAX = variable_reading.each_time_needed("turkeyfeather");
+    private int add_buffalomilk_MAX = variable_reading.each_time_needed("buffalomilk");
+    private int mill_work_MAX = variable_reading.Get_WorkShops_Time("mill");
+    private int textile_work_MAX = variable_reading.Get_WorkShops_Time("textile");
+    private int milkpacking_work_MAX = variable_reading.Get_WorkShops_Time("milkpacking");
+    private int bakery_work_MAX = variable_reading.Get_WorkShops_Time("bakery");
+    private int tailoring_work_MAX = variable_reading.Get_WorkShops_Time("tailpring");
+    private int icecreamshop_work_MAX = variable_reading.Get_WorkShops_Time("icecreamshop");
+    private int truck_working_MAX = variable_reading.truck_time();
+
+    private int filling_well_CURRENT = 0;
+    private int add_egg_CURRENT = 0;
+    private int add_turkeyfeather_CURRENT = 0;
+    private int add_buffalomilk_CURRENT = 0;
+    private int mill_work_CURRENT = 0;
+    private int textile_work_CURRENT = 0;
+    private int milkpacking_work_CURRENT = 0;
+    private int bakery_work_CURRENT = 0;
+    private int tailoring_work_CURRENT = 0;
+    private int icecreamshop_work_CURRENT = 0;
+    private int truck_working_CURRENT = 0;
+
+    public boolean changeTurn(int n) {
+        for (int i=0;i<n;i++){
+            if (filling_well){
+
+            }
+            if (add_egg){
+
+            }
+            if (add_turkeyfeather){
+
+            }
+            if (add_buffalomilk){
+
+            }
+            if (mill_work){
+
+            }
+            if(textile_work){
+
+            }
+            if (milkpacking_work){
+
+            }
+            if (bakery_work){
+
+            }
+            if (tailoring_work){
+
+            }
+            if (icecreamshop_work){
+
+            }
+            if (truck_working){
+
+            }
+        }
+        return true;
     }
 }
