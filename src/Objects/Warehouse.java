@@ -53,7 +53,7 @@ public class Warehouse {
     public boolean haveSTH (String name){
         boolean found = false;
         for (int i=0;i<inWerehouse.size();i++){
-            if (inWerehouse.get(i).startsWith(name)){
+            if (inWerehouse.get(i).toLowerCase().startsWith(name.toLowerCase())){
                 found = true;
                 //TODO
                 break;

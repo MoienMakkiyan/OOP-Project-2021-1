@@ -10,15 +10,72 @@ import java.util.ArrayList;
 
 public class Main_Manager {
 
+    Cell cell[][];
     Variable_Reading variable_reading;
+    ArrayList<Animal> animals = new ArrayList<>();
+    private ArrayList<ArrayList> workshops = new ArrayList<>();
+    Warehouse warehouse = new Warehouse(variable_reading.warehouse_info());
+    Bucket_of_Water bucket_of_water = new Bucket_of_Water(variable_reading.Well_info());
+    WateringSystem wateringSystem = new WateringSystem(variable_reading.Well_Time(), bucket_of_water);
+
+
+    ArrayList<Bread> breads = new ArrayList<>();
+    ArrayList<BuffaloMilk> buffaloMilks = new ArrayList<>();
+    ArrayList<Egg> eggs = new ArrayList<>();
+    ArrayList<Flour> flours = new ArrayList<>();
+    ArrayList<Icecream> icecreams = new ArrayList<>();
+    ArrayList<PocketMilk> pocketMilks = new ArrayList<>();
+    ArrayList<TurkeyFeather> turkeyFeathers = new ArrayList<>();
+    ArrayList<Shirt> shirts = new ArrayList<>();
+    ArrayList<Textile> textiles = new ArrayList<>();
+
+    ArrayList<PrimaryWorksop_MilkPacking> primaryWorkshop_milkPackings = new ArrayList<>();
+    ArrayList<PrimaryWorksop_Mill> primaryWorkshop_mills = new ArrayList<>();
+    ArrayList<PrimaryWorksop_Textile> primaryWorkshop_textiles = new ArrayList<>();
+    ArrayList<SecondaryWorkshop_Bakery> secondaryWorkshop_bakeries = new ArrayList<>();
+    ArrayList<SecondaryWorkshop_IcecreamShop> secondaryWorkshop_icecreamShops = new ArrayList<>();
+    ArrayList<SecondaryWorkshop_Tailoring> secondaryWorkshop_tailorings = new ArrayList<>();
+
+    private boolean filling_well = false;
+    private boolean add_egg = false;
+    private boolean add_turkeyfeather = false;
+    private boolean add_buffalomilk = false;
+    private boolean mill_work = false;
+    private boolean textile_work = false;
+    private boolean milkpacking_work = false;
+    private boolean bakery_work = false;
+    private boolean tailoring_work = false;
+    private boolean icecreamshop_work = false;
+    private boolean truck_working = false;
+
+    private int filling_well_MAX = variable_reading.Well_Time();
+    private int add_egg_MAX = variable_reading.each_time_needed("egg");
+    private int add_turkeyfeather_MAX = variable_reading.each_time_needed("turkeyfeather");
+    private int add_buffalomilk_MAX = variable_reading.each_time_needed("buffalomilk");
+    private int mill_work_MAX = variable_reading.Get_WorkShops_Time("mill");
+    private int textile_work_MAX = variable_reading.Get_WorkShops_Time("textile");
+    private int milkpacking_work_MAX = variable_reading.Get_WorkShops_Time("milkpacking");
+    private int bakery_work_MAX = variable_reading.Get_WorkShops_Time("bakery");
+    private int tailoring_work_MAX = variable_reading.Get_WorkShops_Time("tailpring");
+    private int icecreamshop_work_MAX = variable_reading.Get_WorkShops_Time("icecreamshop");
+    private int truck_working_MAX = variable_reading.truck_time();
+
+    private int filling_well_CURRENT = 0;
+    private int add_egg_CURRENT = 0;
+    private int add_turkeyfeather_CURRENT = 0;
+    private int add_buffalomilk_CURRENT = 0;
+    private int mill_work_CURRENT = 0;
+    private int textile_work_CURRENT = 0;
+    private int milkpacking_work_CURRENT = 0;
+    private int bakery_work_CURRENT = 0;
+    private int tailoring_work_CURRENT = 0;
+    private int icecreamshop_work_CURRENT = 0;
+    private int truck_working_CURRENT = 0;
 
     public Main_Manager(int[] a, Variable_Reading variable_reading) {
         make_map(a[0], a[1]);
         this.variable_reading = variable_reading;
     }
-
-    ArrayList<Animal> animals = new ArrayList<>();
-
 
     public void Add_Animal(String name) {
         if (animals.add(new Animal(name))) {
@@ -27,15 +84,6 @@ public class Main_Manager {
             //TODO
         }
     }
-
-    private ArrayList<ArrayList> workshops = new ArrayList<>();
-
-    ArrayList<PrimaryWorksop_MilkPacking> primaryWorkshop_milkPackings = new ArrayList<>();
-    ArrayList<PrimaryWorksop_Mill> primaryWorkshop_mills = new ArrayList<>();
-    ArrayList<PrimaryWorksop_Textile> primaryWorkshop_textiles = new ArrayList<>();
-    ArrayList<SecondaryWorkshop_Bakery> secondaryWorkshop_bakeries = new ArrayList<>();
-    ArrayList<SecondaryWorkshop_IcecreamShop> secondaryWorkshop_icecreamShops = new ArrayList<>();
-    ArrayList<SecondaryWorkshop_Tailoring> secondaryWorkshop_tailorings = new ArrayList<>();
 
     public void Add_WorkShop(String name) {
 
@@ -88,23 +136,40 @@ public class Main_Manager {
     Truck truck = new Truck();
 
     public boolean Truck_Load(String name) {
-        return truck.Load(name);
+        if (truck.Load(name)){
+            warehouse.Remove(name, variable_reading.item_capacity(name.split("\\s")[0]));
+            return true;
+        }
+        else return false;
     }
 
     public boolean Truck_Unload(String name) {
-        return truck.Unload(name);
+        if (truck.Unload(name)){
+            warehouse.Add(name, variable_reading.item_capacity(name.split("\\s")[0]));
+            return true;
+        }
+        else return false;
     }
 
     public boolean Truck_Go() {
-        return truck.Go();
-    }
-
-    public boolean inWerehouse(String name) {
-        //TODO
+        if (!truck_working){
+            truck_working = true;
+            return true;
+        }
         return false;
     }
 
-    Cell cell[][];
+    public boolean inWerehouse(String name) {
+        if (warehouse.haveSTH(name)) {
+            //TODO
+            return true;
+        } else {
+            //TODO
+            return false;
+        }
+    }
+
+
 
     private void make_map(int n, int m) {
         cell = new Cell[n][m];
@@ -115,8 +180,6 @@ public class Main_Manager {
         }
     }
 
-    Bucket_of_Water bucket_of_water = new Bucket_of_Water(variable_reading.Well_info());
-    WateringSystem wateringSystem = new WateringSystem(variable_reading.Well_Time(), bucket_of_water);
 
     public boolean AddGrass(int x, int y) {
         if (bucket_of_water.getCerrunt_amount() > 0) {
@@ -131,13 +194,13 @@ public class Main_Manager {
     }
 
     public boolean Well() {
-        if (wateringSystem.isEmpty()) {
-            wateringSystem.fillWell();
+        if (wateringSystem.isEmpty()&&!filling_well) {
+            filling_well = true;
             return true;
         } else return false;
     }
 
-    Warehouse warehouse = new Warehouse(variable_reading.warehouse_info());
+
 
     public boolean add_to_warehouse(int x, int y) {
         String product = cell[x][y].takeProduct();
@@ -171,22 +234,11 @@ public class Main_Manager {
         }
         return true;
     }
-    //MilkPacking Mill Textile Bakery IcecreamShop Tailoring;
 
-    ArrayList<Bread> breads = new ArrayList<>();
-    ArrayList<BuffaloMilk> buffaloMilks = new ArrayList<>();
-    ArrayList<Egg> eggs = new ArrayList<>();
-    ArrayList<Flour> flours = new ArrayList<>();
-    ArrayList<Icecream> icecreams = new ArrayList<>();
-    ArrayList<PocketMilk> pocketMilks = new ArrayList<>();
-    ArrayList<TurkeyFeather> turkeyFeathers = new ArrayList<>();
-    ArrayList<Shirt> shirts = new ArrayList<>();
-    ArrayList<Textile> textiles = new ArrayList<>();
 
     public boolean MilkPacking_Work() {
-        if (is_sth_in_WereHouse("BuffaloMilk")) {
-
-            //TODO
+        if (is_sth_in_WereHouse("BuffaloMilk")&&primaryWorkshop_milkPackings.size()>0&&!milkpacking_work) {
+            milkpacking_work = true;
             return true;
         } else {
             //TODO
@@ -195,9 +247,8 @@ public class Main_Manager {
     }
 
     public boolean Mill_Work() {
-        if (is_sth_in_WereHouse("Egg")) {
-
-            //TODO
+        if (is_sth_in_WereHouse("Egg")&&primaryWorkshop_mills.size()>0&&!mill_work) {
+            mill_work = true;
             return true;
         } else {
             //TODO
@@ -206,8 +257,8 @@ public class Main_Manager {
     }
 
     public boolean Textile_Work() {
-        if (is_sth_in_WereHouse("TurkeyFeather")) {
-
+        if (is_sth_in_WereHouse("TurkeyFeather")&&primaryWorkshop_textiles.size()>0&&!textile_work) {
+            textile_work = true;
             //TODO
             return true;
         } else {
@@ -217,9 +268,8 @@ public class Main_Manager {
     }
 
     public boolean Bakery_Work() {
-        if (is_sth_in_WereHouse("Flour")) {
-
-            //TODO
+        if (is_sth_in_WereHouse("Flour")&&secondaryWorkshop_bakeries.size()>0&&!bakery_work) {
+            bakery_work = true;
             return true;
         } else {
             //TODO
@@ -228,9 +278,8 @@ public class Main_Manager {
     }
 
     public boolean IcecreamShop_Work() {
-        if (is_sth_in_WereHouse("PocketMilk")) {
-
-            //TODO
+        if (is_sth_in_WereHouse("PocketMilk")&&secondaryWorkshop_icecreamShops.size()>0&&!icecreamshop_work) {
+            icecreamshop_work = true;
             return true;
         } else {
             //TODO
@@ -239,9 +288,8 @@ public class Main_Manager {
     }
 
     public boolean Tailoring_Work() {
-        if (is_sth_in_WereHouse("Textile")) {
-
-            //TODO
+        if (is_sth_in_WereHouse("Textile")&&secondaryWorkshop_tailorings.size()>0&&!textile_work) {
+            textile_work = true;
             return true;
         } else {
             //TODO
@@ -274,78 +322,96 @@ public class Main_Manager {
         }
     }
 
-    private int turn;
-
-    private boolean filling_well = false;
-    private boolean add_egg = false;
-    private boolean add_turkeyfeather = false;
-    private boolean add_buffalomilk = false;
-    private boolean mill_work = false;
-    private boolean textile_work = false;
-    private boolean milkpacking_work = false;
-    private boolean bakery_work = false;
-    private boolean tailoring_work = false;
-    private boolean icecreamshop_work = false;
-    private boolean truck_working = false;
-
-    private int filling_well_MAX = variable_reading.Well_Time();
-    private int add_egg_MAX = variable_reading.each_time_needed("egg");
-    private int add_turkeyfeather_MAX = variable_reading.each_time_needed("turkeyfeather");
-    private int add_buffalomilk_MAX = variable_reading.each_time_needed("buffalomilk");
-    private int mill_work_MAX = variable_reading.Get_WorkShops_Time("mill");
-    private int textile_work_MAX = variable_reading.Get_WorkShops_Time("textile");
-    private int milkpacking_work_MAX = variable_reading.Get_WorkShops_Time("milkpacking");
-    private int bakery_work_MAX = variable_reading.Get_WorkShops_Time("bakery");
-    private int tailoring_work_MAX = variable_reading.Get_WorkShops_Time("tailpring");
-    private int icecreamshop_work_MAX = variable_reading.Get_WorkShops_Time("icecreamshop");
-    private int truck_working_MAX = variable_reading.truck_time();
-
-    private int filling_well_CURRENT = 0;
-    private int add_egg_CURRENT = 0;
-    private int add_turkeyfeather_CURRENT = 0;
-    private int add_buffalomilk_CURRENT = 0;
-    private int mill_work_CURRENT = 0;
-    private int textile_work_CURRENT = 0;
-    private int milkpacking_work_CURRENT = 0;
-    private int bakery_work_CURRENT = 0;
-    private int tailoring_work_CURRENT = 0;
-    private int icecreamshop_work_CURRENT = 0;
-    private int truck_working_CURRENT = 0;
 
     public boolean changeTurn(int n) {
         for (int i=0;i<n;i++){
             if (filling_well){
-
+                filling_well_CURRENT++;
+                if (filling_well_CURRENT==filling_well_MAX){
+                    wateringSystem.fillWell();
+                    filling_well_CURRENT=0;
+                    filling_well=false;
+                }
             }
             if (add_egg){
-
+                add_egg_CURRENT++;
+                if (add_egg_CURRENT==add_egg_MAX){
+                    //TODO
+                    add_egg_CURRENT=0;
+                    add_egg=false;
+                }
             }
             if (add_turkeyfeather){
-
+                add_turkeyfeather_CURRENT++;
+                if (add_turkeyfeather_CURRENT==add_turkeyfeather_MAX){
+                    //TODO
+                    add_turkeyfeather_CURRENT=0;
+                    add_turkeyfeather=false;
+                }
             }
             if (add_buffalomilk){
-
+                add_buffalomilk_CURRENT++;
+                if (add_buffalomilk_CURRENT==add_buffalomilk_MAX){
+                    //TODO
+                    add_buffalomilk_CURRENT=0;
+                    add_buffalomilk=false;
+                }
             }
             if (mill_work){
-
+                mill_work_CURRENT++;
+                if (mill_work_CURRENT==mill_work_MAX){
+                    //TODO
+                    mill_work_CURRENT=0;
+                    mill_work=false;
+                }
             }
             if(textile_work){
-
+                textile_work_CURRENT++;
+                if (textile_work_CURRENT==textile_work_MAX){
+                    //TODO
+                    textile_work_CURRENT=0;
+                    textile_work=false;
+                }
             }
             if (milkpacking_work){
-
+                milkpacking_work_CURRENT++;
+                if (milkpacking_work_CURRENT==milkpacking_work_MAX){
+                    //TODO
+                    milkpacking_work_CURRENT=0;
+                    milkpacking_work=false;
+                }
             }
             if (bakery_work){
-
+                bakery_work_CURRENT++;
+                if (bakery_work_CURRENT==bakery_work_MAX){
+                    //TODO
+                    bakery_work_CURRENT=0;
+                    bakery_work=false;
+                }
             }
             if (tailoring_work){
-
+                tailoring_work_CURRENT++;
+                if (tailoring_work_CURRENT==tailoring_work_MAX){
+                    //TODO
+                    tailoring_work_CURRENT=0;
+                    tailoring_work=false;
+                }
             }
             if (icecreamshop_work){
-
+                icecreamshop_work_CURRENT++;
+                if (icecreamshop_work_CURRENT==icecreamshop_work_MAX){
+                    //TODO
+                    icecreamshop_work_CURRENT=0;
+                    icecreamshop_work=false;
+                }
             }
             if (truck_working){
-
+                truck_working_CURRENT++;
+                if (truck_working_CURRENT==truck_working_MAX){
+                    boolean go = truck.Go();
+                    truck_working_CURRENT=0;
+                    truck_working=false;
+                }
             }
         }
         return true;
