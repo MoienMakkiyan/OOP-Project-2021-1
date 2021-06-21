@@ -1,8 +1,7 @@
 package Functions;
 
 import Objects.*;
-import Objects.Animal.Animal;
-import Objects.Animal.Wild;
+import Objects.Animal.*;
 import Objects.Products.*;
 import Objects.WorkShops.*;
 
@@ -10,32 +9,41 @@ import java.util.ArrayList;
 
 public class Main_Manager {
 
-    Cell cell[][];
-    Variable_Reading variable_reading;
-    Warehouse warehouse;
-    Bucket_of_Water bucket_of_water;
-    WateringSystem wateringSystem;
-    Truck truck;
+    private Cell cell[][];
+    private Variable_Reading variable_reading;
+    private Warehouse warehouse;
+    private Bucket_of_Water bucket_of_water;
+    private WateringSystem wateringSystem;
+    private Truck truck;
 
-    private ArrayList<Animal> animals;
+    private ArrayList<ArrayList> animals;
     private ArrayList<ArrayList> workshops;
 
-    ArrayList<Bread> breads;
-    ArrayList<BuffaloMilk> buffaloMilks;
-    ArrayList<Egg> eggs;
-    ArrayList<Flour> flours;
-    ArrayList<Icecream> icecreams;
-    ArrayList<PocketMilk> pocketMilks;
-    ArrayList<TurkeyFeather> turkeyFeathers;
-    ArrayList<Shirt> shirts;
-    ArrayList<Textile> textiles;
+    private ArrayList<Bear> bears;
+    private ArrayList<Buffalo> buffalos;
+    private ArrayList<Chicken> chickens;
+    private ArrayList<CollectorCat> collectorCats;
+    private ArrayList<HunterDog> hunterDogs;
+    private ArrayList<Lion> lions;
+    private ArrayList<Ostrich> ostriches;
+    private ArrayList<Tiger> tigers;
 
-    ArrayList<PrimaryWorksop_MilkPacking> primaryWorkshop_milkPackings;
-    ArrayList<PrimaryWorksop_Mill> primaryWorkshop_mills;
-    ArrayList<PrimaryWorksop_Textile> primaryWorkshop_textiles;
-    ArrayList<SecondaryWorkshop_Bakery> secondaryWorkshop_bakeries;
-    ArrayList<SecondaryWorkshop_IcecreamShop> secondaryWorkshop_icecreamShops;
-    ArrayList<SecondaryWorkshop_Tailoring> secondaryWorkshop_tailorings;
+    private ArrayList<Bread> breads;
+    private ArrayList<BuffaloMilk> buffaloMilks;
+    private ArrayList<Egg> eggs;
+    private ArrayList<Flour> flours;
+    private ArrayList<Icecream> icecreams;
+    private ArrayList<PocketMilk> pocketMilks;
+    private ArrayList<TurkeyFeather> turkeyFeathers;
+    private ArrayList<Shirt> shirts;
+    private ArrayList<Textile> textiles;
+
+    private ArrayList<PrimaryWorksop_MilkPacking> primaryWorkshop_milkPackings;
+    private ArrayList<PrimaryWorksop_Mill> primaryWorkshop_mills;
+    private ArrayList<PrimaryWorksop_Textile> primaryWorkshop_textiles;
+    private ArrayList<SecondaryWorkshop_Bakery> secondaryWorkshop_bakeries;
+    private ArrayList<SecondaryWorkshop_IcecreamShop> secondaryWorkshop_icecreamShops;
+    private ArrayList<SecondaryWorkshop_Tailoring> secondaryWorkshop_tailorings;
 
     private boolean filling_well;
     private boolean add_egg;
@@ -100,6 +108,15 @@ public class Main_Manager {
         this.secondaryWorkshop_icecreamShops = new ArrayList<>();
         this.secondaryWorkshop_tailorings = new ArrayList<>();
 
+        this.bears = new ArrayList<>();
+        this.buffalos = new ArrayList<>();
+        this.chickens = new ArrayList<>();
+        this.collectorCats = new ArrayList<>();
+        this.hunterDogs = new ArrayList<>();
+        this.lions = new ArrayList<>();
+        this.ostriches = new ArrayList<>();
+        this.tigers = new ArrayList<>();
+
         this.filling_well = false;
         this.add_egg = false;
         this.add_turkeyfeather = false;
@@ -135,17 +152,6 @@ public class Main_Manager {
         this.tailoring_work_CURRENT = 0;
         this.icecreamshop_work_CURRENT = 0;
         this.truck_working_CURRENT = 0;
-    }
-
-    public void Add_Animal(String name) {
-        if (animals.add(new Animal(name))) {
-            //TODO
-        } else {
-            //TODO
-        }
-    }
-
-    public void Add_WorkShop(String name) {
 
         workshops.add(primaryWorkshop_milkPackings);
         workshops.add(primaryWorkshop_mills);
@@ -153,6 +159,23 @@ public class Main_Manager {
         workshops.add(secondaryWorkshop_bakeries);
         workshops.add(secondaryWorkshop_icecreamShops);
         workshops.add(secondaryWorkshop_tailorings);
+
+        animals.add(bears);
+        animals.add(buffalos);
+        animals.add(chickens);
+        animals.add(collectorCats);
+        animals.add(hunterDogs);
+        animals.add(lions);
+        animals.add(ostriches);
+        animals.add(tigers);
+    }
+
+    public void Add_Animal(String name) {
+        //TODO
+    }
+
+    public void Add_WorkShop(String name) {
+
 
         if (name.equalsIgnoreCase("MilkPacking")) {
             if (primaryWorkshop_milkPackings.add(new PrimaryWorksop_MilkPacking())) {
@@ -269,19 +292,7 @@ public class Main_Manager {
     }
 
     public boolean Cage(int x, int y) {
-        if (animals.size() != 0) {
-            for (int i = 0; i < animals.size(); i++) {
-                if (animals.get(i).getX() == x) {
-                    if (animals.get(i).getY() == y) {
-                        if (animals.get(i).isActivation() == true)
-                            if (animals.get(i) instanceof Wild) {
-//                                animals.get(i).cage();
-//                                animals.get(i).setActivation(false);//TODO
-                            }
-                    }
-                }
-            }
-        }
+        //TODO
         return true;
     }
 

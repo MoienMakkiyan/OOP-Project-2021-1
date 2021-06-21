@@ -1,22 +1,16 @@
 package Objects.Animal;
 
-import java.util.Random;
+import Functions.Random_Location;
 
 public class Animal {
 
-    private int x;
-    private int y;
+    protected Random_Location random_location = new Random_Location();
+    protected int x;
+    protected int y;
+    protected int speed;
+    protected int lives;
     protected String type;
-    private boolean activation;
-
-    public Animal(String type) {
-        Random randomX = new Random();
-        this.x = randomX.nextInt();
-        Random randomY = new Random();
-        this.y = randomY.nextInt();
-        this.type = type;
-        this.activation=true;
-    }
+    protected boolean activation;
 
     public int getX() {
         return x;
@@ -34,14 +28,9 @@ public class Animal {
         this.activation = activation;
     }
 
-    private void walkDirection1(Animal animal) {
-        int direction = assignDirection(1);
-        assignXY(animal, direction, 1);
-    }
-
-    private void walkDirection2(Animal animal) {
-        int direction = assignDirection(2);
-        assignXY(animal, direction, 2);
+    public void walking() {
+        int direction = assignDirection(speed);
+        assignXY(direction, speed);
     }
 
     private int assignDirection(int speed) {
@@ -77,44 +66,40 @@ public class Animal {
         return direction;
     }
 
-    private void assignXY(Animal animal, int direction, int speed) {
+    private void assignXY(int direction, int speed) {
         if (direction == 0) {
-            animal.y += speed;
+            this.y += speed;
         } else if (direction == 1) {
-            animal.y += speed;
-            animal.x += speed;
+            this.y += speed;
+            this.x += speed;
         } else if (direction == 2) {
-            animal.x += speed;
+            this.x += speed;
         } else if (direction == 3) {
-            animal.x += speed;
-            animal.y -= speed;
+            this.x += speed;
+            this.y -= speed;
         } else if (direction == 4) {
-            animal.y -= speed;
+            this.y -= speed;
         } else if (direction == 5) {
-            animal.x -= speed;
-            animal.y -= speed;
+            this.x -= speed;
+            this.y -= speed;
         } else if (direction == 6) {
-            animal.x -= speed;
+            this.x -= speed;
         } else if (direction == 7) {
-            animal.x -= speed;
-            animal.y += speed;
+            this.x -= speed;
+            this.y += speed;
         }
     }
 
-    public void walk(Animal animal) {
-        if (animal instanceof Domestic) {
-            walkDirection1(animal);
-        } else if (animal instanceof Wild) {
-            if (animal instanceof Lion || animal instanceof Bear) {
-                walkDirection1(animal);
-            } else if (animal instanceof Bear) {
-                walkDirection2(animal);
-            }
-        } else if (animal instanceof HunterDog) {
-            walkDirection1(animal);
-        } else if (animal instanceof CollectorCat) {
-            walkDirection1(animal);
-        }
+    public void eat(){
+        lives=100;
+    }
+
+    public void cage(){
+        lives--;
+    }
+
+    public void uncage(){
+        lives++;
     }
 }
 

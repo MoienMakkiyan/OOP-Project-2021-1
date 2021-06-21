@@ -1,16 +1,17 @@
 package Objects.Animal;
 
-public class Bear extends Wild{
-    private String name;
-    protected int lives;
+import Objects.X_Y;
 
-    Bear(String name) {
-        super(name);
+public class Bear extends Animal{
+
+
+    public Bear() {
+        X_Y xy = random_location.random();
+        this.x = xy.getX();
+        this.y = xy.getY();
+        this.speed = 1;
+        this.type = "wild";
+        this.activation = true;
         this.lives = 4;
-        this.name = name;
-
-    }
-    public void cage() {
-        this.lives--;
     }
 }

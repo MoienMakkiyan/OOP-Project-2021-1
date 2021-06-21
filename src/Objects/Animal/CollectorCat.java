@@ -1,17 +1,16 @@
 package Objects.Animal;
 
-import java.util.ArrayList;
+import Objects.X_Y;
 
 public class CollectorCat extends Animal {
-
-    ArrayList<CollectorCat> collectorCats = new ArrayList<>(0);
-
-    CollectorCat(String type) {
-        super(type);
-    }
-
-    boolean checkMap() {
-        return true;
+    public CollectorCat() {
+        X_Y xy = random_location.random();
+        this.x = xy.getX();
+        this.y = xy.getY();
+        this.speed = 1;
+        this.type = "defender";
+        this.activation = true;
+        this.lives = Integer.MAX_VALUE;
     }
 }
 

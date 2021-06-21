@@ -1,13 +1,15 @@
 package Objects.Animal;
 
-public class Chicken extends Domestic {
-    private int timeToProduce;
-    private String name;
+import Objects.X_Y;
 
-    Chicken(String name) {
-        super(name);
-        this.timeToProduce = 2;
-        this.name =name;
+public class Chicken extends Animal {
+    public Chicken() {
+        X_Y xy = random_location.random();
+        this.x = xy.getX();
+        this.y = xy.getY();
+        this.speed = 1;
+        this.type = "producer";
+        this.activation = true;
+        this.lives = 100;
     }
-
 }

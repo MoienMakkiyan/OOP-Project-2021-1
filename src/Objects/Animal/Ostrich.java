@@ -1,12 +1,15 @@
 package Objects.Animal;
 
-public class Ostrich extends Domestic{
-    private int timeToProduce;
-    private String name;
+import Objects.X_Y;
 
-    Ostrich(String name) {
-        super(name);
-        this.timeToProduce = 3;
-        this.name =name;
+public class Ostrich extends Animal{
+    public Ostrich() {
+        X_Y xy = random_location.random();
+        this.x = xy.getX();
+        this.y = xy.getY();
+        this.speed = 1;
+        this.type = "producer";
+        this.activation = true;
+        this.lives = 100;
     }
 }
