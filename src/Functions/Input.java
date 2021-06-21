@@ -2,7 +2,6 @@ package Functions;
 
 import Objects.Logger;
 import Objects.User;
-import com.sun.tools.javac.Main;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -74,7 +73,7 @@ public class Input {
             }
             else {
                 //TODO
-                System.out.println("Wrong PASSWPRD please try again ...");
+                System.out.println("Wrong PASSWORD please try again ...");
             }
         }
         else {
@@ -144,11 +143,11 @@ public class Input {
 
     public void Game_Orders (Scanner scanner,int level) {
         game_orders.set_level_tasks(level,CURRENT_USER);
-        String input = "";
+        String input;
         while (!(input = scanner.nextLine()).equalsIgnoreCase("LOG OUT")){
             if (input.split("\\s")[0].equalsIgnoreCase("BUY")){
                 if (game_orders.Buy(input.split("\\s")[1],CURRENT_USER)){
-                    //TODO
+                    // TODO
                 }
                 else {
                     //TODO
