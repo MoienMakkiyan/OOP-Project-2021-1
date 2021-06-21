@@ -3,7 +3,11 @@ package Objects.Animal;
 import Objects.X_Y;
 
 public class Buffalo extends Animal{
-    public Buffalo() {
+
+    int MAX_TIME;
+    int CURRENT_TIME;
+
+    public Buffalo(int MAX_TIME) {
         X_Y xy = random_location.random();
         this.x = xy.getX();
         this.y = xy.getY();
@@ -11,5 +15,7 @@ public class Buffalo extends Animal{
         this.type = "producer";
         this.activation = true;
         this.lives = 100;
+        this.MAX_TIME = MAX_TIME;
+        this.CURRENT_TIME = 0;
     }
 }
