@@ -42,4 +42,12 @@ public class Cell {
         name+=String.valueOf(index);
         products.add(name);
     }
+
+    public void AddAnimal(String name){
+        animals.add(name);
+    }
+
+    public void RemoveAnimal(String name){
+        animals.remove(name);
+    }
 }

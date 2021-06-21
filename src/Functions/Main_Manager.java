@@ -228,7 +228,7 @@ public class Main_Manager {
     }
 
     public boolean Truck_Load(String name) {
-        if (truck.Load(name)){
+        if (truck.Load(name)&&!truck_working){
             warehouse.Remove(name, variable_reading.item_capacity(name.split("\\s")[0]));
             return true;
         }
@@ -236,7 +236,7 @@ public class Main_Manager {
     }
 
     public boolean Truck_Unload(String name) {
-        if (truck.Unload(name)){
+        if (truck.Unload(name)&&!truck_working){
             warehouse.Add(name, variable_reading.item_capacity(name.split("\\s")[0]));
             return true;
         }
@@ -380,13 +380,13 @@ public class Main_Manager {
     private void Add_Primary_Products(int x, int y, String animal) {
         if (animal.equalsIgnoreCase("chicken")) {
             eggs.add(new Egg(x, y));
-            cell[eggs.get(eggs.size() - 1).getX() - 1][eggs.get(eggs.size() - 1).getY() - 1].AddProduct("egg", eggs.size());
+            cell[eggs.get(eggs.size() - 1).getX() - 1][eggs.get(eggs.size() - 1).getY() - 1].AddProduct("egg", eggs.size()-1);
         } else if (animal.equalsIgnoreCase("Buffalo")) {
             buffaloMilks.add(new BuffaloMilk(x, y));
-            cell[x - 1][y - 1].AddProduct("buffaloMilk", eggs.size());
+            cell[x - 1][y - 1].AddProduct("buffaloMilk", buffaloMilks.size()-1);
         } else if (animal.equalsIgnoreCase("Ostrich")) {
             turkeyFeathers.add(new TurkeyFeather(x, y));
-            cell[x - 1][y - 1].AddProduct("turkeyFeather", eggs.size());
+            cell[x - 1][y - 1].AddProduct("turkeyFeather", turkeyFeathers.size()-1);
         } else {
             //TODO
         }
@@ -483,24 +483,30 @@ public class Main_Manager {
                 }
             }
             for (Buffalo buffalo : buffalos){
+                cell[buffalo.getX()-1][buffalo.getY()].RemoveAnimal("buffalo");
                 buffalo.walking();
+                cell[buffalo.getX()-1][buffalo.getY()].AddAnimal("buffalo");
                 buffalo.time_pass();
                 if (buffalo.time_to_produce()){
-                    buffaloMilks.add(new BuffaloMilk(buffalo.getX(),buffalo.getY()));
+                    Add_Primary_Products(buffalo.getX(),buffalo.getY(),"buffalo");
                 }
             }
             for (Chicken chicken : chickens){
+                cell[chicken.getX()-1][chicken.getY()].RemoveAnimal("chicken");
                 chicken.walking();
+                cell[chicken.getX()-1][chicken.getY()].AddAnimal("chicken");
                 chicken.time_pass();
                 if (chicken.time_to_produce()){
-                    eggs.add(new Egg(chicken.getX(),chicken.getY()));
+                    Add_Primary_Products(chicken.getX(),chicken.getY(),"chicken");
                 }
             }
             for (Ostrich ostrich : ostriches){
+                cell[ostrich.getX()-1][ostrich.getY()].RemoveAnimal("ostrich");
                 ostrich.walking();
+                cell[ostrich.getX()-1][ostrich.getY()].AddAnimal("ostrich");
                 ostrich.time_pass();
                 if (ostrich.time_to_produce()){
-                    turkeyFeathers.add(new TurkeyFeather(ostrich.getX(),ostrich.getY()));
+                    Add_Primary_Products(ostrich.getX(),ostrich.getY(),"ostrich");
                 }
             }
         }

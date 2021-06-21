@@ -205,22 +205,22 @@ public class GAME_ORDERS {
 
     public boolean Work (String name , User user){
         if (name.equalsIgnoreCase("MilkPacking")){
-
+            main_manager.MilkPacking_Work();
         }
         else if (name.equalsIgnoreCase("Mill")){
-
+            main_manager.Mill_Work();
         }
         else if (name.equalsIgnoreCase("Textile")){
-
+            main_manager.Textile_Work();
         }
         else if (name.equalsIgnoreCase("Bakery")){
-
+            main_manager.Bakery_Work();
         }
         else if (name.equalsIgnoreCase("IcecreamShop")){
-
+            main_manager.IcecreamShop_Work();
         }
         else if (name.equalsIgnoreCase("Tailoring")){
-
+            main_manager.Tailoring_Work();
         }
         return true;
     }
