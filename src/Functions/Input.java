@@ -3,6 +3,7 @@ package Functions;
 import Objects.Logger;
 import Objects.User;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -234,5 +235,11 @@ public class Input {
                 //TODO
             }
         }
+    }
+
+    private void newUser (String username){
+        File folder = new File(username);
+        folder.mkdir();
+
     }
 }
