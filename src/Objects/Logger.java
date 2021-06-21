@@ -8,16 +8,14 @@ public class Logger {
 
     java.util.logging.Logger logger = java.util.logging.Logger.getLogger("MyLog");
 
-    User user;
 
     public Logger() {
-        setLogger();
     }
 
-    private void setLogger(){
+    public void setLogger(User user){
         FileHandler fileHandler;
         try{
-            fileHandler = new FileHandler("Logfile.log");
+            fileHandler = new FileHandler(user.getName()+"\\LOGGER.log");
             logger.addHandler(fileHandler);
             SimpleFormatter formatter = new SimpleFormatter();
             fileHandler.setFormatter(formatter);
@@ -29,9 +27,6 @@ public class Logger {
         }
     }
 
-    public void setUser(User user){
-        this.user = user;
-    }
 
     public java.util.logging.Logger getLogger() {
         return logger;
