@@ -28,6 +28,16 @@ public class Variable_Reading {
     private int shirt_capacity;
     private int textile_capacity;
     private int turkeyfeather_capacity;
+    private int Wild_animal_capacity;
+
+    private int Chicken_cost;
+    private int Ostrich_cost;
+    private int Buffalo_cost;
+    private int HunterDog_cost;
+    private int CollectorCat_cost;
+    private int lion_cost;
+    private int bear_cost;
+    private int tiger_cost;
 
     private int bread_cost;
     private int buffalomilk_cost;
@@ -59,11 +69,113 @@ public class Variable_Reading {
     private int Well_Time;
     private int Well_info;
 
+    private int egg_time;
+    private int buffalomilk_time;
+    private int turkeyfeather_time;
+
+    private int Mill_time;
+    private int Milkpacking_time;
+    private int textile_time;
+    private int bakery_time;
+    private int icecreamshop_time;
+    private int tailoring_time;
+
+    private int first_destroy;
+    private int second_destroy;
+    private int third_destroy;
+    private int scape_time;
+
+
     private void initializing() {
-        read_capacities();
-        read_costs();
-        read_upgrade_costs();
+        String a = null;
+        File directoryPath = new File("Data");
+        File filesList[] = directoryPath.listFiles();
+        for(File file : filesList) {
+            Scanner FileReader = null;
+            try {
+                FileReader = new Scanner(file);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            if (file.getName().equalsIgnoreCase("Capacity_Info.txt")){
+                bread_capacity = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                buffalomilk_capacity = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                egg_capacity = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                flour_capacity = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                icecream_capacity = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                pocketmilk_capacity = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                shirt_capacity = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                textile_capacity = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                turkeyfeather_capacity = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                Wild_animal_capacity = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+            }
+            else if (file.getName().equalsIgnoreCase("Cost_Info.txt")){
+                Chicken_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                Ostrich_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                Buffalo_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                HunterDog_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                CollectorCat_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                bread_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                buffalomilk_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                egg_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                flour_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                icecream_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                pocketmilk_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                shirt_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                textile_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                turkeyfeather_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                lion_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                bear_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                tiger_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                milkpacking_upgrade_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                mill_upgrade_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                bakery_upgrade_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                icecream_shop_upgrade_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                tailpring_upgrade_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                milkpacking_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                mill_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                textileWorkshop_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                bakery_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                icecream_shop_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                tailpring_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+            }
+            else if (file.getName().equalsIgnoreCase("Game_Info.txt")){
+                map_size = back_map_size(FileReader.nextLine().split("\\s"));
+                warehouse_capacity = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                truck_capacity = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                truck_time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                Well_Time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                Well_info = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                starting_coin = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+            }
+            else if (file.getName().equalsIgnoreCase("Game_Info.txt")){
+                egg_time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                buffalomilk_time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                turkeyfeather_time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                Mill_time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                Milkpacking_time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                textile_time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                bakery_time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                icecreamshop_time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                tailoring_time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                first_destroy = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                second_destroy = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                third_destroy = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                scape_time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+            }
+            FileReader.close();
         }
+
+
+
+    }
+
+    private int[] back_map_size(String []in){
+        int a[] = new int[2];
+        a[0] = Integer.parseInt(in[2]);
+        a[1] = Integer.parseInt(in[4]);
+        return a;
+    }
 
     public int[] map_size() {
         return map_size;
@@ -112,12 +224,6 @@ public class Variable_Reading {
             return textile_cost;
         else return turkeyfeather_cost;//its obvious that its a turkeyfeather cost
     }
-
-    private int egg_time;
-    private int buffalomilk_time;
-    private int turkeyfeather_time;
-
-
 
     public int item_cost_buying(String name) {
         if (name.equalsIgnoreCase("MilkPacking"))
@@ -177,13 +283,6 @@ public class Variable_Reading {
         return Well_Time;
     }
 
-    int Mill_time;
-    int Milkpacking_time;
-    int textile_time;
-    int bakery_time;
-    int icecreamshop_time;
-    int tailoring_time;
-
     public int Get_WorkShops_Time(String name) {
         if (name.equalsIgnoreCase("MilkPacking"))
             return Milkpacking_time;
@@ -199,63 +298,8 @@ public class Variable_Reading {
             return tailoring_time;
     }
 
-    private void read_capacities(){
-        File Capacities = new File("Capacity.txt");
-        Scanner reader = null;
-        try {
-            reader = new Scanner(Capacities);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        warehouse_capacity = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        bread_capacity = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        buffalomilk_capacity = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        egg_capacity = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        flour_capacity = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        icecream_capacity = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        pocketmilk_capacity = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        shirt_capacity = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        textile_capacity = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        turkeyfeather_capacity = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        reader.close();
-    }
-
-    private void read_costs(){
-        File Costs = new File("Costs.txt");
-        Scanner reader = null;
-        try {
-            reader = new Scanner(Costs);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        bread_cost = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        buffalomilk_cost = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        egg_cost = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        flour_cost = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        icecream_cost = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        pocketmilk_cost = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        shirt_cost = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        textile_cost = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        turkeyfeather_cost = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-    }
-
-    private void read_upgrade_costs(){
-        File Costs = new File("Costs.txt");
-        Scanner reader = null;
-        try {
-            reader = new Scanner(Costs);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        milkpacking_upgrade_cost = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        mill_upgrade_cost = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        textile_upgrade_cost = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        bakery_upgrade_cost = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        icecream_shop_upgrade_cost = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-        tailpring_upgrade_cost = Integer.parseInt(reader.nextLine().split("\\s")[2]);
-    }
-
     public ArrayList<User> getUsersINFO() {
         return users;
     }
+
 }

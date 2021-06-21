@@ -1,4 +1,4 @@
-map size : 6 * 6
+map_size : 6 * 6
 warehouse_capacity : 30
 truck_capacity : 20
 truck_time : 10
