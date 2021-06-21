@@ -10,6 +10,7 @@ public class Animal {
     protected int speed;
     protected int lives;
     protected String type;
+    protected boolean isHungry;
     protected boolean activation;
 
     public int getX() {
@@ -91,7 +92,7 @@ public class Animal {
     }
 
     public void eat(){
-        lives=100;
+            lives=100;
     }
 
     public void cage(){
@@ -100,6 +101,16 @@ public class Animal {
 
     public void uncage(){
         lives++;
+    }
+
+    public void time_pass(){
+        lives*=0.9;
+        if (lives<55){
+            isHungry = true;
+        }
+        else {
+            isHungry = false;
+        }
     }
 }
 

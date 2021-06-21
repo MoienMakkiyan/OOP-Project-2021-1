@@ -11,6 +11,7 @@ public class CollectorCat extends Animal {
         this.type = "defender";
         this.activation = true;
         this.lives = Integer.MAX_VALUE;
+        this.isHungry = false;
     }
 }
 

@@ -12,5 +12,6 @@ public class Tiger extends Animal {
         this.type = "wild";
         this.activation = true;
         this.lives = 4;
+        this.isHungry = false;
     }
 }

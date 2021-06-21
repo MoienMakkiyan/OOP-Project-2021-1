@@ -277,11 +277,10 @@ public class GAME_ORDERS {
 
     public boolean Truck_Go (User user){
         if (main_manager.Truck_Go()){
-            //TODO
+            user.setCoin(user.getCoin()+ main_manager.SELLING_PROFIT());
             return true;
         }
         else {
-            //TODO
             return false;
         }
     }

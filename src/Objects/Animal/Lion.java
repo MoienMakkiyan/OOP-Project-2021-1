@@ -12,5 +12,6 @@ public class Lion extends Animal {
         this.type = "wild";
         this.activation = true;
         this.lives = 3;
+        this.isHungry = false;
     }
 }

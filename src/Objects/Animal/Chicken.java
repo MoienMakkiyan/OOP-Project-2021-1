@@ -17,5 +17,15 @@ public class Chicken extends Animal {
         this.lives = 100;
         this.MAX_TIME = MAX_TIME;
         this.CURRENT_TIME = 0;
+        this.isHungry = false;
+    }
+
+    public boolean time_to_produce(){
+        CURRENT_TIME++;
+        if (CURRENT_TIME == MAX_TIME){
+            CURRENT_TIME = 0;
+            return true;
+        }
+        else return false;
     }
 }

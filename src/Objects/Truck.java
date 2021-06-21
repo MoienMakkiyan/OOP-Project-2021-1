@@ -60,7 +60,15 @@ public class Truck {
 
     public boolean Go (){
         //TODO
-        return false;
+        return true;
+    }
+
+    public ArrayList<String> getInTruck() {
+        return inTruck;
+    }
+
+    public void clear(){
+        inTruck.clear();
     }
 }
 

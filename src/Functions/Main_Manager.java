@@ -4,7 +4,6 @@ import Objects.*;
 import Objects.Animal.*;
 import Objects.Products.*;
 import Objects.WorkShops.*;
-
 import java.util.ArrayList;
 
 public class Main_Manager {
@@ -18,6 +17,7 @@ public class Main_Manager {
 
     private ArrayList<ArrayList> animals;
     private ArrayList<ArrayList> workshops;
+    private ArrayList<ArrayList> products;
 
     private ArrayList<Bear> bears;
     private ArrayList<Buffalo> buffalos;
@@ -90,6 +90,7 @@ public class Main_Manager {
         this.truck = new Truck();
         this.animals = new ArrayList<>();
         this.workshops = new ArrayList<>();
+        this.products = new ArrayList<>();
 
         this.breads = new ArrayList<>();
         this.buffaloMilks = new ArrayList<>();
@@ -168,6 +169,16 @@ public class Main_Manager {
         animals.add(lions);
         animals.add(ostriches);
         animals.add(tigers);
+
+        products.add(breads);
+        products.add(buffaloMilks);
+        products.add(eggs);
+        products.add(flours);
+        products.add(icecreams);
+        products.add(pocketMilks);
+        products.add(shirts);
+        products.add(textiles);
+        products.add(turkeyFeathers);
     }
 
     public void Add_Animal(String name) {
@@ -299,9 +310,9 @@ public class Main_Manager {
     public boolean MilkPacking_Work() {
         if (is_sth_in_WereHouse("BuffaloMilk")&&primaryWorkshop_milkPackings.size()>0&&!milkpacking_work) {
             milkpacking_work = true;
+            warehouse.Remove("BuffaloMilk", variable_reading.item_capacity("BuffaloMilk"));
             return true;
         } else {
-            //TODO
             return false;
         }
     }
@@ -309,9 +320,9 @@ public class Main_Manager {
     public boolean Mill_Work() {
         if (is_sth_in_WereHouse("Egg")&&primaryWorkshop_mills.size()>0&&!mill_work) {
             mill_work = true;
+            warehouse.Remove("Egg", variable_reading.item_capacity("Egg"));
             return true;
         } else {
-            //TODO
             return false;
         }
     }
@@ -319,10 +330,9 @@ public class Main_Manager {
     public boolean Textile_Work() {
         if (is_sth_in_WereHouse("TurkeyFeather")&&primaryWorkshop_textiles.size()>0&&!textile_work) {
             textile_work = true;
-            //TODO
+            warehouse.Remove("TurkeyFeather", variable_reading.item_capacity("TurkeyFeather"));
             return true;
         } else {
-            //TODO
             return false;
         }
     }
@@ -330,9 +340,9 @@ public class Main_Manager {
     public boolean Bakery_Work() {
         if (is_sth_in_WereHouse("Flour")&&secondaryWorkshop_bakeries.size()>0&&!bakery_work) {
             bakery_work = true;
+            warehouse.Remove("Flour", variable_reading.item_capacity("Flour"));
             return true;
         } else {
-            //TODO
             return false;
         }
     }
@@ -340,9 +350,9 @@ public class Main_Manager {
     public boolean IcecreamShop_Work() {
         if (is_sth_in_WereHouse("PocketMilk")&&secondaryWorkshop_icecreamShops.size()>0&&!icecreamshop_work) {
             icecreamshop_work = true;
+            warehouse.Remove("PocketMilk", variable_reading.item_capacity("PocketMilk"));
             return true;
         } else {
-            //TODO
             return false;
         }
     }
@@ -350,9 +360,9 @@ public class Main_Manager {
     public boolean Tailoring_Work() {
         if (is_sth_in_WereHouse("Textile")&&secondaryWorkshop_tailorings.size()>0&&!textile_work) {
             textile_work = true;
+            warehouse.Remove("Textile", variable_reading.item_capacity("Textile"));
             return true;
         } else {
-            //TODO
             return false;
         }
     }
@@ -392,7 +402,7 @@ public class Main_Manager {
                     filling_well=false;
                 }
             }
-            if (add_egg){
+            /*if (add_egg){
                 add_egg_CURRENT++;
                 if (add_egg_CURRENT==add_egg_MAX){
                     //TODO
@@ -415,19 +425,19 @@ public class Main_Manager {
                     add_buffalomilk_CURRENT=0;
                     add_buffalomilk=false;
                 }
-            }
+            }*/
             if (mill_work){
                 mill_work_CURRENT++;
                 if (mill_work_CURRENT==mill_work_MAX){
-                    //TODO
+                    flours.add(new Flour());
                     mill_work_CURRENT=0;
                     mill_work=false;
                 }
             }
-            if(textile_work){
+            if (textile_work){
                 textile_work_CURRENT++;
                 if (textile_work_CURRENT==textile_work_MAX){
-                    //TODO
+                    textiles.add(new Textile());
                     textile_work_CURRENT=0;
                     textile_work=false;
                 }
@@ -435,7 +445,7 @@ public class Main_Manager {
             if (milkpacking_work){
                 milkpacking_work_CURRENT++;
                 if (milkpacking_work_CURRENT==milkpacking_work_MAX){
-                    //TODO
+                    pocketMilks.add(new PocketMilk());
                     milkpacking_work_CURRENT=0;
                     milkpacking_work=false;
                 }
@@ -443,7 +453,7 @@ public class Main_Manager {
             if (bakery_work){
                 bakery_work_CURRENT++;
                 if (bakery_work_CURRENT==bakery_work_MAX){
-                    //TODO
+                    breads.add(new Bread());
                     bakery_work_CURRENT=0;
                     bakery_work=false;
                 }
@@ -451,7 +461,7 @@ public class Main_Manager {
             if (tailoring_work){
                 tailoring_work_CURRENT++;
                 if (tailoring_work_CURRENT==tailoring_work_MAX){
-                    //TODO
+                    shirts.add(new Shirt());
                     tailoring_work_CURRENT=0;
                     tailoring_work=false;
                 }
@@ -459,7 +469,7 @@ public class Main_Manager {
             if (icecreamshop_work){
                 icecreamshop_work_CURRENT++;
                 if (icecreamshop_work_CURRENT==icecreamshop_work_MAX){
-                    //TODO
+                    icecreams.add(new Icecream());
                     icecreamshop_work_CURRENT=0;
                     icecreamshop_work=false;
                 }
@@ -472,7 +482,36 @@ public class Main_Manager {
                     truck_working=false;
                 }
             }
+            for (Buffalo buffalo : buffalos){
+                buffalo.walking();
+                buffalo.time_pass();
+                if (buffalo.time_to_produce()){
+                    buffaloMilks.add(new BuffaloMilk(buffalo.getX(),buffalo.getY()));
+                }
+            }
+            for (Chicken chicken : chickens){
+                chicken.walking();
+                chicken.time_pass();
+                if (chicken.time_to_produce()){
+                    eggs.add(new Egg(chicken.getX(),chicken.getY()));
+                }
+            }
+            for (Ostrich ostrich : ostriches){
+                ostrich.walking();
+                ostrich.time_pass();
+                if (ostrich.time_to_produce()){
+                    turkeyFeathers.add(new TurkeyFeather(ostrich.getX(),ostrich.getY()));
+                }
+            }
         }
         return true;
+    }
+
+    public int SELLING_PROFIT(){
+        int sum = 0;
+        for (int i=0;i<truck.getInTruck().size();i++)
+            sum+=variable_reading.item_price(truck.getInTruck().get(i).split("\\s")[0]);
+        truck.clear();
+        return sum;
     }
 }
