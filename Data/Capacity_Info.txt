@@ -1,0 +1,10 @@
+bread_capacity : 4
+buffalomilk_capacity : 1
+egg_capacity : 1
+flour_capacity : 2
+icecream_capacity : 4
+pocketmilk_capacity : 2
+shirt_capacity : 4
+textile_capacity : 2
+turkeyfeather_capacity : 1
+Wild_animal_capacity : 15

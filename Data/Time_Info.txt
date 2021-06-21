@@ -1,0 +1,13 @@
+egg_time : 2
+buffalomilk_time : 3
+turkeyfeather_time : 5
+Mill_time : 4
+Milkpacking_time : 6
+textile_time : 5
+bakery_time : 5
+icecreamshop_time : 7
+tailoring_time : 6
+first_destroy : 4
+second_destroy : 5
+third_destroy : 6
+scape_time : 5

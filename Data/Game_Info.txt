@@ -1,0 +1,7 @@
+map size : 6 * 6
+warehouse_capacity : 30
+truck_capacity : 20
+truck_time : 10
+Well_Time : 3
+Well_info : 3
+starting_coin : 500

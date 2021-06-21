@@ -408,7 +408,7 @@ public class Main_Manager {
             if (truck_working){
                 truck_working_CURRENT++;
                 if (truck_working_CURRENT==truck_working_MAX){
-                    boolean go = truck.Go();
+                    truck.Go();
                     truck_working_CURRENT=0;
                     truck_working=false;
                 }
