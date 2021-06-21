@@ -18,72 +18,72 @@ public class Variable_Reading {
     private int map_size[] = new int[2];
     ArrayList<User> users = new ArrayList<>();
 
-    private int warehouse_capacity;
-    private int bread_capacity;
-    private int buffalomilk_capacity;
-    private int egg_capacity;
-    private int flour_capacity;
-    private int icecream_capacity;
-    private int pocketmilk_capacity;
-    private int shirt_capacity;
-    private int textile_capacity;
-    private int turkeyfeather_capacity;
-    private int Wild_animal_capacity;
+    private int warehouse_capacity = 0;
+    private int bread_capacity = 0;
+    private int buffalomilk_capacity = 0;
+    private int egg_capacity = 0;
+    private int flour_capacity = 0;
+    private int icecream_capacity = 0;
+    private int pocketmilk_capacity = 0;
+    private int shirt_capacity = 0;
+    private int textile_capacity = 0;
+    private int turkeyfeather_capacity = 0;
+    private int Wild_animal_capacity = 0;
 
-    private int Chicken_cost;
-    private int Ostrich_cost;
-    private int Buffalo_cost;
-    private int HunterDog_cost;
-    private int CollectorCat_cost;
-    private int lion_cost;
-    private int bear_cost;
-    private int tiger_cost;
+    private int Chicken_cost = 0;
+    private int Ostrich_cost = 0;
+    private int Buffalo_cost = 0;
+    private int HunterDog_cost = 0;
+    private int CollectorCat_cost = 0;
+    private int lion_cost = 0;
+    private int bear_cost = 0;
+    private int tiger_cost = 0;
 
-    private int bread_cost;
-    private int buffalomilk_cost;
-    private int egg_cost;
-    private int flour_cost;
-    private int icecream_cost;
-    private int pocketmilk_cost;
-    private int shirt_cost;
-    private int textile_cost;
-    private int turkeyfeather_cost;
+    private int bread_cost = 0;
+    private int buffalomilk_cost = 0;
+    private int egg_cost = 0;
+    private int flour_cost = 0;
+    private int icecream_cost = 0;
+    private int pocketmilk_cost = 0;
+    private int shirt_cost = 0;
+    private int textile_cost = 0;
+    private int turkeyfeather_cost = 0;
 
-    private int milkpacking_upgrade_cost;
-    private int mill_upgrade_cost;
-    private int textile_upgrade_cost;
-    private int bakery_upgrade_cost;
-    private int icecream_shop_upgrade_cost;
-    private int tailpring_upgrade_cost;
+    private int milkpacking_upgrade_cost = 0;
+    private int mill_upgrade_cost = 0;
+    private int textile_upgrade_cost = 0;
+    private int bakery_upgrade_cost = 0;
+    private int icecream_shop_upgrade_cost = 0;
+    private int tailpring_upgrade_cost = 0;
 
-    private int milkpacking_cost;
-    private int mill_cost;
-    private int textileWorkshop_cost;
-    private int bakery_cost;
-    private int icecream_shop_cost;
-    private int tailpring_cost;
+    private int milkpacking_cost = 0;
+    private int mill_cost = 0;
+    private int textileWorkshop_cost = 0;
+    private int bakery_cost = 0;
+    private int icecream_shop_cost = 0;
+    private int tailpring_cost = 0;
 
-    private int starting_coin;
-    private int truck_capacity;
-    private int truck_time;
-    private int Well_Time;
-    private int Well_info;
+    private int starting_coin = 0;
+    private int truck_capacity = 0;
+    private int truck_time = 0;
+    private int Well_Time = 0;
+    private int Well_info = 0;
 
-    private int egg_time;
-    private int buffalomilk_time;
-    private int turkeyfeather_time;
+    private int egg_time = 0;
+    private int buffalomilk_time = 0;
+    private int turkeyfeather_time = 0;
 
-    private int Mill_time;
-    private int Milkpacking_time;
-    private int textile_time;
-    private int bakery_time;
-    private int icecreamshop_time;
-    private int tailoring_time;
+    private int Mill_time = 0;
+    private int Milkpacking_time = 0;
+    private int textile_time = 0;
+    private int bakery_time = 0;
+    private int icecreamshop_time = 0;
+    private int tailoring_time = 0;
 
-    private int first_destroy;
-    private int second_destroy;
-    private int third_destroy;
-    private int scape_time;
+    private int first_destroy = 0;
+    private int second_destroy = 0;
+    private int third_destroy = 0;
+    private int scape_time = 0;
 
 
     private void initializing() {
@@ -129,6 +129,7 @@ public class Variable_Reading {
                 tiger_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
                 milkpacking_upgrade_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
                 mill_upgrade_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                textile_upgrade_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
                 bakery_upgrade_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
                 icecream_shop_upgrade_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
                 tailpring_upgrade_cost = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);

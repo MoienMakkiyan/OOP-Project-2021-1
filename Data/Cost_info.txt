@@ -1,8 +1,8 @@
 Chicken_cost : 100
 Ostrich_cost : 200
 Buffalo_cost : 400
-HunterDog : 100
-CollectorCat : 150
+HunterDog_cost : 100
+CollectorCat_cost : 150
 bread_cost : 80
 buffalomilk_cost : 25
 egg_cost : 15

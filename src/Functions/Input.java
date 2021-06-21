@@ -25,31 +25,38 @@ public class Input {
 
     public void run(){
         Scanner scanner = new Scanner(System.in);
-        String input = "";
-        while (!(input = scanner.nextLine()).equalsIgnoreCase("exit")){
-            start_menu(scanner);
-            second_menu(scanner);
+        int EXIT = -1;
+        while (EXIT != 0){
+            EXIT = start_menu(scanner);
+            if (EXIT != 0){
+                EXIT = second_menu(scanner);
+            }
         }
     }
 
-    public void start_menu(Scanner scanner){
-        String input = "";
+    public int start_menu(Scanner scanner){
         boolean LOGGING = false;
+        int End = -1;
         while (!LOGGING){
             System.out.println("1- LOG IN");
             System.out.println("2- SIGN UP");
-            if ((input = scanner.nextLine()).equalsIgnoreCase("LOG IN")||(input = scanner.nextLine()).equalsIgnoreCase("1")){
+            String input = scanner.nextLine();
+            if (input.equalsIgnoreCase("LOG IN")||input.equalsIgnoreCase("1")){
                 LOGGING = LogIN(scanner);
             }
-            if ((input = scanner.nextLine()).equalsIgnoreCase("SIGN UP")||(input = scanner.nextLine()).equalsIgnoreCase("2")){
+            else if (input.equalsIgnoreCase("SIGN UP")||input.equalsIgnoreCase("2")){
                 try {
                     LOGGING = SignUP(scanner);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
-                LOGGING = false;
+            }
+            else if (input.equalsIgnoreCase("Exit")){
+                //TODO
+                End = 0;
             }
         }
+        return End;
     }
 
     public boolean LogIN(Scanner scanner){
@@ -79,7 +86,7 @@ public class Input {
 
     public boolean SignUP(Scanner scanner) throws FileNotFoundException {
         boolean pass = false;
-        System.out.print("Please Enter Your USERNAME");
+        System.out.print("Please Enter Your USERNAME : ");
         String username = scanner.nextLine();
         if (backUserINDEX(username)==-1){
             System.out.print("Please Enter Your PASSWORD : ");
@@ -106,9 +113,9 @@ public class Input {
         return a;
     }
 
-    public void second_menu(Scanner scanner){
-        boolean end = false;
-        while (!end){
+    public int second_menu(Scanner scanner){
+        int end = -1;
+        while (end == -1){
             System.out.println("1) START [level]");
             System.out.println("2) LOG OUT");
             System.out.println("3) SETTING");
@@ -117,9 +124,13 @@ public class Input {
             if (input.toLowerCase().startsWith("start")){
                 Game_Orders(scanner,Integer.parseInt(input.split("\\s")[1]));
             }
-            else if (input.equalsIgnoreCase("log out")||input.equalsIgnoreCase("Exit")){
+            else if (input.equalsIgnoreCase("log out")){
                 //TODO
-                end = true;
+                end = 1;
+            }
+            else if (input.equalsIgnoreCase("Exit")){
+                //TODO
+                end = 0;
             }
             else if (input.equalsIgnoreCase("setting")){
                 System.out.println("Setting Method is ran !");
@@ -128,6 +139,7 @@ public class Input {
                 System.out.println("Invalid Command, Please try again ...");
             }
         }
+        return end;
     }
 
     public void Game_Orders (Scanner scanner,int level) {

@@ -12,69 +12,129 @@ public class Main_Manager {
 
     Cell cell[][];
     Variable_Reading variable_reading;
-    ArrayList<Animal> animals = new ArrayList<>();
-    private ArrayList<ArrayList> workshops = new ArrayList<>();
-    Warehouse warehouse = new Warehouse(variable_reading.warehouse_info());
-    Bucket_of_Water bucket_of_water = new Bucket_of_Water(variable_reading.Well_info());
-    WateringSystem wateringSystem = new WateringSystem(variable_reading.Well_Time(), bucket_of_water);
+    Warehouse warehouse;
+    Bucket_of_Water bucket_of_water;
+    WateringSystem wateringSystem;
+    Truck truck;
 
+    private ArrayList<Animal> animals;
+    private ArrayList<ArrayList> workshops;
 
-    ArrayList<Bread> breads = new ArrayList<>();
-    ArrayList<BuffaloMilk> buffaloMilks = new ArrayList<>();
-    ArrayList<Egg> eggs = new ArrayList<>();
-    ArrayList<Flour> flours = new ArrayList<>();
-    ArrayList<Icecream> icecreams = new ArrayList<>();
-    ArrayList<PocketMilk> pocketMilks = new ArrayList<>();
-    ArrayList<TurkeyFeather> turkeyFeathers = new ArrayList<>();
-    ArrayList<Shirt> shirts = new ArrayList<>();
-    ArrayList<Textile> textiles = new ArrayList<>();
+    ArrayList<Bread> breads;
+    ArrayList<BuffaloMilk> buffaloMilks;
+    ArrayList<Egg> eggs;
+    ArrayList<Flour> flours;
+    ArrayList<Icecream> icecreams;
+    ArrayList<PocketMilk> pocketMilks;
+    ArrayList<TurkeyFeather> turkeyFeathers;
+    ArrayList<Shirt> shirts;
+    ArrayList<Textile> textiles;
 
-    ArrayList<PrimaryWorksop_MilkPacking> primaryWorkshop_milkPackings = new ArrayList<>();
-    ArrayList<PrimaryWorksop_Mill> primaryWorkshop_mills = new ArrayList<>();
-    ArrayList<PrimaryWorksop_Textile> primaryWorkshop_textiles = new ArrayList<>();
-    ArrayList<SecondaryWorkshop_Bakery> secondaryWorkshop_bakeries = new ArrayList<>();
-    ArrayList<SecondaryWorkshop_IcecreamShop> secondaryWorkshop_icecreamShops = new ArrayList<>();
-    ArrayList<SecondaryWorkshop_Tailoring> secondaryWorkshop_tailorings = new ArrayList<>();
+    ArrayList<PrimaryWorksop_MilkPacking> primaryWorkshop_milkPackings;
+    ArrayList<PrimaryWorksop_Mill> primaryWorkshop_mills;
+    ArrayList<PrimaryWorksop_Textile> primaryWorkshop_textiles;
+    ArrayList<SecondaryWorkshop_Bakery> secondaryWorkshop_bakeries;
+    ArrayList<SecondaryWorkshop_IcecreamShop> secondaryWorkshop_icecreamShops;
+    ArrayList<SecondaryWorkshop_Tailoring> secondaryWorkshop_tailorings;
 
-    private boolean filling_well = false;
-    private boolean add_egg = false;
-    private boolean add_turkeyfeather = false;
-    private boolean add_buffalomilk = false;
-    private boolean mill_work = false;
-    private boolean textile_work = false;
-    private boolean milkpacking_work = false;
-    private boolean bakery_work = false;
-    private boolean tailoring_work = false;
-    private boolean icecreamshop_work = false;
-    private boolean truck_working = false;
+    private boolean filling_well;
+    private boolean add_egg;
+    private boolean add_turkeyfeather;
+    private boolean add_buffalomilk;
+    private boolean mill_work;
+    private boolean textile_work;
+    private boolean milkpacking_work;
+    private boolean bakery_work;
+    private boolean tailoring_work;
+    private boolean icecreamshop_work;
+    private boolean truck_working;
 
-    private int filling_well_MAX = variable_reading.Well_Time();
-    private int add_egg_MAX = variable_reading.each_time_needed("egg");
-    private int add_turkeyfeather_MAX = variable_reading.each_time_needed("turkeyfeather");
-    private int add_buffalomilk_MAX = variable_reading.each_time_needed("buffalomilk");
-    private int mill_work_MAX = variable_reading.Get_WorkShops_Time("mill");
-    private int textile_work_MAX = variable_reading.Get_WorkShops_Time("textile");
-    private int milkpacking_work_MAX = variable_reading.Get_WorkShops_Time("milkpacking");
-    private int bakery_work_MAX = variable_reading.Get_WorkShops_Time("bakery");
-    private int tailoring_work_MAX = variable_reading.Get_WorkShops_Time("tailpring");
-    private int icecreamshop_work_MAX = variable_reading.Get_WorkShops_Time("icecreamshop");
-    private int truck_working_MAX = variable_reading.truck_time();
+    private int filling_well_MAX;
+    private int add_egg_MAX;
+    private int add_turkeyfeather_MAX;
+    private int add_buffalomilk_MAX;
+    private int mill_work_MAX;
+    private int textile_work_MAX;
+    private int milkpacking_work_MAX;
+    private int bakery_work_MAX;
+    private int tailoring_work_MAX;
+    private int icecreamshop_work_MAX;
+    private int truck_working_MAX;
 
-    private int filling_well_CURRENT = 0;
-    private int add_egg_CURRENT = 0;
-    private int add_turkeyfeather_CURRENT = 0;
-    private int add_buffalomilk_CURRENT = 0;
-    private int mill_work_CURRENT = 0;
-    private int textile_work_CURRENT = 0;
-    private int milkpacking_work_CURRENT = 0;
-    private int bakery_work_CURRENT = 0;
-    private int tailoring_work_CURRENT = 0;
-    private int icecreamshop_work_CURRENT = 0;
-    private int truck_working_CURRENT = 0;
+    private int filling_well_CURRENT;
+    private int add_egg_CURRENT;
+    private int add_turkeyfeather_CURRENT;
+    private int add_buffalomilk_CURRENT;
+    private int mill_work_CURRENT;
+    private int textile_work_CURRENT;
+    private int milkpacking_work_CURRENT;
+    private int bakery_work_CURRENT;
+    private int tailoring_work_CURRENT;
+    private int icecreamshop_work_CURRENT;
+    private int truck_working_CURRENT;
 
     public Main_Manager(int[] a, Variable_Reading variable_reading) {
         make_map(a[0], a[1]);
         this.variable_reading = variable_reading;
+        this.warehouse = new Warehouse(variable_reading.warehouse_info());
+        this.bucket_of_water = new Bucket_of_Water(variable_reading.Well_info());
+        this.wateringSystem = new WateringSystem(variable_reading.Well_Time(), bucket_of_water);
+        this.truck = new Truck();
+        this.animals = new ArrayList<>();
+        this.workshops = new ArrayList<>();
+
+        this.breads = new ArrayList<>();
+        this.buffaloMilks = new ArrayList<>();
+        this.eggs = new ArrayList<>();
+        this.flours = new ArrayList<>();
+        this.icecreams = new ArrayList<>();
+        this.pocketMilks = new ArrayList<>();
+        this.turkeyFeathers = new ArrayList<>();
+        this.shirts = new ArrayList<>();
+        this.textiles = new ArrayList<>();
+
+        this.primaryWorkshop_milkPackings = new ArrayList<>();
+        this.primaryWorkshop_mills = new ArrayList<>();
+        this.primaryWorkshop_textiles = new ArrayList<>();
+        this.secondaryWorkshop_bakeries = new ArrayList<>();
+        this.secondaryWorkshop_icecreamShops = new ArrayList<>();
+        this.secondaryWorkshop_tailorings = new ArrayList<>();
+
+        this.filling_well = false;
+        this.add_egg = false;
+        this.add_turkeyfeather = false;
+        this.add_buffalomilk = false;
+        this.mill_work = false;
+        this.textile_work = false;
+        this.milkpacking_work = false;
+        this.bakery_work = false;
+        this.tailoring_work = false;
+        this.icecreamshop_work = false;
+        this.truck_working = false;
+
+        this.filling_well_MAX = variable_reading.Well_Time();
+        this.add_egg_MAX = variable_reading.each_time_needed("egg");
+        this.add_turkeyfeather_MAX = variable_reading.each_time_needed("turkeyfeather");
+        this.add_buffalomilk_MAX = variable_reading.each_time_needed("buffalomilk");
+        this.mill_work_MAX = variable_reading.Get_WorkShops_Time("mill");
+        this.textile_work_MAX = variable_reading.Get_WorkShops_Time("textile");
+        this.milkpacking_work_MAX = variable_reading.Get_WorkShops_Time("milkpacking");
+        this.bakery_work_MAX = variable_reading.Get_WorkShops_Time("bakery");
+        this.tailoring_work_MAX = variable_reading.Get_WorkShops_Time("tailpring");
+        this.icecreamshop_work_MAX = variable_reading.Get_WorkShops_Time("icecreamshop");
+        this.truck_working_MAX = variable_reading.truck_time();
+
+        this.filling_well_CURRENT = 0;
+        this.add_egg_CURRENT = 0;
+        this.add_turkeyfeather_CURRENT = 0;
+        this.add_buffalomilk_CURRENT = 0;
+        this.mill_work_CURRENT = 0;
+        this.textile_work_CURRENT = 0;
+        this.milkpacking_work_CURRENT = 0;
+        this.bakery_work_CURRENT = 0;
+        this.tailoring_work_CURRENT = 0;
+        this.icecreamshop_work_CURRENT = 0;
+        this.truck_working_CURRENT = 0;
     }
 
     public void Add_Animal(String name) {
@@ -133,8 +193,6 @@ public class Main_Manager {
         }
     }
 
-    Truck truck = new Truck();
-
     public boolean Truck_Load(String name) {
         if (truck.Load(name)){
             warehouse.Remove(name, variable_reading.item_capacity(name.split("\\s")[0]));
@@ -169,8 +227,6 @@ public class Main_Manager {
         }
     }
 
-
-
     private void make_map(int n, int m) {
         cell = new Cell[n][m];
         for (int i = 0; i < n; i++) {
@@ -179,7 +235,6 @@ public class Main_Manager {
             }
         }
     }
-
 
     public boolean AddGrass(int x, int y) {
         if (bucket_of_water.getCerrunt_amount() > 0) {
@@ -200,8 +255,6 @@ public class Main_Manager {
         } else return false;
     }
 
-
-
     public boolean add_to_warehouse(int x, int y) {
         String product = cell[x][y].takeProduct();
         if (!product.equals("")) {
@@ -214,9 +267,6 @@ public class Main_Manager {
             return false;
         }
     }
-
-
-
 
     public boolean Cage(int x, int y) {
         if (animals.size() != 0) {
@@ -234,7 +284,6 @@ public class Main_Manager {
         }
         return true;
     }
-
 
     public boolean MilkPacking_Work() {
         if (is_sth_in_WereHouse("BuffaloMilk")&&primaryWorkshop_milkPackings.size()>0&&!milkpacking_work) {
@@ -321,7 +370,6 @@ public class Main_Manager {
             //TODO
         }
     }
-
 
     public boolean changeTurn(int n) {
         for (int i=0;i<n;i++){
