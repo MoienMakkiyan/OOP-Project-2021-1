@@ -5,6 +5,7 @@ import Objects.User;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -92,6 +93,7 @@ public class Input {
             System.out.print("Please Enter Your PASSWORD : ");
             String password = scanner.nextLine();
             users.add(new User(username, password));
+            newUser(username);
             System.out.println("Added ...");
             pass = true;
         }
@@ -238,8 +240,21 @@ public class Input {
     }
 
     private void newUser (String username){
-        File folder = new File(username);
+        File folder = new File("UserData\\"+username);
         folder.mkdir();
-
+        File user_data = new File("UserData\\"+username+"\\user_data.txt");
+        File map_data = new File("UserData\\"+username+"\\map_data.txt");
+        File product_data = new File("UserData\\"+username+"\\product.txt");
+        File animal_data = new File("UserData\\"+username+"\\animal_data.txt");
+        File log = new File("UserData\\"+username+"\\LOGGER.log");
+        try {
+            user_data.createNewFile();
+            map_data.createNewFile();
+            product_data.createNewFile();
+            animal_data.createNewFile();
+            log.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
