@@ -28,9 +28,9 @@ public class GAME_ORDERS {
     public boolean Buy (String name , User user){
         if (Animal_Name.contains(name)){
             if (name.equalsIgnoreCase("Chicken")){
-                if (user.getCoin()-variable_reading.item_cost_buying("Chicken")>0){
-                    user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Chicken"));
-                    main_manager.Add_Animal("Chicken");
+                if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Chicken")>0){
+                    user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Chicken"));
+                    Main_Manager.getInstance().Add_Animal("Chicken");
                     //TODO
                     return true;
                 }
@@ -40,9 +40,9 @@ public class GAME_ORDERS {
                 }
             }
             else if (name.equalsIgnoreCase("Ostrich")){
-                if (user.getCoin()-variable_reading.item_cost_buying("Ostrich")>0){
-                    user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Ostrich"));
-                    main_manager.Add_Animal("Ostrich");
+                if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Ostrich")>0){
+                    user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Ostrich"));
+                    Main_Manager.getInstance().Add_Animal("Ostrich");
                     //TODO
                     return true;
                 }
@@ -52,9 +52,9 @@ public class GAME_ORDERS {
                 }
             }
             else if (name.equalsIgnoreCase("Buffalo")){
-                if (user.getCoin()-variable_reading.item_cost_buying("Buffalo")>0){
-                    user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Buffalo"));
-                    main_manager.Add_Animal("Buffalo");
+                if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Buffalo")>0){
+                    user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Buffalo"));
+                    Main_Manager.getInstance().Add_Animal("Buffalo");
                     //TODO
                     return true;
                 }
@@ -64,9 +64,9 @@ public class GAME_ORDERS {
                 }
             }
             else if (name.equalsIgnoreCase("Cat")){
-                if (user.getCoin()-variable_reading.item_cost_buying("Cat")>0){
-                    user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Cat"));
-                    main_manager.Add_Animal("Cat");
+                if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Cat")>0){
+                    user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Cat"));
+                    Main_Manager.getInstance().Add_Animal("Cat");
                     //TODO
                     return true;
                 }
@@ -76,9 +76,9 @@ public class GAME_ORDERS {
                 }
             }
             else if (name.equalsIgnoreCase("Dog")){
-                if (user.getCoin()-variable_reading.item_cost_buying("Dog")>0){
-                    user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Dog"));
-                    main_manager.Add_Animal("Dog");
+                if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Dog")>0){
+                    user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Dog"));
+                    Main_Manager.getInstance().Add_Animal("Dog");
                     //TODO
                     return true;
                 }
@@ -90,9 +90,9 @@ public class GAME_ORDERS {
         }
         if (Workshops_Name.contains(name)){
             if (name.equalsIgnoreCase("MilkPacking")){
-                if (user.getCoin()-variable_reading.item_cost_buying("MilkPacking")>0){
-                    user.setCoin(user.getCoin()-variable_reading.item_cost_buying("MilkPacking"));
-                    main_manager.Add_WorkShop("MilkPacking");
+                if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("MilkPacking")>0){
+                    user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("MilkPacking"));
+                    Main_Manager.getInstance().Add_WorkShop("MilkPacking");
                     //TODO
                     return true;
                 }
@@ -103,9 +103,9 @@ public class GAME_ORDERS {
             }
             else if (name.equalsIgnoreCase("Mill")){
                 if (name.equalsIgnoreCase("Mill")){
-                    if (user.getCoin()-variable_reading.item_cost_buying("Mill")>0){
-                        user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Mill"));
-                        main_manager.Add_WorkShop("Mill");
+                    if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Mill")>0){
+                        user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Mill"));
+                        Main_Manager.getInstance().Add_WorkShop("Mill");
                         //TODO
                         return true;
                     }
@@ -117,9 +117,9 @@ public class GAME_ORDERS {
             }
             else if (name.equalsIgnoreCase("Textile")){
                 if (name.equalsIgnoreCase("Textile")){
-                    if (user.getCoin()-variable_reading.item_cost_buying("Textile")>0){
-                        user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Textile"));
-                        main_manager.Add_WorkShop("Textile");
+                    if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Textile")>0){
+                        user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Textile"));
+                        Main_Manager.getInstance().Add_WorkShop("Textile");
                         //TODO
                         return true;
                     }
@@ -131,9 +131,9 @@ public class GAME_ORDERS {
             }
             else if (name.equalsIgnoreCase("Bakery")){
                 if (name.equalsIgnoreCase("Bakery")){
-                    if (user.getCoin()-variable_reading.item_cost_buying("Bakery")>0){
-                        user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Bakery"));
-                        main_manager.Add_WorkShop("Bakery");
+                    if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Bakery")>0){
+                        user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Bakery"));
+                        Main_Manager.getInstance().Add_WorkShop("Bakery");
                         //TODO
                         return true;
                     }
@@ -145,9 +145,9 @@ public class GAME_ORDERS {
             }
             else if (name.equalsIgnoreCase("IcecreamShop")){
                 if (name.equalsIgnoreCase("IcecreamShop")){
-                    if (user.getCoin()-variable_reading.item_cost_buying("IcecreamShop")>0){
-                        user.setCoin(user.getCoin()-variable_reading.item_cost_buying("IcecreamShop"));
-                        main_manager.Add_WorkShop("IcecreamShop");
+                    if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("IcecreamShop")>0){
+                        user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("IcecreamShop"));
+                        Main_Manager.getInstance().Add_WorkShop("IcecreamShop");
                         //TODO
                         return true;
                     }
@@ -159,9 +159,9 @@ public class GAME_ORDERS {
             }
             else if (name.equalsIgnoreCase("Tailoring")){
                 if (name.equalsIgnoreCase("Tailoring")){
-                    if (user.getCoin()-variable_reading.item_cost_buying("Tailoring")>0){
-                        user.setCoin(user.getCoin()-variable_reading.item_cost_buying("Tailoring"));
-                        main_manager.Add_WorkShop("Tailoring");
+                    if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Tailoring")>0){
+                        user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Tailoring"));
+                        Main_Manager.getInstance().Add_WorkShop("Tailoring");
                         //TODO
                         return true;
                     }
@@ -176,7 +176,7 @@ public class GAME_ORDERS {
     }
 
     public boolean Pickup (int x , int y , User user){
-        if (main_manager.add_to_warehouse(x-1,y-1)){
+        if (Main_Manager.getInstance().add_to_warehouse(x-1,y-1)){
             //TODO
             return true;
         }
@@ -187,7 +187,7 @@ public class GAME_ORDERS {
     }
 
     public boolean Well (User user){
-        if (main_manager.Well()){
+        if (Main_Manager.getInstance().Well()){
             //TODO
             return true;
         }
@@ -198,7 +198,7 @@ public class GAME_ORDERS {
     }
 
     public boolean Plant (int x , int y , User user){
-        if (main_manager.AddGrass(x,y)){
+        if (Main_Manager.getInstance().AddGrass(x,y)){
             //TODO
             return true;
         }
@@ -210,28 +210,28 @@ public class GAME_ORDERS {
 
     public boolean Work (String name , User user){
         if (name.equalsIgnoreCase("MilkPacking")){
-            main_manager.MilkPacking_Work();
+            Main_Manager.getInstance().MilkPacking_Work();
         }
         else if (name.equalsIgnoreCase("Mill")){
-            main_manager.Mill_Work();
+            Main_Manager.getInstance().Mill_Work();
         }
         else if (name.equalsIgnoreCase("Textile")){
-            main_manager.Textile_Work();
+            Main_Manager.getInstance().Textile_Work();
         }
         else if (name.equalsIgnoreCase("Bakery")){
-            main_manager.Bakery_Work();
+            Main_Manager.getInstance().Bakery_Work();
         }
         else if (name.equalsIgnoreCase("IcecreamShop")){
-            main_manager.IcecreamShop_Work();
+            Main_Manager.getInstance().IcecreamShop_Work();
         }
         else if (name.equalsIgnoreCase("Tailoring")){
-            main_manager.Tailoring_Work();
+            Main_Manager.getInstance().Tailoring_Work();
         }
         return true;
     }
 
     public boolean Cage (int x , int y , User user) {
-        if (main_manager.Cage(x,y)){
+        if (Main_Manager.getInstance().Cage(x,y)){
             //TODO
             return true;
         }
@@ -242,7 +242,7 @@ public class GAME_ORDERS {
     }
 
     public boolean Turn (int n , User user){
-        if (main_manager.changeTurn(n)){
+        if (Main_Manager.getInstance().changeTurn(n)){
             //TODO
             return true;
         }
@@ -253,8 +253,8 @@ public class GAME_ORDERS {
     }
 
     public boolean Truck_Load (String name , User user){
-        if (main_manager.inWerehouse(name)){
-            if (main_manager.Truck_Load(name)){
+        if (Main_Manager.getInstance().inWerehouse(name)){
+            if (Main_Manager.getInstance().Truck_Load(name)){
                 //TODO
                 return true;
             }
@@ -270,7 +270,7 @@ public class GAME_ORDERS {
     }
 
     public boolean Truck_Unload (String name , User user){
-        if (main_manager.Truck_Unload(name)){
+        if (Main_Manager.getInstance().Truck_Unload(name)){
             //TODO
             return true;
         }
@@ -281,8 +281,8 @@ public class GAME_ORDERS {
     }
 
     public boolean Truck_Go (User user){
-        if (main_manager.Truck_Go()){
-            user.setCoin(user.getCoin()+ main_manager.SELLING_PROFIT());
+        if (Main_Manager.getInstance().Truck_Go()){
+            user.setCoin(user.getCoin()+ Main_Manager.getInstance().SELLING_PROFIT());
             return true;
         }
         else {
