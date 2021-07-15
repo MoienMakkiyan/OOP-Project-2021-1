@@ -16,12 +16,6 @@ public class Input {
     private Input(){
     }
 
-    GAME_ORDERS game_orders;
-    ArrayList<User> users;
-    User CURRENT_USER;
-    Logger logger;
-    Variable_Reading variable_reading;
-
     /*public Input(GAME_ORDERS game_orders, Logger logger, Variable_Reading variable_reading,ArrayList<User> users) {
         this.game_orders = game_orders;
         this.logger = logger;
@@ -70,18 +64,18 @@ public class Input {
         System.out.print("Please Enter Your USERNAME : ");
         String username = scanner.nextLine();
         if (backUserINDEX(username)!=-1){
-            logger.setLogger(users.get(backUserINDEX(username)));
-            logger.getLogger().info("This Username Entered.");
+            Logger.getInstance().setLogger(Variable_Reading.getInstance().getUsers().get(backUserINDEX(username)));
+            Logger.getInstance().getLogger().info("This Username Entered.");
             System.out.print("Please Enter Your PASSWORD : ");
             String password = scanner.nextLine();
-            if (password.equalsIgnoreCase(users.get(backUserINDEX(username)).getPassword())){
+            if (password.equalsIgnoreCase(Variable_Reading.getInstance().getUsers().get(backUserINDEX(username)).getPassword())){
                 System.out.print("PASSWORD ACCEPTED ...");
-                CURRENT_USER = users.get(backUserINDEX(username));
+                Main_Manager.getInstance().setCURRENT_USER(Variable_Reading.getInstance().getUsers().get(backUserINDEX(username)));
                 pass = true;
-                logger.getLogger().info("Password Accepted & Its Logged in.");
+                Logger.getInstance().getLogger().info("Password Accepted & Its Logged in.");
             }
             else {
-                logger.getLogger().warning("Wrong Password !");
+                Logger.getInstance().getLogger().warning("Wrong Password !");
                 System.out.println("Wrong PASSWORD please try again ...");
             }
         }
@@ -98,7 +92,7 @@ public class Input {
         if (backUserINDEX(username)==-1){
             System.out.print("Please Enter Your PASSWORD : ");
             String password = scanner.nextLine();
-            users.add(new User(username, password));
+            Variable_Reading.getInstance().getUsers().add(new User(username, password));
             newUser(username);
             System.out.println("Added ...");
             pass = true;
@@ -111,8 +105,8 @@ public class Input {
 
     public int backUserINDEX(String name){
         int a=-1;
-        for (int i=0;i<users.size();i++){
-            if (name.equalsIgnoreCase(users.get(i).getName())){
+        for (int i=0;i<Variable_Reading.getInstance().getUsers().size();i++){
+            if (name.equalsIgnoreCase(Variable_Reading.getInstance().getUsers().get(i).getName())){
                 a=i;
                 break;
             }
@@ -132,7 +126,7 @@ public class Input {
                 Game_Orders(scanner,Integer.parseInt(input.split("\\s")[1]));
             }
             else if (input.equalsIgnoreCase("log out")){
-                logger.getLogger().info("Logged out.");
+                Logger.getInstance().getLogger().info("Logged out.");
                 end = 1;
             }
             else if (input.equalsIgnoreCase("Exit")){
@@ -149,99 +143,99 @@ public class Input {
     }
 
     public void Game_Orders (Scanner scanner,int level) {
-        game_orders.set_level_tasks(level,CURRENT_USER);
+        GAME_ORDERS.getInstance().set_level_tasks(level,Main_Manager.getInstance().getCURRENT_USER());
         String input;
         while (!(input = scanner.nextLine()).equalsIgnoreCase("LOG OUT")){
             if (input.split("\\s")[0].equalsIgnoreCase("BUY")){
-                if (game_orders.Buy(input.split("\\s")[1],CURRENT_USER)){
-                    logger.getLogger().info("Buy : "+input.split("\\s")[1]+" Bought Successfully! ");
+                if (GAME_ORDERS.getInstance().Buy(input.split("\\s")[1],Main_Manager.getInstance().getCURRENT_USER())){
+                    Logger.getInstance().getLogger().info("Buy : "+input.split("\\s")[1]+" Bought Successfully! ");
                 }
                 else {
-                    logger.getLogger().warning("Buy : "+input.split("\\s")[1]+" Unsuccessful Buying! ");
+                    Logger.getInstance().getLogger().warning("Buy : "+input.split("\\s")[1]+" Unsuccessful Buying! ");
                 }
             }
             else if (input.split("\\s")[0].equalsIgnoreCase("PICKUP")){
-                if (game_orders.Pickup(Integer.parseInt(input.split("\\s")[1]),Integer.parseInt(input.split("\\s")[2]),CURRENT_USER)){
-                    logger.getLogger().info("Pick Up : Picked Up Successfully!");
+                if (GAME_ORDERS.getInstance().Pickup(Integer.parseInt(input.split("\\s")[1]),Integer.parseInt(input.split("\\s")[2]),Main_Manager.getInstance().getCURRENT_USER())){
+                    Logger.getInstance().getLogger().info("Pick Up : Picked Up Successfully!");
                 }
                 else {
-                    logger.getLogger().warning("Pick Up : Unsuccessful Picking up!");
+                    Logger.getInstance().getLogger().warning("Pick Up : Unsuccessful Picking up!");
                 }
             }
             else if (input.split("\\s")[0].equalsIgnoreCase("WELL")){
-                if (game_orders.Well(CURRENT_USER)){
-                    logger.getLogger().info("Well : Filled Successfully! ");
+                if (GAME_ORDERS.getInstance().Well(Main_Manager.getInstance().getCURRENT_USER())){
+                    Logger.getInstance().getLogger().info("Well : Filled Successfully! ");
                 }
                 else {
-                    logger.getLogger().warning("Well : Unsuccessful Filling! ");
+                    Logger.getInstance().getLogger().warning("Well : Unsuccessful Filling! ");
                 }
             }
             else if (input.split("\\s")[0].equalsIgnoreCase("PLANT")){
-                if (game_orders.Plant(Integer.parseInt(input.split("\\s")[1]),Integer.parseInt(input.split("\\s")[2]),CURRENT_USER)){
-                    logger.getLogger().info("Plant : Planted Successfully! ");
+                if (GAME_ORDERS.getInstance().Plant(Integer.parseInt(input.split("\\s")[1]),Integer.parseInt(input.split("\\s")[2]),Main_Manager.getInstance().getCURRENT_USER())){
+                    Logger.getInstance().getLogger().info("Plant : Planted Successfully! ");
                 }
                 else {
-                    logger.getLogger().warning("Plant : Unsuccessful Planting! ");
+                    Logger.getInstance().getLogger().warning("Plant : Unsuccessful Planting! ");
                 }
             }
             else if (input.split("\\s")[0].equalsIgnoreCase("WORK")){
-                if (game_orders.Work(input.split("\\s")[1],CURRENT_USER)){
-                    logger.getLogger().info("Work : "+input.split("\\s")[1]+" Created!");
+                if (GAME_ORDERS.getInstance().Work(input.split("\\s")[1],Main_Manager.getInstance().getCURRENT_USER())){
+                    Logger.getInstance().getLogger().info("Work : "+input.split("\\s")[1]+" Created!");
                 }
                 else {
-                    logger.getLogger().warning("Work : "+input.split("\\s")[1]+" Is Working!");
+                    Logger.getInstance().getLogger().warning("Work : "+input.split("\\s")[1]+" Is Working!");
                 }
             }
             else if (input.split("\\s")[0].equalsIgnoreCase("CAGE")){
-                if (game_orders.Cage(Integer.parseInt(input.split("\\s")[1]),Integer.parseInt(input.split("\\s")[2]),CURRENT_USER)){
-                    logger.getLogger().info("Cage : Caged Successfully! ");
+                if (GAME_ORDERS.getInstance().Cage(Integer.parseInt(input.split("\\s")[1]),Integer.parseInt(input.split("\\s")[2]),Main_Manager.getInstance().getCURRENT_USER())){
+                    Logger.getInstance().getLogger().info("Cage : Caged Successfully! ");
                 }
                 else {
-                    logger.getLogger().warning("Cage : Unsuccessful Caging! ");
+                    Logger.getInstance().getLogger().warning("Cage : Unsuccessful Caging! ");
                 }
             }
             else if (input.split("\\s")[0].equalsIgnoreCase("TURN")){
-                if (game_orders.Turn(Integer.parseInt(input.split("\\s")[1]),CURRENT_USER)){
-                    logger.getLogger().info("Turn : "+input.split("\\s")[1]+" passed.");
+                if (GAME_ORDERS.getInstance().Turn(Integer.parseInt(input.split("\\s")[1]),Main_Manager.getInstance().getCURRENT_USER())){
+                    Logger.getInstance().getLogger().info("Turn : "+input.split("\\s")[1]+" passed.");
                 }
                 else {
-                    logger.getLogger().warning("Turn : turning failed !");
+                    Logger.getInstance().getLogger().warning("Turn : turning failed !");
                 }
             }
             else if (input.split("\\s")[0].equalsIgnoreCase("TRUCK")){
                 if (input.split("\\s")[1].equalsIgnoreCase("LOAD")){
-                    if (game_orders.Truck_Load(input.split("\\s")[2],CURRENT_USER)){
-                        logger.getLogger().info("Truck : Started To Load! ");
+                    if (GAME_ORDERS.getInstance().Truck_Load(input.split("\\s")[2],Main_Manager.getInstance().getCURRENT_USER())){
+                        Logger.getInstance().getLogger().info("Truck : Started To Load! ");
                     }
                     else {
-                        logger.getLogger().warning("Truck : Unsuccessful Loading! ");
+                        Logger.getInstance().getLogger().warning("Truck : Unsuccessful Loading! ");
                     }
                 }
 
                 if (input.split("\\s")[1].equalsIgnoreCase("UNLOAD")){
-                    if (game_orders.Truck_Unload(input.split("\\s")[2],CURRENT_USER)){
-                        logger.getLogger().info("Truck : Started To Unload! ");
+                    if (GAME_ORDERS.getInstance().Truck_Unload(input.split("\\s")[2],Main_Manager.getInstance().getCURRENT_USER())){
+                        Logger.getInstance().getLogger().info("Truck : Started To Unload! ");
                     }
                     else {
-                        logger.getLogger().warning("Truck : Unsuccessful Unloading! ");
+                        Logger.getInstance().getLogger().warning("Truck : Unsuccessful Unloading! ");
                     }
                 }
 
                 if (input.split("\\s")[1].equalsIgnoreCase("GO")){
-                    if (game_orders.Truck_Go(CURRENT_USER)){
-                        logger.getLogger().info("Truck : Started To Go! ");
+                    if (GAME_ORDERS.getInstance().Truck_Go(Main_Manager.getInstance().getCURRENT_USER())){
+                        Logger.getInstance().getLogger().info("Truck : Started To Go! ");
                     }
                     else {
-                        logger.getLogger().warning("Truck : Unsuccessful Going! ");
+                        Logger.getInstance().getLogger().warning("Truck : Unsuccessful Going! ");
                     }
                 }
             }
             else {
                 System.out.println("Invalid Command, Please try again ...");
-                logger.getLogger().warning("Invalid Command Entered.");
+                Logger.getInstance().getLogger().warning("Invalid Command Entered.");
             }
         }
-        logger.getLogger().info("Logged out.");
+        Logger.getInstance().getLogger().info("Logged out.");
     }
 
     private void newUser (String username){

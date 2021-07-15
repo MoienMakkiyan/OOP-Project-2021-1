@@ -19,6 +19,8 @@ public class Main_Manager {
         return instance;
     }
 
+    User CURRENT_USER;
+
     private Cell cell[][];
     private Variable_Reading variable_reading;
     private Warehouse warehouse;
@@ -532,5 +534,545 @@ public class Main_Manager {
             sum+=variable_reading.item_price(truck.getInTruck().get(i).split("\\s")[0]);
         truck.clear();
         return sum;
+    }
+
+    public static void setInstance(Main_Manager instance) {
+        Main_Manager.instance = instance;
+    }
+
+    public User getCURRENT_USER() {
+        return CURRENT_USER;
+    }
+
+    public void setCURRENT_USER(User CURRENT_USER) {
+        this.CURRENT_USER = CURRENT_USER;
+    }
+
+    public Cell[][] getCell() {
+        return cell;
+    }
+
+    public void setCell(Cell[][] cell) {
+        this.cell = cell;
+    }
+
+    public Variable_Reading getVariable_reading() {
+        return variable_reading;
+    }
+
+    public void setVariable_reading(Variable_Reading variable_reading) {
+        this.variable_reading = variable_reading;
+    }
+
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+    }
+
+    public Bucket_of_Water getBucket_of_water() {
+        return bucket_of_water;
+    }
+
+    public void setBucket_of_water(Bucket_of_Water bucket_of_water) {
+        this.bucket_of_water = bucket_of_water;
+    }
+
+    public WateringSystem getWateringSystem() {
+        return wateringSystem;
+    }
+
+    public void setWateringSystem(WateringSystem wateringSystem) {
+        this.wateringSystem = wateringSystem;
+    }
+
+    public Truck getTruck() {
+        return truck;
+    }
+
+    public void setTruck(Truck truck) {
+        this.truck = truck;
+    }
+
+    public ArrayList<ArrayList> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(ArrayList<ArrayList> animals) {
+        this.animals = animals;
+    }
+
+    public ArrayList<ArrayList> getWorkshops() {
+        return workshops;
+    }
+
+    public void setWorkshops(ArrayList<ArrayList> workshops) {
+        this.workshops = workshops;
+    }
+
+    public ArrayList<ArrayList> getProducts() {
+        return products;
+    }
+
+    public void setProducts(ArrayList<ArrayList> products) {
+        this.products = products;
+    }
+
+    public ArrayList<Mission> getMissions() {
+        return missions;
+    }
+
+    public void setMissions(ArrayList<Mission> missions) {
+        this.missions = missions;
+    }
+
+    public ArrayList<Bear> getBears() {
+        return bears;
+    }
+
+    public void setBears(ArrayList<Bear> bears) {
+        this.bears = bears;
+    }
+
+    public ArrayList<Buffalo> getBuffalos() {
+        return buffalos;
+    }
+
+    public void setBuffalos(ArrayList<Buffalo> buffalos) {
+        this.buffalos = buffalos;
+    }
+
+    public ArrayList<Chicken> getChickens() {
+        return chickens;
+    }
+
+    public void setChickens(ArrayList<Chicken> chickens) {
+        this.chickens = chickens;
+    }
+
+    public ArrayList<CollectorCat> getCollectorCats() {
+        return collectorCats;
+    }
+
+    public void setCollectorCats(ArrayList<CollectorCat> collectorCats) {
+        this.collectorCats = collectorCats;
+    }
+
+    public ArrayList<HunterDog> getHunterDogs() {
+        return hunterDogs;
+    }
+
+    public void setHunterDogs(ArrayList<HunterDog> hunterDogs) {
+        this.hunterDogs = hunterDogs;
+    }
+
+    public ArrayList<Lion> getLions() {
+        return lions;
+    }
+
+    public void setLions(ArrayList<Lion> lions) {
+        this.lions = lions;
+    }
+
+    public ArrayList<Ostrich> getOstriches() {
+        return ostriches;
+    }
+
+    public void setOstriches(ArrayList<Ostrich> ostriches) {
+        this.ostriches = ostriches;
+    }
+
+    public ArrayList<Tiger> getTigers() {
+        return tigers;
+    }
+
+    public void setTigers(ArrayList<Tiger> tigers) {
+        this.tigers = tigers;
+    }
+
+    public ArrayList<Bread> getBreads() {
+        return breads;
+    }
+
+    public void setBreads(ArrayList<Bread> breads) {
+        this.breads = breads;
+    }
+
+    public ArrayList<BuffaloMilk> getBuffaloMilks() {
+        return buffaloMilks;
+    }
+
+    public void setBuffaloMilks(ArrayList<BuffaloMilk> buffaloMilks) {
+        this.buffaloMilks = buffaloMilks;
+    }
+
+    public ArrayList<Egg> getEggs() {
+        return eggs;
+    }
+
+    public void setEggs(ArrayList<Egg> eggs) {
+        this.eggs = eggs;
+    }
+
+    public ArrayList<Flour> getFlours() {
+        return flours;
+    }
+
+    public void setFlours(ArrayList<Flour> flours) {
+        this.flours = flours;
+    }
+
+    public ArrayList<Icecream> getIcecreams() {
+        return icecreams;
+    }
+
+    public void setIcecreams(ArrayList<Icecream> icecreams) {
+        this.icecreams = icecreams;
+    }
+
+    public ArrayList<PocketMilk> getPocketMilks() {
+        return pocketMilks;
+    }
+
+    public void setPocketMilks(ArrayList<PocketMilk> pocketMilks) {
+        this.pocketMilks = pocketMilks;
+    }
+
+    public ArrayList<TurkeyFeather> getTurkeyFeathers() {
+        return turkeyFeathers;
+    }
+
+    public void setTurkeyFeathers(ArrayList<TurkeyFeather> turkeyFeathers) {
+        this.turkeyFeathers = turkeyFeathers;
+    }
+
+    public ArrayList<Shirt> getShirts() {
+        return shirts;
+    }
+
+    public void setShirts(ArrayList<Shirt> shirts) {
+        this.shirts = shirts;
+    }
+
+    public ArrayList<Textile> getTextiles() {
+        return textiles;
+    }
+
+    public void setTextiles(ArrayList<Textile> textiles) {
+        this.textiles = textiles;
+    }
+
+    public ArrayList<PrimaryWorksop_MilkPacking> getPrimaryWorkshop_milkPackings() {
+        return primaryWorkshop_milkPackings;
+    }
+
+    public void setPrimaryWorkshop_milkPackings(ArrayList<PrimaryWorksop_MilkPacking> primaryWorkshop_milkPackings) {
+        this.primaryWorkshop_milkPackings = primaryWorkshop_milkPackings;
+    }
+
+    public ArrayList<PrimaryWorksop_Mill> getPrimaryWorkshop_mills() {
+        return primaryWorkshop_mills;
+    }
+
+    public void setPrimaryWorkshop_mills(ArrayList<PrimaryWorksop_Mill> primaryWorkshop_mills) {
+        this.primaryWorkshop_mills = primaryWorkshop_mills;
+    }
+
+    public ArrayList<PrimaryWorksop_Textile> getPrimaryWorkshop_textiles() {
+        return primaryWorkshop_textiles;
+    }
+
+    public void setPrimaryWorkshop_textiles(ArrayList<PrimaryWorksop_Textile> primaryWorkshop_textiles) {
+        this.primaryWorkshop_textiles = primaryWorkshop_textiles;
+    }
+
+    public ArrayList<SecondaryWorkshop_Bakery> getSecondaryWorkshop_bakeries() {
+        return secondaryWorkshop_bakeries;
+    }
+
+    public void setSecondaryWorkshop_bakeries(ArrayList<SecondaryWorkshop_Bakery> secondaryWorkshop_bakeries) {
+        this.secondaryWorkshop_bakeries = secondaryWorkshop_bakeries;
+    }
+
+    public ArrayList<SecondaryWorkshop_IcecreamShop> getSecondaryWorkshop_icecreamShops() {
+        return secondaryWorkshop_icecreamShops;
+    }
+
+    public void setSecondaryWorkshop_icecreamShops(ArrayList<SecondaryWorkshop_IcecreamShop> secondaryWorkshop_icecreamShops) {
+        this.secondaryWorkshop_icecreamShops = secondaryWorkshop_icecreamShops;
+    }
+
+    public ArrayList<SecondaryWorkshop_Tailoring> getSecondaryWorkshop_tailorings() {
+        return secondaryWorkshop_tailorings;
+    }
+
+    public void setSecondaryWorkshop_tailorings(ArrayList<SecondaryWorkshop_Tailoring> secondaryWorkshop_tailorings) {
+        this.secondaryWorkshop_tailorings = secondaryWorkshop_tailorings;
+    }
+
+    public boolean isFilling_well() {
+        return filling_well;
+    }
+
+    public void setFilling_well(boolean filling_well) {
+        this.filling_well = filling_well;
+    }
+
+    public boolean isAdd_egg() {
+        return add_egg;
+    }
+
+    public void setAdd_egg(boolean add_egg) {
+        this.add_egg = add_egg;
+    }
+
+    public boolean isAdd_turkeyfeather() {
+        return add_turkeyfeather;
+    }
+
+    public void setAdd_turkeyfeather(boolean add_turkeyfeather) {
+        this.add_turkeyfeather = add_turkeyfeather;
+    }
+
+    public boolean isAdd_buffalomilk() {
+        return add_buffalomilk;
+    }
+
+    public void setAdd_buffalomilk(boolean add_buffalomilk) {
+        this.add_buffalomilk = add_buffalomilk;
+    }
+
+    public boolean isMill_work() {
+        return mill_work;
+    }
+
+    public void setMill_work(boolean mill_work) {
+        this.mill_work = mill_work;
+    }
+
+    public boolean isTextile_work() {
+        return textile_work;
+    }
+
+    public void setTextile_work(boolean textile_work) {
+        this.textile_work = textile_work;
+    }
+
+    public boolean isMilkpacking_work() {
+        return milkpacking_work;
+    }
+
+    public void setMilkpacking_work(boolean milkpacking_work) {
+        this.milkpacking_work = milkpacking_work;
+    }
+
+    public boolean isBakery_work() {
+        return bakery_work;
+    }
+
+    public void setBakery_work(boolean bakery_work) {
+        this.bakery_work = bakery_work;
+    }
+
+    public boolean isTailoring_work() {
+        return tailoring_work;
+    }
+
+    public void setTailoring_work(boolean tailoring_work) {
+        this.tailoring_work = tailoring_work;
+    }
+
+    public boolean isIcecreamshop_work() {
+        return icecreamshop_work;
+    }
+
+    public void setIcecreamshop_work(boolean icecreamshop_work) {
+        this.icecreamshop_work = icecreamshop_work;
+    }
+
+    public boolean isTruck_working() {
+        return truck_working;
+    }
+
+    public void setTruck_working(boolean truck_working) {
+        this.truck_working = truck_working;
+    }
+
+    public int getFilling_well_MAX() {
+        return filling_well_MAX;
+    }
+
+    public void setFilling_well_MAX(int filling_well_MAX) {
+        this.filling_well_MAX = filling_well_MAX;
+    }
+
+    public int getAdd_egg_MAX() {
+        return add_egg_MAX;
+    }
+
+    public void setAdd_egg_MAX(int add_egg_MAX) {
+        this.add_egg_MAX = add_egg_MAX;
+    }
+
+    public int getAdd_turkeyfeather_MAX() {
+        return add_turkeyfeather_MAX;
+    }
+
+    public void setAdd_turkeyfeather_MAX(int add_turkeyfeather_MAX) {
+        this.add_turkeyfeather_MAX = add_turkeyfeather_MAX;
+    }
+
+    public int getAdd_buffalomilk_MAX() {
+        return add_buffalomilk_MAX;
+    }
+
+    public void setAdd_buffalomilk_MAX(int add_buffalomilk_MAX) {
+        this.add_buffalomilk_MAX = add_buffalomilk_MAX;
+    }
+
+    public int getMill_work_MAX() {
+        return mill_work_MAX;
+    }
+
+    public void setMill_work_MAX(int mill_work_MAX) {
+        this.mill_work_MAX = mill_work_MAX;
+    }
+
+    public int getTextile_work_MAX() {
+        return textile_work_MAX;
+    }
+
+    public void setTextile_work_MAX(int textile_work_MAX) {
+        this.textile_work_MAX = textile_work_MAX;
+    }
+
+    public int getMilkpacking_work_MAX() {
+        return milkpacking_work_MAX;
+    }
+
+    public void setMilkpacking_work_MAX(int milkpacking_work_MAX) {
+        this.milkpacking_work_MAX = milkpacking_work_MAX;
+    }
+
+    public int getBakery_work_MAX() {
+        return bakery_work_MAX;
+    }
+
+    public void setBakery_work_MAX(int bakery_work_MAX) {
+        this.bakery_work_MAX = bakery_work_MAX;
+    }
+
+    public int getTailoring_work_MAX() {
+        return tailoring_work_MAX;
+    }
+
+    public void setTailoring_work_MAX(int tailoring_work_MAX) {
+        this.tailoring_work_MAX = tailoring_work_MAX;
+    }
+
+    public int getIcecreamshop_work_MAX() {
+        return icecreamshop_work_MAX;
+    }
+
+    public void setIcecreamshop_work_MAX(int icecreamshop_work_MAX) {
+        this.icecreamshop_work_MAX = icecreamshop_work_MAX;
+    }
+
+    public int getTruck_working_MAX() {
+        return truck_working_MAX;
+    }
+
+    public void setTruck_working_MAX(int truck_working_MAX) {
+        this.truck_working_MAX = truck_working_MAX;
+    }
+
+    public int getFilling_well_CURRENT() {
+        return filling_well_CURRENT;
+    }
+
+    public void setFilling_well_CURRENT(int filling_well_CURRENT) {
+        this.filling_well_CURRENT = filling_well_CURRENT;
+    }
+
+    public int getAdd_egg_CURRENT() {
+        return add_egg_CURRENT;
+    }
+
+    public void setAdd_egg_CURRENT(int add_egg_CURRENT) {
+        this.add_egg_CURRENT = add_egg_CURRENT;
+    }
+
+    public int getAdd_turkeyfeather_CURRENT() {
+        return add_turkeyfeather_CURRENT;
+    }
+
+    public void setAdd_turkeyfeather_CURRENT(int add_turkeyfeather_CURRENT) {
+        this.add_turkeyfeather_CURRENT = add_turkeyfeather_CURRENT;
+    }
+
+    public int getAdd_buffalomilk_CURRENT() {
+        return add_buffalomilk_CURRENT;
+    }
+
+    public void setAdd_buffalomilk_CURRENT(int add_buffalomilk_CURRENT) {
+        this.add_buffalomilk_CURRENT = add_buffalomilk_CURRENT;
+    }
+
+    public int getMill_work_CURRENT() {
+        return mill_work_CURRENT;
+    }
+
+    public void setMill_work_CURRENT(int mill_work_CURRENT) {
+        this.mill_work_CURRENT = mill_work_CURRENT;
+    }
+
+    public int getTextile_work_CURRENT() {
+        return textile_work_CURRENT;
+    }
+
+    public void setTextile_work_CURRENT(int textile_work_CURRENT) {
+        this.textile_work_CURRENT = textile_work_CURRENT;
+    }
+
+    public int getMilkpacking_work_CURRENT() {
+        return milkpacking_work_CURRENT;
+    }
+
+    public void setMilkpacking_work_CURRENT(int milkpacking_work_CURRENT) {
+        this.milkpacking_work_CURRENT = milkpacking_work_CURRENT;
+    }
+
+    public int getBakery_work_CURRENT() {
+        return bakery_work_CURRENT;
+    }
+
+    public void setBakery_work_CURRENT(int bakery_work_CURRENT) {
+        this.bakery_work_CURRENT = bakery_work_CURRENT;
+    }
+
+    public int getTailoring_work_CURRENT() {
+        return tailoring_work_CURRENT;
+    }
+
+    public void setTailoring_work_CURRENT(int tailoring_work_CURRENT) {
+        this.tailoring_work_CURRENT = tailoring_work_CURRENT;
+    }
+
+    public int getIcecreamshop_work_CURRENT() {
+        return icecreamshop_work_CURRENT;
+    }
+
+    public void setIcecreamshop_work_CURRENT(int icecreamshop_work_CURRENT) {
+        this.icecreamshop_work_CURRENT = icecreamshop_work_CURRENT;
+    }
+
+    public int getTruck_working_CURRENT() {
+        return truck_working_CURRENT;
+    }
+
+    public void setTruck_working_CURRENT(int truck_working_CURRENT) {
+        this.truck_working_CURRENT = truck_working_CURRENT;
     }
 }
