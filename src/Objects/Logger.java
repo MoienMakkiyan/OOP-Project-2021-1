@@ -8,8 +8,9 @@ public class Logger {
 
     java.util.logging.Logger logger = java.util.logging.Logger.getLogger("MyLog");
 
+    private static Logger instance = null;
 
-    public Logger() {
+    private Logger() {
     }
 
     public void setLogger(User user){
@@ -30,5 +31,11 @@ public class Logger {
 
     public java.util.logging.Logger getLogger() {
         return logger;
+    }
+
+    public static Logger getInstance(){
+        if (instance == null)
+            instance = new Logger();
+        return instance;
     }
 }

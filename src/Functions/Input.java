@@ -11,18 +11,23 @@ import java.util.Scanner;
 
 public class Input {
 
+    private static Input instance = null;
+
+    private Input(){
+    }
+
     GAME_ORDERS game_orders;
     ArrayList<User> users;
     User CURRENT_USER;
     Logger logger;
     Variable_Reading variable_reading;
 
-    public Input(GAME_ORDERS game_orders, Logger logger, Variable_Reading variable_reading,ArrayList<User> users) {
+    /*public Input(GAME_ORDERS game_orders, Logger logger, Variable_Reading variable_reading,ArrayList<User> users) {
         this.game_orders = game_orders;
         this.logger = logger;
         this.variable_reading = variable_reading;
         this.users = users;
-    }
+    }*/
 
     public void run(){
         Scanner scanner = new Scanner(System.in);
@@ -256,6 +261,12 @@ public class Input {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static Input getInstance(){
+        if (instance == null)
+            instance = new Input();
+        return instance;
     }
 
 }

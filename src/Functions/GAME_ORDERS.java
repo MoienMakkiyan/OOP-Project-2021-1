@@ -6,16 +6,21 @@ import Objects.User;
 
 public class GAME_ORDERS {
 
-    Logger logger;
+    private static GAME_ORDERS instance = null;
 
-    Variable_Reading variable_reading;
-    Main_Manager main_manager;
+    private GAME_ORDERS(){
+    }
 
-    public GAME_ORDERS(Logger logger, Variable_Reading variable_reading, Main_Manager main_manager) {
+    //Logger logger;
+
+    //Variable_Reading variable_reading;
+    //Main_Manager main_manager;
+
+    /*public GAME_ORDERS(Logger logger, Variable_Reading variable_reading, Main_Manager main_manager) {
         this.logger = logger;
         this.variable_reading = variable_reading;
         this.main_manager = main_manager;
-    }
+    }*/
 
     String Animal_Name = "Chicken Ostrich Buffalo Cat Dog";
     String Workshops_Name = "MilkPacking Mill Textile Bakery IcecreamShop Tailoring";
@@ -287,5 +292,11 @@ public class GAME_ORDERS {
 
     public void set_level_tasks(int level, User user){
 
+    }
+
+    public static GAME_ORDERS getInstance(){
+        if (instance == null)
+            instance = new GAME_ORDERS();
+        return instance;
     }
 }

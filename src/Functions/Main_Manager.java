@@ -8,6 +8,17 @@ import java.util.ArrayList;
 
 public class Main_Manager {
 
+    private static Main_Manager instance = null;
+
+    private Main_Manager(){
+    }
+
+    public static Main_Manager getInstance(){
+        if (instance == null)
+            instance = new Main_Manager();
+        return instance;
+    }
+
     private Cell cell[][];
     private Variable_Reading variable_reading;
     private Warehouse warehouse;
@@ -82,7 +93,7 @@ public class Main_Manager {
     private int icecreamshop_work_CURRENT;
     private int truck_working_CURRENT;
 
-    public Main_Manager(int[] a, Variable_Reading variable_reading) {
+    /*public Main_Manager(int[] a, Variable_Reading variable_reading) {
         make_map(a[0], a[1]);
         this.variable_reading = variable_reading;
         this.warehouse = new Warehouse(variable_reading.warehouse_info());
@@ -181,7 +192,7 @@ public class Main_Manager {
         products.add(shirts);
         products.add(textiles);
         products.add(turkeyFeathers);
-    }
+    }*/
 
     public void Add_Animal(String name) {
         //TODO

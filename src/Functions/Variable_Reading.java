@@ -14,8 +14,15 @@ import java.io.IOException;
 
 public class Variable_Reading {
 
-    public Variable_Reading() {
+    private static Variable_Reading instance = null;
+    private Variable_Reading() {
         initializing();
+    }
+
+    public static Variable_Reading getInstance(){
+        if (instance == null)
+            instance = new Variable_Reading();
+        return instance
     }
 
     private int map_size[] = new int[2];
