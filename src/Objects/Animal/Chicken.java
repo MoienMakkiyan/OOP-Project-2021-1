@@ -1,5 +1,6 @@
 package Objects.Animal;
 
+import Functions.Random_Location;
 import Objects.X_Y;
 
 public class Chicken extends Animal {
@@ -8,7 +9,7 @@ public class Chicken extends Animal {
     int CURRENT_TIME;
 
     public Chicken(int MAX_TIME) {
-        X_Y xy = random_location.random();
+        X_Y xy = Random_Location.getInstance().random();
         this.x = xy.getX();
         this.y = xy.getY();
         this.speed = 1;

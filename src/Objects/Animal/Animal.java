@@ -4,7 +4,6 @@ import Functions.Random_Location;
 
 public class Animal {
 
-    protected Random_Location random_location = new Random_Location();
     protected int x;
     protected int y;
     protected int speed;

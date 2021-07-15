@@ -22,7 +22,7 @@ public class Variable_Reading {
     public static Variable_Reading getInstance(){
         if (instance == null)
             instance = new Variable_Reading();
-        return instance
+        return instance;
     }
 
     private int map_size[] = new int[2];

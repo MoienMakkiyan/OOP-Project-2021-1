@@ -1,14 +1,16 @@
 package Objects.Products;
 
+import Functions.Random_Location;
+import Functions.Variable_Reading;
 import Objects.X_Y;
 
 public class PocketMilk extends Product{
     public PocketMilk() {
-        X_Y xy = random_location.random();
+        X_Y xy = Random_Location.getInstance().random();
         this.x = xy.getX();
         this.y = xy.getY();
-        this.price = variable_reading.item_price("PocketMilk");
-        this.capacity = variable_reading.item_capacity("PocketMilk");
+        this.price = Variable_Reading.getInstance().item_price("PocketMilk");
+        this.capacity = Variable_Reading.getInstance().item_capacity("PocketMilk");
         this.InMap = true;
         this.InWerehouse = false;
         this.Processing = false;

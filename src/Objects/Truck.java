@@ -9,16 +9,15 @@ public class Truck {
     private int time_needed;
     private int currunt_capacity;
     ArrayList<String> inTruck;
-    Variable_Reading variable_reading = new Variable_Reading();
 
     public Truck() {
-        this.final_capacity = variable_reading.truck_capacity();
-        this.time_needed = variable_reading.truck_time();
+        this.final_capacity = Variable_Reading.getInstance().truck_capacity();
+        this.time_needed = Variable_Reading.getInstance().truck_time();
         this.inTruck = new ArrayList<>();
     }
 
     public boolean Load(String name){
-        if (currunt_capacity+variable_reading.item_capacity(name)<=final_capacity){
+        if (currunt_capacity+Variable_Reading.getInstance().item_capacity(name)<=final_capacity){
             inTruck.add(name);
             //TODO
             return true;

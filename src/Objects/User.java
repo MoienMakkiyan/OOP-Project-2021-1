@@ -5,7 +5,6 @@ import Functions.Variable_Reading;
 import java.io.FileNotFoundException;
 
 public class User {
-    Variable_Reading variable_reading = new Variable_Reading();
 
     String Name;
     String Password;
@@ -24,7 +23,7 @@ public class User {
         Name = name;
         Password = password;
         this.level = 1;
-        this.coin = variable_reading.starting_coin();
+        this.coin = Variable_Reading.getInstance().starting_coin();
     }
 
     public int getLevel() {
