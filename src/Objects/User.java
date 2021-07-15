@@ -13,17 +13,18 @@ public class User {
     int coin;
 
 
-    public User(String name, String password, int level) throws FileNotFoundException {
+    public User(String name, String password, int level, int coin) throws FileNotFoundException {
         Name = name;
         Password = password;
         this.level = level;
-        this.coin = variable_reading.starting_coin();
+        this.coin = coin;
     }
 
     public User(String name, String password) throws FileNotFoundException {
         Name = name;
         Password = password;
         this.level = 1;
+        this.coin = variable_reading.starting_coin();
     }
 
     public int getLevel() {

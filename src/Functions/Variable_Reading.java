@@ -1,13 +1,16 @@
 package Functions;
 
+import Objects.Mission;
 import Objects.Products.BuffaloMilk;
 import Objects.Products.PocketMilk;
 import Objects.User;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.IOException;
 
 public class Variable_Reading {
 
@@ -17,6 +20,7 @@ public class Variable_Reading {
 
     private int map_size[] = new int[2];
     ArrayList<User> users = new ArrayList<>();
+    ArrayList<Mission> missions = new ArrayList<>();
 
     private int warehouse_capacity = 0;
     private int bread_capacity = 0;
@@ -164,11 +168,38 @@ public class Variable_Reading {
                 third_destroy = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
                 scape_time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
             }
+            else if (file.getName().equalsIgnoreCase("All_User.txt")){
+                while (FileReader.hasNextLine()){
+                    String[] data = FileReader.nextLine().split("\\s");
+                    try {
+                        users.add(new User(data[0],data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3])));
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
             FileReader.close();
         }
+        /* TODO for missions data*/
+    }
 
+    public void save() throws IOException {
+            FileWriter myWriter = new FileWriter("All_User.txt");
+            for (int i=0;i<users.size();i++){
+                myWriter.write(users.get(i).getName());
+                myWriter.write(" ");
+                myWriter.write(users.get(i).getPassword());
+                myWriter.write(" ");
+                myWriter.write(String.valueOf(users.get(i).getLevel()));
+                myWriter.write(" ");
+                myWriter.write(String.valueOf(users.get(i).getCoin()));
+                myWriter.write("\n");
+            }
+            myWriter.close();
+    }
 
-
+    public ArrayList<Mission> getMissions() {
+        return missions;
     }
 
     private int[] back_map_size(String []in){

@@ -18,6 +18,7 @@ public class Main_Manager {
     private ArrayList<ArrayList> animals;
     private ArrayList<ArrayList> workshops;
     private ArrayList<ArrayList> products;
+    private ArrayList<Mission> missions;
 
     private ArrayList<Bear> bears;
     private ArrayList<Buffalo> buffalos;
@@ -87,6 +88,7 @@ public class Main_Manager {
         this.warehouse = new Warehouse(variable_reading.warehouse_info());
         this.bucket_of_water = new Bucket_of_Water(variable_reading.Well_info());
         this.wateringSystem = new WateringSystem(variable_reading.Well_Time(), bucket_of_water);
+        this.missions = variable_reading.getMissions();
         this.truck = new Truck();
         this.animals = new ArrayList<>();
         this.workshops = new ArrayList<>();
