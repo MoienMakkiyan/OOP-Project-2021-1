@@ -16,7 +16,6 @@ public class Variable_Reading {
 
     private static Variable_Reading instance = null;
     private Variable_Reading() {
-        initializing();
     }
 
     public static Variable_Reading getInstance(){
@@ -98,7 +97,7 @@ public class Variable_Reading {
     private int scape_time = 0;
 
 
-    private void initializing() {
+    public void initializing() {
         String a = null;
         File directoryPath = new File("Data");
         File filesList[] = directoryPath.listFiles();
@@ -177,9 +176,11 @@ public class Variable_Reading {
                 scape_time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
             }
             else if (file.getName().equalsIgnoreCase("All_User.txt")){
+                System.out.println("1");
                 while (FileReader.hasNextLine()){
                     String[] data = FileReader.nextLine().split("\\s");
                     try {
+                        System.out.println(data.toString());
                         users.add(new User(data[0],data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3])));
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -192,7 +193,7 @@ public class Variable_Reading {
     }
 
     public void save() throws IOException {
-            FileWriter myWriter = new FileWriter("All_User.txt");
+            FileWriter myWriter = new FileWriter("Data/All_User.txt");
             for (int i=0;i<users.size();i++){
                 myWriter.write(users.get(i).getName());
                 myWriter.write(" ");

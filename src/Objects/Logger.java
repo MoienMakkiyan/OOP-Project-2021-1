@@ -16,7 +16,7 @@ public class Logger {
     public void setLogger(User user){
         FileHandler fileHandler;
         try{
-            fileHandler = new FileHandler(user.getName()+"\\LOGGER.log");
+            fileHandler = new FileHandler("C:\\Users\\Moin\\Desktop\\OOP_Proj_Pase1_2021\\UserData\\"+user.getName()+"\\LOGGER.log");
             logger.addHandler(fileHandler);
             SimpleFormatter formatter = new SimpleFormatter();
             fileHandler.setFormatter(formatter);

@@ -69,7 +69,7 @@ public class Input {
             System.out.print("Please Enter Your PASSWORD : ");
             String password = scanner.nextLine();
             if (password.equalsIgnoreCase(Variable_Reading.getInstance().getUsers().get(backUserINDEX(username)).getPassword())){
-                System.out.print("PASSWORD ACCEPTED ...");
+                System.out.println("PASSWORD ACCEPTED ...");
                 Main_Manager.getInstance().setCURRENT_USER(Variable_Reading.getInstance().getUsers().get(backUserINDEX(username)));
                 pass = true;
                 Logger.getInstance().getLogger().info("Password Accepted & Its Logged in.");
@@ -95,6 +95,16 @@ public class Input {
             Variable_Reading.getInstance().getUsers().add(new User(username, password));
             newUser(username);
             System.out.println("Added ...");
+            try {
+                Variable_Reading.getInstance().save();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                Variable_Reading.getInstance().save();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             pass = true;
         }
         else {
@@ -123,7 +133,10 @@ public class Input {
             System.out.print("Enter Your Command : ");
             String input = scanner.nextLine();
             if (input.toLowerCase().startsWith("start")){
-                Game_Orders(scanner,Integer.parseInt(input.split("\\s")[1]));
+                if (check_level(Integer.parseInt(input.split("\\s")[1]))){
+                    Game_Orders(scanner,Integer.parseInt(input.split("\\s")[1]));
+                }
+                else System.out.println("You can't reach this level !");
             }
             else if (input.equalsIgnoreCase("log out")){
                 Logger.getInstance().getLogger().info("Logged out.");
@@ -142,16 +155,31 @@ public class Input {
         return end;
     }
 
+    public boolean check_level(int n){
+        if (Main_Manager.getInstance().getCURRENT_USER().getLevel()>=n)
+            return true;
+        else return false;
+    }
+
     public void Game_Orders (Scanner scanner,int level) {
         GAME_ORDERS.getInstance().set_level_tasks(level,Main_Manager.getInstance().getCURRENT_USER());
         String input;
         while (!(input = scanner.nextLine()).equalsIgnoreCase("LOG OUT")){
+            System.out.print("Enter your command : ");
             if (input.split("\\s")[0].equalsIgnoreCase("BUY")){
                 if (GAME_ORDERS.getInstance().Buy(input.split("\\s")[1],Main_Manager.getInstance().getCURRENT_USER())){
                     Logger.getInstance().getLogger().info("Buy : "+input.split("\\s")[1]+" Bought Successfully! ");
                 }
                 else {
                     Logger.getInstance().getLogger().warning("Buy : "+input.split("\\s")[1]+" Unsuccessful Buying! ");
+                }
+            }
+            if (input.split("\\s")[0].equalsIgnoreCase("Build")){
+                if (GAME_ORDERS.getInstance().Build(input.split("\\s")[1],Main_Manager.getInstance().getCURRENT_USER())){
+                    Logger.getInstance().getLogger().info("Build : "+input.split("\\s")[1]+" Bought Successfully! ");
+                }
+                else {
+                    Logger.getInstance().getLogger().warning("Build : "+input.split("\\s")[1]+" Unsuccessful Buying! ");
                 }
             }
             else if (input.split("\\s")[0].equalsIgnoreCase("PICKUP")){

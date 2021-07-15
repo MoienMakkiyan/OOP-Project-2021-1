@@ -31,11 +31,11 @@ public class GAME_ORDERS {
                 if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Chicken")>0){
                     user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Chicken"));
                     Main_Manager.getInstance().Add_Animal("Chicken");
-                    //TODO
+                    Logger.getInstance().getLogger().info("Buy : Chicken Bought Successfully! ");
                     return true;
                 }
                 else {
-                    //TODO
+                    Logger.getInstance().getLogger().warning("Buy : Chicken Unsuccessful Buying! ");
                     return false;
                 }
             }
@@ -43,11 +43,11 @@ public class GAME_ORDERS {
                 if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Ostrich")>0){
                     user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Ostrich"));
                     Main_Manager.getInstance().Add_Animal("Ostrich");
-                    //TODO
+                    Logger.getInstance().getLogger().info("Buy : Ostrich Bought Successfully! ");
                     return true;
                 }
                 else {
-                    //TODO
+                    Logger.getInstance().getLogger().warning("Buy : Ostrich Unsuccessful Buying! ");
                     return false;
                 }
             }
@@ -55,11 +55,11 @@ public class GAME_ORDERS {
                 if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Buffalo")>0){
                     user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Buffalo"));
                     Main_Manager.getInstance().Add_Animal("Buffalo");
-                    //TODO
+                    Logger.getInstance().getLogger().info("Buy : Buffalo Bought Successfully! ");
                     return true;
                 }
                 else {
-                    //TODO
+                    Logger.getInstance().getLogger().warning("Buy : Buffalo Unsuccessful Buying! ");
                     return false;
                 }
             }
@@ -67,11 +67,11 @@ public class GAME_ORDERS {
                 if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Cat")>0){
                     user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Cat"));
                     Main_Manager.getInstance().Add_Animal("Cat");
-                    //TODO
+                    Logger.getInstance().getLogger().info("Buy : Cat Bought Successfully! ");
                     return true;
                 }
                 else {
-                    //TODO
+                    Logger.getInstance().getLogger().warning("Buy : Cat Unsuccessful Buying! ");
                     return false;
                 }
             }
@@ -79,25 +79,29 @@ public class GAME_ORDERS {
                 if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Dog")>0){
                     user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Dog"));
                     Main_Manager.getInstance().Add_Animal("Dog");
-                    //TODO
+                    Logger.getInstance().getLogger().info("Buy : Dog Bought Successfully! ");
                     return true;
                 }
                 else {
-                    //TODO
+                    Logger.getInstance().getLogger().warning("Buy : Dog Unsuccessful Buying! ");
                     return false;
                 }
             }
         }
+        return false;
+    }
+
+    public boolean Build (String name , User user){
         if (Workshops_Name.contains(name)){
             if (name.equalsIgnoreCase("MilkPacking")){
                 if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("MilkPacking")>0){
                     user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("MilkPacking"));
                     Main_Manager.getInstance().Add_WorkShop("MilkPacking");
-                    //TODO
+                    Logger.getInstance().getLogger().info("Build : MilkPacking Built Successfully! ");
                     return true;
                 }
                 else {
-                    //TODO
+                    Logger.getInstance().getLogger().warning("Build : MilkPacking Unsuccessful Building! ");
                     return false;
                 }
             }
@@ -106,11 +110,11 @@ public class GAME_ORDERS {
                     if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Mill")>0){
                         user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Mill"));
                         Main_Manager.getInstance().Add_WorkShop("Mill");
-                        //TODO
+                        Logger.getInstance().getLogger().info("Build : Mill Built Successfully! ");
                         return true;
                     }
                     else {
-                        //TODO
+                        Logger.getInstance().getLogger().warning("Build : Mill Unsuccessful Building! ");
                         return false;
                     }
                 }
@@ -120,11 +124,11 @@ public class GAME_ORDERS {
                     if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Textile")>0){
                         user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Textile"));
                         Main_Manager.getInstance().Add_WorkShop("Textile");
-                        //TODO
+                        Logger.getInstance().getLogger().info("Build : Textile Built Successfully! ");
                         return true;
                     }
                     else {
-                        //TODO
+                        Logger.getInstance().getLogger().warning("Build : Textile Unsuccessful Building! ");
                         return false;
                     }
                 }
@@ -134,11 +138,11 @@ public class GAME_ORDERS {
                     if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Bakery")>0){
                         user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Bakery"));
                         Main_Manager.getInstance().Add_WorkShop("Bakery");
-                        //TODO
+                        Logger.getInstance().getLogger().info("Build : Bakery Built Successfully! ");
                         return true;
                     }
                     else {
-                        //TODO
+                        Logger.getInstance().getLogger().warning("Build : Bakery Unsuccessful Building! ");
                         return false;
                     }
                 }
@@ -148,11 +152,11 @@ public class GAME_ORDERS {
                     if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("IcecreamShop")>0){
                         user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("IcecreamShop"));
                         Main_Manager.getInstance().Add_WorkShop("IcecreamShop");
-                        //TODO
+                        Logger.getInstance().getLogger().info("Build : IcecreamShop Built Successfully! ");
                         return true;
                     }
                     else {
-                        //TODO
+                        Logger.getInstance().getLogger().warning("Build : IcecreamShop Unsuccessful Building! ");
                         return false;
                     }
                 }
@@ -162,17 +166,17 @@ public class GAME_ORDERS {
                     if (user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Tailoring")>0){
                         user.setCoin(user.getCoin()-Variable_Reading.getInstance().item_cost_buying("Tailoring"));
                         Main_Manager.getInstance().Add_WorkShop("Tailoring");
-                        //TODO
+                        Logger.getInstance().getLogger().info("Build : Tailoring Built Successfully! ");
                         return true;
                     }
                     else {
-                        //TODO
+                        Logger.getInstance().getLogger().warning("Build : Tailoring Unsuccessful Building! ");
                         return false;
                     }
                 }
             }
         }
-        return false;//must be Edited in debuging
+        return false;
     }
 
     public boolean Pickup (int x , int y , User user){
