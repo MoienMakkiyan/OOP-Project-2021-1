@@ -198,6 +198,7 @@ public class Animal {
 
     public void eat(){
             lives=100;
+            isHungry=false;
     }
 
     public void time_pass(){
@@ -234,6 +235,10 @@ public class Animal {
         if (y-final_direction.getY()<0){
             y++;
         }
+    }
+
+    public boolean isHungry() {
+        return isHungry;
     }
 }
 

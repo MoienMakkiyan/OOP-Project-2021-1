@@ -56,6 +56,10 @@ public class Cell {
         else return false;
     }
 
+    public void eatGrass(){
+        hasGrass--;
+    }
+
     public ArrayList<String> getProducts() {
         return products;
     }

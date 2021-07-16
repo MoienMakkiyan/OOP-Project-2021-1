@@ -1001,6 +1001,10 @@ public class Main_Manager {
                 if (buffalo.time_to_produce()){
                     Add_Primary_Products(buffalo.getX(),buffalo.getY(),"buffalo");
                 }
+                if (buffalo.isHungry()&&cell[buffalo.getX()-1][buffalo.getY()-1].hasGrass()){
+                    cell[buffalo.getX()-1][buffalo.getY()-1].eatGrass();
+                    buffalo.eat();
+                }
             }
 
             for (Chicken chicken : chickens){
@@ -1010,6 +1014,10 @@ public class Main_Manager {
                 chicken.time_pass();
                 if (chicken.time_to_produce()){
                     Add_Primary_Products(chicken.getX(),chicken.getY(),"chicken");
+                }
+                if (chicken.isHungry()&&cell[chicken.getX()-1][chicken.getY()-1].hasGrass()){
+                    cell[chicken.getX()-1][chicken.getY()-1].eatGrass();
+                    chicken.eat();
                 }
             }
 
@@ -1021,6 +1029,10 @@ public class Main_Manager {
                 if (ostrich.time_to_produce()){
                     Add_Primary_Products(ostrich.getX(),ostrich.getY(),"ostrich");
                 }
+                if (ostrich.isHungry()&&cell[ostrich.getX()-1][ostrich.getY()-1].hasGrass()){
+                    cell[ostrich.getX()-1][ostrich.getY()-1].eatGrass();
+                    ostrich.eat();
+                }
             }
 
             for (Bear bear : bears){
@@ -1028,6 +1040,56 @@ public class Main_Manager {
                     cell[bear.getX()-1][bear.getY()-1].RemoveAnimal("bear");
                     bear.simple_walk();
                     cell[bear.getX()-1][bear.getY()-1].AddAnimal("bear");
+                }
+                if (!bear.isActivation()&&cell[bear.getX()-1][bear.getY()-1].getProducts().size()>0){
+                    int mm = bear.getX();
+                    int nn = bear.getY();
+                    for (Bread bread : breads){
+                        if (bread.isInMap()&&bread.getX()==mm&&bread.getY()==nn){
+                            breads.remove(bread);
+                        }
+                    }
+                    for (BuffaloMilk buffaloMilk : buffaloMilks){
+                        if (buffaloMilk.isInMap()&&buffaloMilk.getX()==mm&&buffaloMilk.getY()==nn){
+                            buffaloMilks.remove(buffaloMilk);
+                        }
+                    }
+                    for (Egg egg : eggs){
+                        if (egg.isInMap()&&egg.getX()==mm&&egg.getY()==nn){
+                            eggs.remove(egg);
+                        }
+                    }
+                    for (Flour flour : flours){
+                        if (flour.isInMap()&&flour.getX()==mm&&flour.getY()==nn){
+                            flours.remove(flour);
+                        }
+                    }
+                    for (Icecream icecream : icecreams){
+                        if (icecream.isInMap()&&icecream.getX()==mm&&icecream.getY()==nn){
+                            icecreams.remove(icecream);
+                        }
+                    }
+                    for (PocketMilk pocketMilk : pocketMilks){
+                        if (pocketMilk.isInMap()&&pocketMilk.getX()==mm&&pocketMilk.getY()==nn){
+                            pocketMilks.remove(pocketMilk);
+                        }
+                    }
+                    for (Shirt shirt : shirts){
+                        if (shirt.isInMap()&&shirt.getX()==mm&&shirt.getY()==nn){
+                            shirts.remove(shirt);
+                        }
+                    }
+                    for (Textile textile : textiles){
+                        if (textile.isInMap()&&textile.getX()==mm&&textile.getY()==nn){
+                            textiles.remove(textile);
+                        }
+                    }
+                    for (TurkeyFeather turkeyFeather : turkeyFeathers){
+                        if (turkeyFeather.isInMap()&&turkeyFeather.getX()==mm&&turkeyFeather.getY()==nn){
+                            turkeyFeathers.remove(turkeyFeather);
+                        }
+                    }
+                    cell[bear.getX()-1][bear.getY()-1].getProducts().clear();
                 }
             }
 
@@ -1037,6 +1099,56 @@ public class Main_Manager {
                     lion.simple_walk();
                     cell[lion.getX()-1][lion.getY()-1].AddAnimal("lion");
                 }
+                if (!lion.isActivation()&&cell[lion.getX()-1][lion.getY()-1].getProducts().size()>0){
+                    int mm = lion.getX();
+                    int nn = lion.getY();
+                    for (Bread bread : breads){
+                        if (bread.isInMap()&&bread.getX()==mm&&bread.getY()==nn){
+                            breads.remove(bread);
+                        }
+                    }
+                    for (BuffaloMilk buffaloMilk : buffaloMilks){
+                        if (buffaloMilk.isInMap()&&buffaloMilk.getX()==mm&&buffaloMilk.getY()==nn){
+                            buffaloMilks.remove(buffaloMilk);
+                        }
+                    }
+                    for (Egg egg : eggs){
+                        if (egg.isInMap()&&egg.getX()==mm&&egg.getY()==nn){
+                            eggs.remove(egg);
+                        }
+                    }
+                    for (Flour flour : flours){
+                        if (flour.isInMap()&&flour.getX()==mm&&flour.getY()==nn){
+                            flours.remove(flour);
+                        }
+                    }
+                    for (Icecream icecream : icecreams){
+                        if (icecream.isInMap()&&icecream.getX()==mm&&icecream.getY()==nn){
+                            icecreams.remove(icecream);
+                        }
+                    }
+                    for (PocketMilk pocketMilk : pocketMilks){
+                        if (pocketMilk.isInMap()&&pocketMilk.getX()==mm&&pocketMilk.getY()==nn){
+                            pocketMilks.remove(pocketMilk);
+                        }
+                    }
+                    for (Shirt shirt : shirts){
+                        if (shirt.isInMap()&&shirt.getX()==mm&&shirt.getY()==nn){
+                            shirts.remove(shirt);
+                        }
+                    }
+                    for (Textile textile : textiles){
+                        if (textile.isInMap()&&textile.getX()==mm&&textile.getY()==nn){
+                            textiles.remove(textile);
+                        }
+                    }
+                    for (TurkeyFeather turkeyFeather : turkeyFeathers){
+                        if (turkeyFeather.isInMap()&&turkeyFeather.getX()==mm&&turkeyFeather.getY()==nn){
+                            turkeyFeathers.remove(turkeyFeather);
+                        }
+                    }
+                    cell[lion.getX()-1][lion.getY()-1].getProducts().clear();
+                }
             }
 
             for (Tiger tiger : tigers){
@@ -1045,12 +1157,130 @@ public class Main_Manager {
                     tiger.simple_walk();
                     cell[tiger.getX()-1][tiger.getY()-1].AddAnimal("tiger");
                 }
+                if (!tiger.isActivation()&&cell[tiger.getX()-1][tiger.getY()-1].getProducts().size()>0){
+                    int mm = tiger.getX();
+                    int nn = tiger.getY();
+                    for (Bread bread : breads){
+                        if (bread.isInMap()&&bread.getX()==mm&&bread.getY()==nn){
+                            breads.remove(bread);
+                        }
+                    }
+                    for (BuffaloMilk buffaloMilk : buffaloMilks){
+                        if (buffaloMilk.isInMap()&&buffaloMilk.getX()==mm&&buffaloMilk.getY()==nn){
+                            buffaloMilks.remove(buffaloMilk);
+                        }
+                    }
+                    for (Egg egg : eggs){
+                        if (egg.isInMap()&&egg.getX()==mm&&egg.getY()==nn){
+                            eggs.remove(egg);
+                        }
+                    }
+                    for (Flour flour : flours){
+                        if (flour.isInMap()&&flour.getX()==mm&&flour.getY()==nn){
+                            flours.remove(flour);
+                        }
+                    }
+                    for (Icecream icecream : icecreams){
+                        if (icecream.isInMap()&&icecream.getX()==mm&&icecream.getY()==nn){
+                            icecreams.remove(icecream);
+                        }
+                    }
+                    for (PocketMilk pocketMilk : pocketMilks){
+                        if (pocketMilk.isInMap()&&pocketMilk.getX()==mm&&pocketMilk.getY()==nn){
+                            pocketMilks.remove(pocketMilk);
+                        }
+                    }
+                    for (Shirt shirt : shirts){
+                        if (shirt.isInMap()&&shirt.getX()==mm&&shirt.getY()==nn){
+                            shirts.remove(shirt);
+                        }
+                    }
+                    for (Textile textile : textiles){
+                        if (textile.isInMap()&&textile.getX()==mm&&textile.getY()==nn){
+                            textiles.remove(textile);
+                        }
+                    }
+                    for (TurkeyFeather turkeyFeather : turkeyFeathers){
+                        if (turkeyFeather.isInMap()&&turkeyFeather.getX()==mm&&turkeyFeather.getY()==nn){
+                            turkeyFeathers.remove(turkeyFeather);
+                        }
+                    }
+                    cell[tiger.getX()-1][tiger.getY()-1].getProducts().clear();
+                }
             }
 
             for (CollectorCat collectorCat : collectorCats){
                 cell[collectorCat.getX()][collectorCat.getY()-1].RemoveAnimal("collectorCat");
                 collectorCat.Cat_walk();
                 cell[collectorCat.getX()][collectorCat.getY()-1].AddAnimal("collectorCat");
+                if (cell[collectorCat.getX()-1][collectorCat.getY()-1].getProducts().size()>0){
+                    int mm = collectorCat.getX();
+                    int nn = collectorCat.getY();
+                    for (Bread bread : breads){
+                        if (bread.isInMap()&&bread.getX()==mm&&bread.getY()==nn){
+                            bread.setInMap(false);
+                            bread.setInWerehouse(true);
+                            warehouse.Add("Bread",Variable_Reading.getInstance().item_capacity("Bread"));
+                        }
+                    }
+                    for (BuffaloMilk buffaloMilk : buffaloMilks){
+                        if (buffaloMilk.isInMap()&&buffaloMilk.getX()==mm&&buffaloMilk.getY()==nn){
+                            buffaloMilk.setInMap(false);
+                            buffaloMilk.setInWerehouse(true);
+                            warehouse.Add("BuffaloMilk",Variable_Reading.getInstance().item_capacity("BuffaloMilk"));
+                        }
+                    }
+                    for (Egg egg : eggs){
+                        if (egg.isInMap()&&egg.getX()==mm&&egg.getY()==nn){
+                            egg.setInMap(false);
+                            egg.setInWerehouse(true);
+                            warehouse.Add("Egg",Variable_Reading.getInstance().item_capacity("Egg"));
+                        }
+                    }
+                    for (Flour flour : flours){
+                        if (flour.isInMap()&&flour.getX()==mm&&flour.getY()==nn){
+                            flour.setInMap(false);
+                            flour.setInWerehouse(true);
+                            warehouse.Add("Flour",Variable_Reading.getInstance().item_capacity("Flour"));
+                        }
+                    }
+                    for (Icecream icecream : icecreams){
+                        if (icecream.isInMap()&&icecream.getX()==mm&&icecream.getY()==nn){
+                            icecream.setInMap(false);
+                            icecream.setInWerehouse(true);
+                            warehouse.Add("Icecream",Variable_Reading.getInstance().item_capacity("Icecream"));
+                        }
+                    }
+                    for (PocketMilk pocketMilk : pocketMilks){
+                        if (pocketMilk.isInMap()&&pocketMilk.getX()==mm&&pocketMilk.getY()==nn){
+                            pocketMilk.setInMap(false);
+                            pocketMilk.setInWerehouse(true);
+                            warehouse.Add("PocketMilk",Variable_Reading.getInstance().item_capacity("PocketMilk"));
+                        }
+                    }
+                    for (Shirt shirt : shirts){
+                        if (shirt.isInMap()&&shirt.getX()==mm&&shirt.getY()==nn){
+                            shirt.setInMap(false);
+                            shirt.setInWerehouse(true);
+                            warehouse.Add("Shirt",Variable_Reading.getInstance().item_capacity("Shirt"));
+                        }
+                    }
+                    for (Textile textile : textiles){
+                        if (textile.isInMap()&&textile.getX()==mm&&textile.getY()==nn){
+                            textile.setInMap(false);
+                            textile.setInWerehouse(true);
+                            warehouse.Add("Textile",Variable_Reading.getInstance().item_capacity("Textile"));
+                        }
+                    }
+                    for (TurkeyFeather turkeyFeather : turkeyFeathers){
+                        if (turkeyFeather.isInMap()&&turkeyFeather.getX()==mm&&turkeyFeather.getY()==nn){
+                            turkeyFeather.setInMap(false);
+                            turkeyFeather.setInWerehouse(true);
+                            warehouse.Add("TurkeyFeather",Variable_Reading.getInstance().item_capacity("TurkeyFeather"));
+                        }
+                    }
+                    cell[collectorCat.getX()-1][collectorCat.getY()-1].getProducts().clear();
+                }
             }
 
         }
