@@ -100,11 +100,6 @@ public class Input {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            try {
-                Variable_Reading.getInstance().save();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
             pass = true;
         }
         else {

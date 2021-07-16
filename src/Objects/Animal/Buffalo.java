@@ -1,5 +1,6 @@
 package Objects.Animal;
 
+import Functions.Main_Manager;
 import Functions.Random_Location;
 import Objects.X_Y;
 

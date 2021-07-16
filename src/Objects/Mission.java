@@ -16,11 +16,15 @@ public class Mission {
     private int textile;
     private int turkey_feather;
     private int time_passed_in_this_level;
+    private int Silver_Time;
+    private int Silver_Price;
+    private int Golden_Time;
+    private int Golden_Price;
     ArrayList<Integer> bear_add_time;
     ArrayList<Integer> lion_add_time;
     ArrayList<Integer> tiger_add_time;
 
-    public Mission(int level, int coin, int wild_animal, int bread, int buffalo_milk, int egg, int flour, int icecream, int pocketmilk, int shirt, int textile, int turkey_feather, ArrayList<Integer> bear_add_time, ArrayList<Integer> lion_add_time, ArrayList<Integer> tiger_add_time) {
+    public Mission(int level, int coin, int wild_animal, int bread, int buffalo_milk, int egg, int flour, int icecream, int pocketmilk, int shirt, int textile, int turkey_feather, int silver_Time, int silver_Price, int golden_Time, int golden_Price, ArrayList<Integer> bear_add_time, ArrayList<Integer> lion_add_time, ArrayList<Integer> tiger_add_time) {
         this.level = level;
         this.coin = coin;
         this.wild_animal = wild_animal;
@@ -33,6 +37,10 @@ public class Mission {
         this.shirt = shirt;
         this.textile = textile;
         this.turkey_feather = turkey_feather;
+        Silver_Time = silver_Time;
+        Silver_Price = silver_Price;
+        Golden_Time = golden_Time;
+        Golden_Price = golden_Price;
         this.bear_add_time = bear_add_time;
         this.lion_add_time = lion_add_time;
         this.tiger_add_time = tiger_add_time;

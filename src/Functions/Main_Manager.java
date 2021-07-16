@@ -93,6 +93,17 @@ public class Main_Manager {
     private int icecreamshop_work_CURRENT;
     private int truck_working_CURRENT;
 
+    private int wild_animal_n;
+    private int bread_n;
+    private int buffalo_milk_n;
+    private int egg_n;
+    private int flour_n;
+    private int icecream_n;
+    private int pocketmilk_n;
+    private int shirt_n;
+    private int textile_n;
+    private int turkey_feather_n;
+
 
     private Main_Manager(){
         make_map(Variable_Reading.getInstance().getMap_size()[0],Variable_Reading.getInstance().getMap_size()[1]);
@@ -173,6 +184,17 @@ public class Main_Manager {
         this.tailoring_work_CURRENT = 0;
         this.icecreamshop_work_CURRENT = 0;
         this.truck_working_CURRENT = 0;
+
+        this.wild_animal_n = 0;
+        this.bread_n = 0;
+        this.buffalo_milk_n = 0;
+        this.egg_n = 0;
+        this.flour_n = 0;
+        this.icecream_n = 0;
+        this.pocketmilk_n = 0;
+        this.shirt_n = 0;
+        this.textile_n = 0;
+        this.turkey_feather_n = 0;
 
         workshops.add(primaryWorkshop_milkPackings);
         workshops.add(primaryWorkshop_mills);
@@ -779,12 +801,15 @@ public class Main_Manager {
         if (animal.equalsIgnoreCase("chicken")) {
             eggs.add(new Egg(x, y));
             cell[x - 1][y - 1].AddProduct("egg", eggs.size()-1);
+            egg_n++;
         } else if (animal.equalsIgnoreCase("Buffalo")) {
             buffaloMilks.add(new BuffaloMilk(x, y));
             cell[x - 1][y - 1].AddProduct("buffaloMilk", buffaloMilks.size()-1);
+            buffalo_milk_n++;
         } else if (animal.equalsIgnoreCase("Ostrich")) {
             turkeyFeathers.add(new TurkeyFeather(x, y));
             cell[x - 1][y - 1].AddProduct("turkeyFeather", turkeyFeathers.size()-1);
+            turkey_feather_n++;
         } else {
             //TODO never happen
         }
@@ -809,6 +834,7 @@ public class Main_Manager {
                 if (primaryWorkshop_mills.get(0).getLevel() == 1){
                     if (mill_work_CURRENT==mill_work_MAX){
                         flours.add(new Flour());
+                        flour_n++;
                         mill_work_CURRENT=0;
                         mill_work=false;
                     }
@@ -818,6 +844,7 @@ public class Main_Manager {
                         if (mill_work_CURRENT==mill_work_MAX*2){
                             flours.add(new Flour());
                             flours.add(new Flour());
+                            flour_n+=2;
                             mill_work_CURRENT=0;
                             mill_work=false;
                             mill_work_2=false;
@@ -826,6 +853,7 @@ public class Main_Manager {
                     else {
                         if (mill_work_CURRENT==mill_work_MAX){
                             flours.add(new Flour());
+                            flour_n++;
                             mill_work_CURRENT=0;
                             mill_work=false;
                             mill_work_2=false;
@@ -840,6 +868,7 @@ public class Main_Manager {
                 if (primaryWorkshop_textiles.get(0).getLevel() == 1){
                     if (textile_work_CURRENT==textile_work_MAX){
                         textiles.add(new Textile());
+                        textile_n++;
                         textile_work_CURRENT=0;
                         textile_work=false;
                     }
@@ -849,6 +878,7 @@ public class Main_Manager {
                         if (textile_work_CURRENT==textile_work_MAX*2){
                             textiles.add(new Textile());
                             textiles.add(new Textile());
+                            textile_n+=2;
                             textile_work_CURRENT=0;
                             textile_work=false;
                             textile_work_2=false;
@@ -857,6 +887,7 @@ public class Main_Manager {
                     else {
                         if (textile_work_CURRENT==textile_work_MAX){
                             textiles.add(new Textile());
+                            textile_n++;
                             textile_work_CURRENT=0;
                             textile_work=false;
                             textile_work_2=false;
@@ -870,6 +901,7 @@ public class Main_Manager {
                 if (primaryWorkshop_milkPackings.get(0).getLevel() == 1){
                     if (milkpacking_work_CURRENT==milkpacking_work_MAX){
                         pocketMilks.add(new PocketMilk());
+                        pocketmilk_n++;
                         milkpacking_work_CURRENT=0;
                         milkpacking_work=false;
                     }
@@ -879,6 +911,7 @@ public class Main_Manager {
                         if (milkpacking_work_CURRENT==milkpacking_work_MAX*2){
                             pocketMilks.add(new PocketMilk());
                             pocketMilks.add(new PocketMilk());
+                            pocketmilk_n+=2;
                             milkpacking_work_CURRENT=0;
                             milkpacking_work=false;
                             milkpacking_work_2=true;
@@ -887,6 +920,7 @@ public class Main_Manager {
                     else {
                         if (milkpacking_work_CURRENT==milkpacking_work_MAX){
                             pocketMilks.add(new PocketMilk());
+                            pocketmilk_n++;
                             milkpacking_work_CURRENT=0;
                             milkpacking_work=false;
                             milkpacking_work_2=true;
@@ -900,6 +934,7 @@ public class Main_Manager {
                 if (secondaryWorkshop_bakeries.get(0).getLevel() == 1){
                     if (bakery_work_CURRENT==bakery_work_MAX){
                         breads.add(new Bread());
+                        bread_n++;
                         bakery_work_CURRENT=0;
                         bakery_work=false;
                     }
@@ -909,6 +944,7 @@ public class Main_Manager {
                         if (bakery_work_CURRENT==bakery_work_MAX*2){
                             breads.add(new Bread());
                             breads.add(new Bread());
+                            bread_n+=2;
                             bakery_work_CURRENT=0;
                             bakery_work=false;
                             bakery_work_2=false;
@@ -917,6 +953,7 @@ public class Main_Manager {
                     else {
                         if (bakery_work_CURRENT==bakery_work_MAX){
                             breads.add(new Bread());
+                            bread_n++;
                             bakery_work_CURRENT=0;
                             bakery_work=false;
                             bakery_work_2=false;
@@ -930,6 +967,7 @@ public class Main_Manager {
                 if (secondaryWorkshop_tailorings.get(0).getLevel() == 1){
                     if (tailoring_work_CURRENT==tailoring_work_MAX){
                         shirts.add(new Shirt());
+                        shirt_n++;
                         tailoring_work_CURRENT=0;
                         tailoring_work=false;
                     }
@@ -939,6 +977,7 @@ public class Main_Manager {
                         if (tailoring_work_CURRENT==tailoring_work_MAX*2){
                             shirts.add(new Shirt());
                             shirts.add(new Shirt());
+                            shirt_n+=2;
                             tailoring_work_CURRENT=0;
                             tailoring_work=false;
                             tailoring_work_2=false;
@@ -947,6 +986,7 @@ public class Main_Manager {
                     else {
                         if (tailoring_work_CURRENT==tailoring_work_MAX){
                             shirts.add(new Shirt());
+                            shirt_n++;
                             tailoring_work_CURRENT=0;
                             tailoring_work=false;
                             tailoring_work_2=false;
@@ -961,6 +1001,7 @@ public class Main_Manager {
                 if (secondaryWorkshop_icecreamShops.get(0).getLevel() == 1){
                     if (icecreamshop_work_CURRENT==icecreamshop_work_MAX){
                         icecreams.add(new Icecream());
+                        shirt_n++;
                         icecreamshop_work_CURRENT=0;
                         icecreamshop_work=false;
                     }
@@ -970,6 +1011,7 @@ public class Main_Manager {
                         if (icecreamshop_work_CURRENT==icecreamshop_work_MAX*2){
                             icecreams.add(new Icecream());
                             icecreams.add(new Icecream());
+                            shirt_n+=2;
                             icecreamshop_work_CURRENT=0;
                             icecreamshop_work=false;
                             icecreamshop_work_2=false;
@@ -978,6 +1020,7 @@ public class Main_Manager {
                     else {
                         if (icecreamshop_work_CURRENT==icecreamshop_work_MAX){
                             icecreams.add(new Icecream());
+                            icecream_n++;
                             icecreamshop_work_CURRENT=0;
                             icecreamshop_work=false;
                             icecreamshop_work_2=false;
@@ -1047,6 +1090,7 @@ public class Main_Manager {
                 if (bear.caught()){
                     cell[bear.getX()-1][bear.getY()-1].RemoveAnimal("bear");
                     bears.remove(bear);
+                    wild_animal_n++;
                     warehouse.Add("wild_animal",Variable_Reading.getInstance().getWild_animal_capacity());
                 }
                 if (!bear.isActivation()&&cell[bear.getX()-1][bear.getY()-1].getProducts().size()>0){
@@ -1111,6 +1155,7 @@ public class Main_Manager {
                 if (lion.caught()){
                     cell[lion.getX()-1][lion.getY()-1].RemoveAnimal("lion");
                     lions.remove(lion);
+                    wild_animal_n++;
                     warehouse.Add("wild_animal",Variable_Reading.getInstance().getWild_animal_capacity());
                 }
                 if (!lion.isActivation()&&cell[lion.getX()-1][lion.getY()-1].getProducts().size()>0){
@@ -1175,6 +1220,7 @@ public class Main_Manager {
                 if (tiger.caught()){
                     cell[tiger.getX()-1][tiger.getY()-1].RemoveAnimal("tiger");
                     tigers.remove(tiger);
+                    wild_animal_n++;
                     warehouse.Add("wild_animal",Variable_Reading.getInstance().getWild_animal_capacity());
                 }
                 if (!tiger.isActivation()&&cell[tiger.getX()-1][tiger.getY()-1].getProducts().size()>0){
@@ -1997,6 +2043,134 @@ public class Main_Manager {
 
     public int getCurrent_level() {
         return current_level;
+    }
+
+    public boolean isMill_work_2() {
+        return mill_work_2;
+    }
+
+    public void setMill_work_2(boolean mill_work_2) {
+        this.mill_work_2 = mill_work_2;
+    }
+
+    public boolean isTextile_work_2() {
+        return textile_work_2;
+    }
+
+    public void setTextile_work_2(boolean textile_work_2) {
+        this.textile_work_2 = textile_work_2;
+    }
+
+    public boolean isMilkpacking_work_2() {
+        return milkpacking_work_2;
+    }
+
+    public void setMilkpacking_work_2(boolean milkpacking_work_2) {
+        this.milkpacking_work_2 = milkpacking_work_2;
+    }
+
+    public boolean isBakery_work_2() {
+        return bakery_work_2;
+    }
+
+    public void setBakery_work_2(boolean bakery_work_2) {
+        this.bakery_work_2 = bakery_work_2;
+    }
+
+    public boolean isTailoring_work_2() {
+        return tailoring_work_2;
+    }
+
+    public void setTailoring_work_2(boolean tailoring_work_2) {
+        this.tailoring_work_2 = tailoring_work_2;
+    }
+
+    public boolean isIcecreamshop_work_2() {
+        return icecreamshop_work_2;
+    }
+
+    public void setIcecreamshop_work_2(boolean icecreamshop_work_2) {
+        this.icecreamshop_work_2 = icecreamshop_work_2;
+    }
+
+    public int getWild_animal_n() {
+        return wild_animal_n;
+    }
+
+    public void setWild_animal_n(int wild_animal_n) {
+        this.wild_animal_n = wild_animal_n;
+    }
+
+    public int getBread_n() {
+        return bread_n;
+    }
+
+    public void setBread_n(int bread_n) {
+        this.bread_n = bread_n;
+    }
+
+    public int getBuffalo_milk_n() {
+        return buffalo_milk_n;
+    }
+
+    public void setBuffalo_milk_n(int buffalo_milk_n) {
+        this.buffalo_milk_n = buffalo_milk_n;
+    }
+
+    public int getEgg_n() {
+        return egg_n;
+    }
+
+    public void setEgg_n(int egg_n) {
+        this.egg_n = egg_n;
+    }
+
+    public int getFlour_n() {
+        return flour_n;
+    }
+
+    public void setFlour_n(int flour_n) {
+        this.flour_n = flour_n;
+    }
+
+    public int getIcecream_n() {
+        return icecream_n;
+    }
+
+    public void setIcecream_n(int icecream_n) {
+        this.icecream_n = icecream_n;
+    }
+
+    public int getPocketmilk_n() {
+        return pocketmilk_n;
+    }
+
+    public void setPocketmilk_n(int pocketmilk_n) {
+        this.pocketmilk_n = pocketmilk_n;
+    }
+
+    public int getShirt_n() {
+        return shirt_n;
+    }
+
+    public void setShirt_n(int shirt_n) {
+        this.shirt_n = shirt_n;
+    }
+
+    public int getTextile_n() {
+        return textile_n;
+    }
+
+    public void setTextile_n(int textile_n) {
+        this.textile_n = textile_n;
+    }
+
+    public int getTurkey_feather_n() {
+        return turkey_feather_n;
+    }
+
+    public void setTurkey_feather_n(int turkey_feather_n) {
+        this.turkey_feather_n = turkey_feather_n;
     }
 
     public void setCurrent_level(int current_level) {
