@@ -11,5 +11,6 @@ public class SecondaryWorkshop_Tailoring extends Workshop{
 
     public void Upgrade(){
         this.level = this.level + 1;
+
     }
 }

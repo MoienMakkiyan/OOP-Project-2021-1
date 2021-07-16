@@ -50,4 +50,13 @@ public class Cell {
     public void RemoveAnimal(String name){
         animals.remove(name);
     }
+
+    public boolean hasGrass(){
+        if (hasGrass>0) return true;
+        else return false;
+    }
+
+    public ArrayList<String> getProducts() {
+        return products;
+    }
 }

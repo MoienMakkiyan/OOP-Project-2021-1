@@ -1,8 +1,10 @@
 package Functions;
 
 import Objects.Logger;
-import Objects.Products.Egg;
 import Objects.User;
+
+import java.io.File;
+import java.io.IOException;
 
 public class GAME_ORDERS {
 
@@ -295,12 +297,35 @@ public class GAME_ORDERS {
     }
 
     public void set_level_tasks(int level, User user){
-        Main_Manager.getInstance().setCurrunt_level(level);
+        Main_Manager.getInstance().setCurrent_level(level);
     }
 
     public static GAME_ORDERS getInstance(){
         if (instance == null)
             instance = new GAME_ORDERS();
         return instance;
+    }
+
+    public void newUser (String username){
+        File folder = new File("UserData\\"+username);
+        folder.mkdir();
+        File user_data = new File("UserData\\"+username+"\\user_data.txt");
+        File map_data = new File("UserData\\"+username+"\\map_data.txt");
+        File product_data = new File("UserData\\"+username+"\\product_data.txt");
+        File animal_data = new File("UserData\\"+username+"\\animal_data.txt");
+        File log = new File("UserData\\"+username+"\\LOGGER.log");
+        File ETC = new File("UserData\\"+username+"\\ETC_data.txt");
+        File Missions = new File("UserData\\"+username+"\\missions_data.txt");
+        try {
+            user_data.createNewFile();
+            map_data.createNewFile();
+            product_data.createNewFile();
+            animal_data.createNewFile();
+            log.createNewFile();
+            ETC.createNewFile();
+            Missions.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

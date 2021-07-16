@@ -61,4 +61,15 @@ public class Warehouse {
         }
         return found;
     }
+
+    public boolean haveSTHDouble (String name){
+        int found = 0;
+        for (int i=0;i<inWerehouse.size();i++){
+            if (inWerehouse.get(i).toLowerCase().startsWith(name.toLowerCase())){
+                found++;
+            }
+        }
+        if (found>1) return true;
+        else return false;
+    }
 }

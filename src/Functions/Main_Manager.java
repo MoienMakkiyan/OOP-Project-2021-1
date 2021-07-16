@@ -10,15 +10,6 @@ public class Main_Manager {
 
     private static Main_Manager instance = null;
 
-    private Main_Manager(){
-    }
-
-    public static Main_Manager getInstance(){
-        if (instance == null)
-            instance = new Main_Manager();
-        return instance;
-    }
-
     User CURRENT_USER;
 
     private Cell cell[][];
@@ -26,7 +17,7 @@ public class Main_Manager {
     private Bucket_of_Water bucket_of_water;
     private WateringSystem wateringSystem;
     private Truck truck;
-    private int currunt_level;
+    private int current_level;
 
     private ArrayList<ArrayList> animals;
     private ArrayList<ArrayList> workshops;
@@ -71,6 +62,13 @@ public class Main_Manager {
     private boolean icecreamshop_work;
     private boolean truck_working;
 
+    private boolean mill_work_2;
+    private boolean textile_work_2;
+    private boolean milkpacking_work_2;
+    private boolean bakery_work_2;
+    private boolean tailoring_work_2;
+    private boolean icecreamshop_work_2;
+
     private int filling_well_MAX;
     private int add_egg_MAX;
     private int add_turkeyfeather_MAX;
@@ -95,17 +93,24 @@ public class Main_Manager {
     private int icecreamshop_work_CURRENT;
     private int truck_working_CURRENT;
 
-    /*public Main_Manager(int[] a, Variable_Reading variable_reading) {
-        make_map(a[0], a[1]);
-        this.variable_reading = variable_reading;
-        this.warehouse = new Warehouse(variable_reading.warehouse_info());
-        this.bucket_of_water = new Bucket_of_Water(variable_reading.Well_info());
-        this.wateringSystem = new WateringSystem(variable_reading.Well_Time(), bucket_of_water);
-        this.missions = variable_reading.getMissions();
+
+    private Main_Manager(){
+        make_map(Variable_Reading.getInstance().getMap_size()[0],Variable_Reading.getInstance().getMap_size()[1]);
+        this.warehouse = new Warehouse(Variable_Reading.getInstance().warehouse_info());
+        this.bucket_of_water = new Bucket_of_Water(Variable_Reading.getInstance().Well_info());
+        this.wateringSystem = new WateringSystem(Variable_Reading.getInstance().Well_Time(), bucket_of_water);
+        this.missions = Variable_Reading.getInstance().getMissions();
         this.truck = new Truck();
         this.animals = new ArrayList<>();
         this.workshops = new ArrayList<>();
         this.products = new ArrayList<>();
+
+        this.mill_work_2 = false;
+        this.textile_work_2 = false;
+        this.milkpacking_work_2 = false;
+        this.bakery_work_2 = false;
+        this.tailoring_work_2 = false;
+        this.icecreamshop_work_2 = false;
 
         this.breads = new ArrayList<>();
         this.buffaloMilks = new ArrayList<>();
@@ -145,17 +150,17 @@ public class Main_Manager {
         this.icecreamshop_work = false;
         this.truck_working = false;
 
-        this.filling_well_MAX = variable_reading.Well_Time();
-        this.add_egg_MAX = variable_reading.each_time_needed("egg");
-        this.add_turkeyfeather_MAX = variable_reading.each_time_needed("turkeyfeather");
-        this.add_buffalomilk_MAX = variable_reading.each_time_needed("buffalomilk");
-        this.mill_work_MAX = variable_reading.Get_WorkShops_Time("mill");
-        this.textile_work_MAX = variable_reading.Get_WorkShops_Time("textile");
-        this.milkpacking_work_MAX = variable_reading.Get_WorkShops_Time("milkpacking");
-        this.bakery_work_MAX = variable_reading.Get_WorkShops_Time("bakery");
-        this.tailoring_work_MAX = variable_reading.Get_WorkShops_Time("tailpring");
-        this.icecreamshop_work_MAX = variable_reading.Get_WorkShops_Time("icecreamshop");
-        this.truck_working_MAX = variable_reading.truck_time();
+        this.filling_well_MAX = Variable_Reading.getInstance().Well_Time();
+        this.add_egg_MAX = Variable_Reading.getInstance().each_time_needed("egg");
+        this.add_turkeyfeather_MAX = Variable_Reading.getInstance().each_time_needed("turkeyfeather");
+        this.add_buffalomilk_MAX = Variable_Reading.getInstance().each_time_needed("buffalomilk");
+        this.mill_work_MAX = Variable_Reading.getInstance().Get_WorkShops_Time("mill");
+        this.textile_work_MAX = Variable_Reading.getInstance().Get_WorkShops_Time("textile");
+        this.milkpacking_work_MAX = Variable_Reading.getInstance().Get_WorkShops_Time("milkpacking");
+        this.bakery_work_MAX = Variable_Reading.getInstance().Get_WorkShops_Time("bakery");
+        this.tailoring_work_MAX = Variable_Reading.getInstance().Get_WorkShops_Time("tailpring");
+        this.icecreamshop_work_MAX = Variable_Reading.getInstance().Get_WorkShops_Time("icecreamshop");
+        this.truck_working_MAX = Variable_Reading.getInstance().truck_time();
 
         this.filling_well_CURRENT = 0;
         this.add_egg_CURRENT = 0;
@@ -194,7 +199,13 @@ public class Main_Manager {
         products.add(shirts);
         products.add(textiles);
         products.add(turkeyFeathers);
-    }*/
+    }
+
+    public static Main_Manager getInstance(){
+        if (instance == null)
+            instance = new Main_Manager();
+        return instance;
+    }
 
     public void Add_Animal(String name) {
         if (name.equalsIgnoreCase("Bear")) {
@@ -608,8 +619,18 @@ public class Main_Manager {
 
     public boolean Mill_Work() {
         if (is_sth_in_WereHouse("Egg")&&primaryWorkshop_mills.size()>0&&!mill_work) {
-            mill_work = true;
-            warehouse.Remove("Egg", Variable_Reading.getInstance().item_capacity("Egg"));
+            if (primaryWorkshop_mills.get(0).getLevel() == 1){
+                mill_work = true;
+                warehouse.Remove("Egg", Variable_Reading.getInstance().item_capacity("Egg"));
+            }
+            else if (primaryWorkshop_mills.get(0).getLevel() == 2){
+                if (is_sth_in_WereHouse_double("Egg")){
+                    mill_work = true;
+                    warehouse.Remove("Egg", Variable_Reading.getInstance().item_capacity("Egg"));
+                    warehouse.Remove("Egg", Variable_Reading.getInstance().item_capacity("Egg"));
+                    mill_work_2 = true;
+                }
+            }
             return true;
         } else {
             return false;
@@ -666,6 +687,16 @@ public class Main_Manager {
         }
     }
 
+    private boolean is_sth_in_WereHouse_double(String name) {
+        if (warehouse.haveSTHDouble(name)) {
+            //TODO
+            return true;
+        } else {
+            //TODO
+            return false;
+        }
+    }
+
     private void Add_Primary_Products(int x, int y, String animal) {
         if (animal.equalsIgnoreCase("chicken")) {
             eggs.add(new Egg(x, y));
@@ -682,6 +713,7 @@ public class Main_Manager {
     }
 
     public boolean changeTurn(int n) {
+        missions.get(current_level-1).setTime_passed_in_this_level(missions.get(current_level-1).getTime_passed_in_this_level()+n);
         for (int i=0;i<n;i++){
             if (filling_well){
                 filling_well_CURRENT++;
@@ -691,30 +723,6 @@ public class Main_Manager {
                     filling_well=false;
                 }
             }
-            /*if (add_egg){
-                add_egg_CURRENT++;
-                if (add_egg_CURRENT==add_egg_MAX){
-                    //TODO
-                    add_egg_CURRENT=0;
-                    add_egg=false;
-                }
-            }
-            if (add_turkeyfeather){
-                add_turkeyfeather_CURRENT++;
-                if (add_turkeyfeather_CURRENT==add_turkeyfeather_MAX){
-                    //TODO
-                    add_turkeyfeather_CURRENT=0;
-                    add_turkeyfeather=false;
-                }
-            }
-            if (add_buffalomilk){
-                add_buffalomilk_CURRENT++;
-                if (add_buffalomilk_CURRENT==add_buffalomilk_MAX){
-                    //TODO
-                    add_buffalomilk_CURRENT=0;
-                    add_buffalomilk=false;
-                }
-            }*/
             if (mill_work){
                 mill_work_CURRENT++;
                 if (mill_work_CURRENT==mill_work_MAX){
@@ -798,6 +806,7 @@ public class Main_Manager {
                     Add_Primary_Products(ostrich.getX(),ostrich.getY(),"ostrich");
                 }
             }
+
         }
         return true;
     }
@@ -1421,11 +1430,11 @@ public class Main_Manager {
         this.truck_working_CURRENT = truck_working_CURRENT;
     }
 
-    public int getCurrunt_level() {
-        return currunt_level;
+    public int getCurrent_level() {
+        return current_level;
     }
 
-    public void setCurrunt_level(int currunt_level) {
-        this.currunt_level = currunt_level;
+    public void setCurrent_level(int current_level) {
+        this.current_level = current_level;
     }
 }

@@ -1,6 +1,12 @@
 package Objects.Animal;
 
-import Functions.Random_Location;
+import Functions.Main_Manager;
+import Functions.Variable_Reading;
+import Objects.X_Y;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class Animal {
 
@@ -28,78 +34,113 @@ public class Animal {
         this.activation = activation;
     }
 
-    public void walking() {
-        int direction = assignDirection(speed);
-        assignXY(direction, speed);
+    public void walk(){
+        if (isHungry) directed_walk();
+        else simple_walk();
     }
 
-    private int assignDirection(int speed) {
-        int direction = 0;
-        if (this.x > 6 - speed && this.y <= 6 - speed && this.y >= 1 + speed) {
-            direction = 3 + (int) (Math.random() * (5));
-            if (direction == 3) {
-                direction = 0;
-            }
-        } else if (this.x < 1 && this.y <= 6 - speed && this.y >= 1 + speed) {
-            direction = (int) (Math.random() * (5));
-        } else if (this.x >= 1 + speed && this.x <= 6 - speed && this.y < 1 + speed) {
-            direction = 2 + (int) (Math.random() * (5));
-        } else if (this.x >= 1 + speed && this.x <= 6 - speed && this.y > 6 - speed) {
-            direction = (int) (Math.random() * (5));
-            if (direction == 3) {
-                direction = 6;
-            } else if (direction == 4) {
-                direction = 7;
-            }
-        } else if (this.x < 1 + speed && this.y < 1 + speed) {
-            direction = 2 + (int) (Math.random() * (3));
-        } else if (this.x > 6 - speed && this.y < 1 + speed) {
-            direction = 4 + (int) (Math.random() * (3));
-        } else if (this.x < 1 + speed && this.y > 6 + speed) {
-            direction = 0 + (int) (Math.random() * (3));
-        } else if (this.x > 6 - speed && this.y > 6 - speed) {
-            direction = 5 + (int) (Math.random() * (3));
-            if (direction == 5) {
-                direction = 0;
+    public void Cat_walk(){
+        boolean sth_in_map = false;
+        for (int i = 0 ; i < Variable_Reading.getInstance().getMap_size()[0] ; i++){
+            for (int j = 0 ; i < Variable_Reading.getInstance().getMap_size()[1] ; i++){
+                if (Main_Manager.getInstance().getCell()[i][j].getProducts().size()>0){
+                    sth_in_map = true;
+                }
             }
         }
-        return direction;
+        if (sth_in_map) cat_directed_walk();
+        else simple_walk();
     }
 
-    private void assignXY(int direction, int speed) {
-        if (direction == 0) {
-            this.y += speed;
-        } else if (direction == 1) {
-            this.y += speed;
-            this.x += speed;
-        } else if (direction == 2) {
-            this.x += speed;
-        } else if (direction == 3) {
-            this.x += speed;
-            this.y -= speed;
-        } else if (direction == 4) {
-            this.y -= speed;
-        } else if (direction == 5) {
-            this.x -= speed;
-            this.y -= speed;
-        } else if (direction == 6) {
-            this.x -= speed;
-        } else if (direction == 7) {
-            this.x -= speed;
-            this.y += speed;
+    public void simple_walk(){
+        Random random = new Random();
+        int a = random.nextInt(8);
+        //0  1  2
+        //3     4
+        //5  6  7
+        if (a == 0){
+            x--;
+            y--;
+            if (x<1) x+=2;
+            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+            if (y<1) y+=2;
+            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+        } else if (a == 1){
+            y--;
+            if (x<1) x+=2;
+            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+            if (y<1) y+=2;
+            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+        } else if (a == 2){
+            x++;
+            y--;
+            if (x<1) x+=2;
+            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+            if (y<1) y+=2;
+            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+        } else if (a == 3){
+            x--;
+            if (x<1) x+=2;
+            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+            if (y<1) y+=2;
+            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+        } else if (a == 4){
+            x++;
+            if (x<1) x+=2;
+            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+            if (y<1) y+=2;
+            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+        } else if (a == 5){
+            x--;
+            y++;
+            if (x<1) x+=2;
+            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+            if (y<1) y+=2;
+            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+        } else if (a == 6){
+            y++;
+            if (x<1) x+=2;
+            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+            if (y<1) y+=2;
+            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+        } else if (a == 7){
+            x++;
+            y++;
+            if (x<1) x+=2;
+            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+            if (y<1) y+=2;
+            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+        }
+    }
+
+    public void directed_walk(){
+        ArrayList<X_Y> x_yArrayList = new ArrayList<>();
+        ArrayList<Integer> distance = new ArrayList<>();
+        for (int i = 0 ; i < Variable_Reading.getInstance().getMap_size()[0] ; i++){
+            for (int j = 0 ; i < Variable_Reading.getInstance().getMap_size()[1] ; i++){
+                if (Main_Manager.getInstance().getCell()[i][j].hasGrass()){
+                    x_yArrayList.add(new X_Y(i+1,j+1));
+                    distance.add((int) (Math.pow(x-i-1,2)+Math.pow(y-j-1,2)));
+                }
+            }
+        }
+        X_Y final_direction = x_yArrayList.get(distance.indexOf(Collections.min(distance)));
+        if (x-final_direction.getX()>0){
+            x--;
+        }
+        if (y-final_direction.getY()>0){
+            y--;
+        }
+        if (x-final_direction.getX()<0){
+            x++;
+        }
+        if (y-final_direction.getY()<0){
+            y++;
         }
     }
 
     public void eat(){
             lives=100;
-    }
-
-    public void cage(){
-        lives--;
-    }
-
-    public void uncage(){
-        lives++;
     }
 
     public void time_pass(){
@@ -109,6 +150,32 @@ public class Animal {
         }
         else {
             isHungry = false;
+        }
+    }
+
+    public void cat_directed_walk(){
+        ArrayList<X_Y> x_yArrayList = new ArrayList<>();
+        ArrayList<Integer> distance = new ArrayList<>();
+        for (int i = 0 ; i < Variable_Reading.getInstance().getMap_size()[0] ; i++){
+            for (int j = 0 ; i < Variable_Reading.getInstance().getMap_size()[1] ; i++){
+                if (Main_Manager.getInstance().getCell()[i][j].getProducts().size()>0){
+                    x_yArrayList.add(new X_Y(i+1,j+1));
+                    distance.add((int) (Math.pow(x-i-1,2)+Math.pow(y-j-1,2)));
+                }
+            }
+        }
+        X_Y final_direction = x_yArrayList.get(distance.indexOf(Collections.min(distance)));
+        if (x-final_direction.getX()>0){
+            x--;
+        }
+        if (y-final_direction.getY()>0){
+            y--;
+        }
+        if (x-final_direction.getX()<0){
+            x++;
+        }
+        if (y-final_direction.getY()<0){
+            y++;
         }
     }
 }

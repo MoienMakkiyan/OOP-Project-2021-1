@@ -93,7 +93,7 @@ public class Input {
             System.out.print("Please Enter Your PASSWORD : ");
             String password = scanner.nextLine();
             Variable_Reading.getInstance().getUsers().add(new User(username, password));
-            newUser(username);
+            GAME_ORDERS.getInstance().newUser(username);
             System.out.println("Added ...");
             try {
                 Variable_Reading.getInstance().save();
@@ -266,24 +266,6 @@ public class Input {
         Logger.getInstance().getLogger().info("Logged out.");
     }
 
-    private void newUser (String username){
-        File folder = new File("UserData\\"+username);
-        folder.mkdir();
-        File user_data = new File("UserData\\"+username+"\\user_data.txt");
-        File map_data = new File("UserData\\"+username+"\\map_data.txt");
-        File product_data = new File("UserData\\"+username+"\\product.txt");
-        File animal_data = new File("UserData\\"+username+"\\animal_data.txt");
-        File log = new File("UserData\\"+username+"\\LOGGER.log");
-        try {
-            user_data.createNewFile();
-            map_data.createNewFile();
-            product_data.createNewFile();
-            animal_data.createNewFile();
-            log.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static Input getInstance(){
         if (instance == null)
