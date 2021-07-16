@@ -265,7 +265,7 @@ public class Main_Manager {
 
     public boolean Truck_Load(String name) {
         if (truck.Load(name)&&!truck_working){
-            warehouse.Remove(name, variable_reading.item_capacity(name.split("\\s")[0]));
+            warehouse.Remove(name, Variable_Reading.getInstance().item_capacity(name.split("\\s")[0]));
             return true;
         }
         else return false;
@@ -273,7 +273,7 @@ public class Main_Manager {
 
     public boolean Truck_Unload(String name) {
         if (truck.Unload(name)&&!truck_working){
-            warehouse.Add(name, variable_reading.item_capacity(name.split("\\s")[0]));
+            warehouse.Add(name, Variable_Reading.getInstance().item_capacity(name.split("\\s")[0]));
             return true;
         }
         else return false;
@@ -308,7 +308,7 @@ public class Main_Manager {
 
     public boolean AddGrass(int x, int y) {
         if (bucket_of_water.getCerrunt_amount() > 0) {
-            cell[x][y].addGrass();
+            cell[x-1][y-1].addGrass();
             wateringSystem.reduceWater();
             //TODO
             return true;
@@ -410,14 +410,52 @@ public class Main_Manager {
     }
 
     public boolean Cage(int x, int y) {
-        //TODO
-        return true;
+        if (cell[x-1][y-1].getAnimals().size()>0){
+            for (String name : cell[x-1][y-1].getAnimals()){
+                if (name.equalsIgnoreCase("Bear")){
+                    for (Bear bear : bears){
+                        if (bear.getX() == x && bear.getY() == y){
+                            bear.setCage_counter(bear.getCage_counter()+1);
+                            bear.setActivation(false);
+                            return true;
+                        }
+                    }
+                }
+                else if (name.equalsIgnoreCase("Lion")){
+                    for (Lion lion : lions){
+                        if (lion.getX() == x && lion.getY() == y){
+                            lion.setCage_counter(lion.getCage_counter()+1);
+                            lion.setActivation(false);
+                            return true;
+                        }
+                    }
+                }
+                else if (name.equalsIgnoreCase("Tiger")){
+                    for (Tiger tiger : tigers){
+                        if (tiger.getX() == x && tiger.getY() == y){
+                            tiger.setCage_counter(tiger.getCage_counter()+1);
+                            tiger.setActivation(false);
+                            return true;
+                        }
+                    }
+                }
+                else {
+                    //TODO there is no wild animal in this cell
+                    return false;
+                }
+            }
+        }
+        else {
+            //TODO no animal in this cell
+            return false;
+        }
+        return false;
     }
 
     public boolean MilkPacking_Work() {
         if (is_sth_in_WereHouse("BuffaloMilk")&&primaryWorkshop_milkPackings.size()>0&&!milkpacking_work) {
             milkpacking_work = true;
-            warehouse.Remove("BuffaloMilk", variable_reading.item_capacity("BuffaloMilk"));
+            warehouse.Remove("BuffaloMilk", Variable_Reading.getInstance().item_capacity("BuffaloMilk"));
             return true;
         } else {
             return false;
@@ -427,7 +465,7 @@ public class Main_Manager {
     public boolean Mill_Work() {
         if (is_sth_in_WereHouse("Egg")&&primaryWorkshop_mills.size()>0&&!mill_work) {
             mill_work = true;
-            warehouse.Remove("Egg", variable_reading.item_capacity("Egg"));
+            warehouse.Remove("Egg", Variable_Reading.getInstance().item_capacity("Egg"));
             return true;
         } else {
             return false;
@@ -437,7 +475,7 @@ public class Main_Manager {
     public boolean Textile_Work() {
         if (is_sth_in_WereHouse("TurkeyFeather")&&primaryWorkshop_textiles.size()>0&&!textile_work) {
             textile_work = true;
-            warehouse.Remove("TurkeyFeather", variable_reading.item_capacity("TurkeyFeather"));
+            warehouse.Remove("TurkeyFeather", Variable_Reading.getInstance().item_capacity("TurkeyFeather"));
             return true;
         } else {
             return false;
@@ -447,7 +485,7 @@ public class Main_Manager {
     public boolean Bakery_Work() {
         if (is_sth_in_WereHouse("Flour")&&secondaryWorkshop_bakeries.size()>0&&!bakery_work) {
             bakery_work = true;
-            warehouse.Remove("Flour", variable_reading.item_capacity("Flour"));
+            warehouse.Remove("Flour", Variable_Reading.getInstance().item_capacity("Flour"));
             return true;
         } else {
             return false;
@@ -457,7 +495,7 @@ public class Main_Manager {
     public boolean IcecreamShop_Work() {
         if (is_sth_in_WereHouse("PocketMilk")&&secondaryWorkshop_icecreamShops.size()>0&&!icecreamshop_work) {
             icecreamshop_work = true;
-            warehouse.Remove("PocketMilk", variable_reading.item_capacity("PocketMilk"));
+            warehouse.Remove("PocketMilk", Variable_Reading.getInstance().item_capacity("PocketMilk"));
             return true;
         } else {
             return false;
@@ -467,7 +505,7 @@ public class Main_Manager {
     public boolean Tailoring_Work() {
         if (is_sth_in_WereHouse("Textile")&&secondaryWorkshop_tailorings.size()>0&&!textile_work) {
             textile_work = true;
-            warehouse.Remove("Textile", variable_reading.item_capacity("Textile"));
+            warehouse.Remove("Textile", Variable_Reading.getInstance().item_capacity("Textile"));
             return true;
         } else {
             return false;
@@ -623,7 +661,7 @@ public class Main_Manager {
     public int SELLING_PROFIT(){
         int sum = 0;
         for (int i=0;i<truck.getInTruck().size();i++)
-            sum+=variable_reading.item_price(truck.getInTruck().get(i).split("\\s")[0]);
+            sum+=Variable_Reading.getInstance().item_price(truck.getInTruck().get(i).split("\\s")[0]);
         truck.clear();
         return sum;
     }
@@ -651,14 +689,6 @@ public class Main_Manager {
 
     public void setCell(Cell[][] cell) {
         this.cell = cell;
-    }
-
-    public Variable_Reading getVariable_reading() {
-        return variable_reading;
-    }
-
-    public void setVariable_reading(Variable_Reading variable_reading) {
-        this.variable_reading = variable_reading;
     }
 
     public Warehouse getWarehouse() {

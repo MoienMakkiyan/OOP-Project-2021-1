@@ -5,7 +5,7 @@ import Objects.X_Y;
 
 public class Bear extends Animal{
 
-
+    private int cage_counter;
     public Bear() {
         X_Y xy = Random_Location.getInstance().random();
         this.x = xy.getX();
@@ -15,5 +15,14 @@ public class Bear extends Animal{
         this.activation = true;
         this.lives = 4;
         this.isHungry = false;
+        cage_counter = 0;
+    }
+
+    public int getCage_counter() {
+        return cage_counter;
+    }
+
+    public void setCage_counter(int cage_counter) {
+        this.cage_counter = cage_counter;
     }
 }
