@@ -22,11 +22,11 @@ public class Main_Manager {
     User CURRENT_USER;
 
     private Cell cell[][];
-    private Variable_Reading variable_reading;
     private Warehouse warehouse;
     private Bucket_of_Water bucket_of_water;
     private WateringSystem wateringSystem;
     private Truck truck;
+    private int currunt_level;
 
     private ArrayList<ArrayList> animals;
     private ArrayList<ArrayList> workshops;
@@ -197,12 +197,33 @@ public class Main_Manager {
     }*/
 
     public void Add_Animal(String name) {
-        //TODO
+        if (name.equalsIgnoreCase("Bear")) {
+            bears.add(new Bear());
+        }
+        else if (name.equalsIgnoreCase("Buffalo")) {
+            buffalos.add(new Buffalo(Variable_Reading.getInstance().getBuffalomilk_time()));
+        }
+        else if (name.equalsIgnoreCase("Chicken")) {
+            chickens.add(new Chicken(Variable_Reading.getInstance().getEgg_time()));
+        }
+        else if (name.equalsIgnoreCase("CollectorCat")) {
+            collectorCats.add(new CollectorCat());
+        }
+        else if (name.equalsIgnoreCase("HunterDog")) {
+            hunterDogs.add(new HunterDog());
+        }
+        else if (name.equalsIgnoreCase("Lion")) {
+            lions.add(new Lion());
+        }
+        else if (name.equalsIgnoreCase("Ostrich")) {
+            ostriches.add(new Ostrich(Variable_Reading.getInstance().getTurkeyfeather_time()));
+        }
+        else if (name.equalsIgnoreCase("Tiger")) {
+            tigers.add(new Tiger());
+        }
     }
 
     public void Add_WorkShop(String name) {
-
-
         if (name.equalsIgnoreCase("MilkPacking")) {
             if (primaryWorkshop_milkPackings.add(new PrimaryWorksop_MilkPacking())) {
                 //TODO
@@ -307,12 +328,83 @@ public class Main_Manager {
     public boolean add_to_warehouse(int x, int y) {
         String product = cell[x][y].takeProduct();
         if (!product.equals("")) {
-
-            warehouse.Add(product, variable_reading.item_capacity(product));
+            warehouse.Add(product, Variable_Reading.getInstance().item_capacity(product));
+            if (product.equalsIgnoreCase("Bread")){
+                for (Bread bread : breads){
+                    if (bread.getX() == x+1 && bread.getY() == y+1) {
+                        bread.setInMap(false);
+                        bread.setInWerehouse(true);
+                    }
+                }
+            }
+            else if (product.equalsIgnoreCase("BuffaloMilk")){
+                for (BuffaloMilk buffaloMilk : buffaloMilks){
+                    if (buffaloMilk.getX() == x+1 && buffaloMilk.getY() == y+1) {
+                        buffaloMilk.setInMap(false);
+                        buffaloMilk.setInWerehouse(true);
+                    }
+                }
+            }
+            else if (product.equalsIgnoreCase("Egg")){
+                for (Egg egg : eggs){
+                    if (egg.getX() == x+1 && egg.getY() == y+1) {
+                        egg.setInMap(false);
+                        egg.setInWerehouse(true);
+                    }
+                }
+            }
+            else if (product.equalsIgnoreCase("Flour")){
+                for (Flour flour : flours){
+                    if (flour.getX() == x+1 && flour.getY() == y+1) {
+                        flour.setInMap(false);
+                        flour.setInWerehouse(true);
+                    }
+                }
+            }
+            else if (product.equalsIgnoreCase("Icecream")){
+                for (Icecream icecream : icecreams){
+                    if (icecream.getX() == x+1 && icecream.getY() == y+1) {
+                        icecream.setInMap(false);
+                        icecream.setInWerehouse(true);
+                    }
+                }
+            }
+            else if (product.equalsIgnoreCase("PocketMilk")){
+                for (PocketMilk pocketMilk : pocketMilks){
+                    if (pocketMilk.getX() == x+1 && pocketMilk.getY() == y+1) {
+                        pocketMilk.setInMap(false);
+                        pocketMilk.setInWerehouse(true);
+                    }
+                }
+            }
+            else if (product.equalsIgnoreCase("Shirt")){
+                for (Shirt shirt : shirts){
+                    if (shirt.getX() == x+1 && shirt.getY() == y+1) {
+                        shirt.setInMap(false);
+                        shirt.setInWerehouse(true);
+                    }
+                }
+            }
+            else if (product.equalsIgnoreCase("Textile")){
+                for (Textile textile : textiles){
+                    if (textile.getX() == x+1 && textile.getY() == y+1) {
+                        textile.setInMap(false);
+                        textile.setInWerehouse(true);
+                    }
+                }
+            }
+            else if (product.equalsIgnoreCase("TurkeyFeather")){
+                for (TurkeyFeather turkeyFeather : turkeyFeathers){
+                    if (turkeyFeather.getX() == x+1 && turkeyFeather.getY() == y+1) {
+                        turkeyFeather.setInMap(false);
+                        turkeyFeather.setInWerehouse(true);
+                    }
+                }
+            }
             //TODO
             return true;
         } else {
-            //TODO
+            //TODO there wasn't a product there
             return false;
         }
     }
@@ -546,6 +638,11 @@ public class Main_Manager {
 
     public void setCURRENT_USER(User CURRENT_USER) {
         this.CURRENT_USER = CURRENT_USER;
+        Load_Data();
+    }
+
+    public void Load_Data(){
+        //TODO
     }
 
     public Cell[][] getCell() {
@@ -1074,5 +1171,13 @@ public class Main_Manager {
 
     public void setTruck_working_CURRENT(int truck_working_CURRENT) {
         this.truck_working_CURRENT = truck_working_CURRENT;
+    }
+
+    public int getCurrunt_level() {
+        return currunt_level;
+    }
+
+    public void setCurrunt_level(int currunt_level) {
+        this.currunt_level = currunt_level;
     }
 }

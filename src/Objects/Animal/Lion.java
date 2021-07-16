@@ -5,7 +5,7 @@ import Objects.X_Y;
 
 public class Lion extends Animal {
 
-    Lion() {
+    public Lion() {
         X_Y xy = Random_Location.getInstance().random();
         this.x = xy.getX();
         this.y = xy.getY();
