@@ -266,6 +266,78 @@ public class Main_Manager {
     public boolean Truck_Load(String name) {
         if (truck.Load(name)&&!truck_working){
             warehouse.Remove(name, Variable_Reading.getInstance().item_capacity(name.split("\\s")[0]));
+            if (name.equalsIgnoreCase("Bread")){
+                for (Bread bread : breads){
+                    if (!bread.isTransporting()){
+                        bread.setTransporting(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("BuffaloMilk")){
+                for (BuffaloMilk buffaloMilk : buffaloMilks){
+                    if (!buffaloMilk.isTransporting()){
+                        buffaloMilk.setTransporting(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("Egg")){
+                for (Egg egg : eggs){
+                    if (!egg.isTransporting()){
+                        egg.setTransporting(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("Flour")){
+                for (Flour flour : flours){
+                    if (!flour.isTransporting()){
+                        flour.setTransporting(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("Icecream")){
+                for (Icecream icecream : icecreams){
+                    if (!icecream.isTransporting()){
+                        icecream.setTransporting(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("PocketMilk")){
+                for (PocketMilk pocketMilk : pocketMilks){
+                    if (!pocketMilk.isTransporting()){
+                        pocketMilk.setTransporting(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("Shirt")){
+                for (Shirt shirt : shirts){
+                    if (!shirt.isTransporting()){
+                        shirt.setTransporting(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("Textile")){
+                for (Textile textile : textiles){
+                    if (!textile.isTransporting()){
+                        textile.setTransporting(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("TurkeyFeather")){
+                for (TurkeyFeather turkeyFeather : turkeyFeathers){
+                    if (!turkeyFeather.isTransporting()){
+                        turkeyFeather.setTransporting(true);
+                        break;
+                    }
+                }
+            }
             return true;
         }
         else return false;
@@ -274,6 +346,78 @@ public class Main_Manager {
     public boolean Truck_Unload(String name) {
         if (truck.Unload(name)&&!truck_working){
             warehouse.Add(name, Variable_Reading.getInstance().item_capacity(name.split("\\s")[0]));
+            if (name.equalsIgnoreCase("Bread")){
+                for (Bread bread : breads){
+                    if (bread.isTransporting()){
+                        bread.setTransporting(false);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("BuffaloMilk")){
+                for (BuffaloMilk buffaloMilk : buffaloMilks){
+                    if (buffaloMilk.isTransporting()){
+                        buffaloMilk.setTransporting(false);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("Egg")){
+                for (Egg egg : eggs){
+                    if (egg.isTransporting()){
+                        egg.setTransporting(false);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("Flour")){
+                for (Flour flour : flours){
+                    if (flour.isTransporting()){
+                        flour.setTransporting(false);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("Icecream")){
+                for (Icecream icecream : icecreams){
+                    if (icecream.isTransporting()){
+                        icecream.setTransporting(false);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("PocketMilk")){
+                for (PocketMilk pocketMilk : pocketMilks){
+                    if (pocketMilk.isTransporting()){
+                        pocketMilk.setTransporting(false);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("Shirt")){
+                for (Shirt shirt : shirts){
+                    if (shirt.isTransporting()){
+                        shirt.setTransporting(false);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("Textile")){
+                for (Textile textile : textiles){
+                    if (textile.isTransporting()){
+                        textile.setTransporting(false);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("TurkeyFeather")){
+                for (TurkeyFeather turkeyFeather : turkeyFeathers){
+                    if (turkeyFeather.isTransporting()){
+                        turkeyFeather.setTransporting(false);
+                        break;
+                    }
+                }
+            }
             return true;
         }
         else return false;
@@ -662,6 +806,80 @@ public class Main_Manager {
         int sum = 0;
         for (int i=0;i<truck.getInTruck().size();i++)
             sum+=Variable_Reading.getInstance().item_price(truck.getInTruck().get(i).split("\\s")[0]);
+        for (String name : truck.getInTruck()){
+            if (name.equalsIgnoreCase("Bread")){
+                for (Bread bread : breads){
+                    if (bread.isTransporting()){
+                        bread.setDone(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("BuffaloMilk")){
+                for (BuffaloMilk buffaloMilk : buffaloMilks){
+                    if (buffaloMilk.isTransporting()){
+                        buffaloMilk.setDone(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("Egg")){
+                for (Egg egg : eggs){
+                    if (egg.isTransporting()){
+                        egg.setDone(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("Flour")){
+                for (Flour flour : flours){
+                    if (flour.isTransporting()){
+                        flour.setDone(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("Icecream")){
+                for (Icecream icecream : icecreams){
+                    if (icecream.isTransporting()){
+                        icecream.setDone(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("PocketMilk")){
+                for (PocketMilk pocketMilk : pocketMilks){
+                    if (pocketMilk.isTransporting()){
+                        pocketMilk.setDone(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("Shirt")){
+                for (Shirt shirt : shirts){
+                    if (shirt.isTransporting()){
+                        shirt.setDone(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("Textile")){
+                for (Textile textile : textiles){
+                    if (textile.isTransporting()){
+                        textile.setDone(true);
+                        break;
+                    }
+                }
+            }
+            else if (name.equalsIgnoreCase("TurkeyFeather")){
+                for (TurkeyFeather turkeyFeather : turkeyFeathers){
+                    if (turkeyFeather.isTransporting()){
+                        turkeyFeather.setDone(true);
+                        break;
+                    }
+                }
+            }
+        }
         truck.clear();
         return sum;
     }

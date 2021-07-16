@@ -286,7 +286,7 @@ public class GAME_ORDERS {
 
     public boolean Truck_Go (User user){
         if (Main_Manager.getInstance().Truck_Go()){
-            Main_Manager.getInstance().getCURRENT_USER().setCoin(user.getCoin()+ Main_Manager.getInstance().SELLING_PROFIT());
+            Main_Manager.getInstance().getCURRENT_USER().setCoin(Main_Manager.getInstance().getCURRENT_USER().getCoin()+ Main_Manager.getInstance().SELLING_PROFIT());
             return true;
         }
         else {
