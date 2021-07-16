@@ -570,7 +570,7 @@ public class Main_Manager {
                 if (name.equalsIgnoreCase("Bear")){
                     for (Bear bear : bears){
                         if (bear.getX() == x && bear.getY() == y){
-                            bear.setCage_counter(bear.getCage_counter()+1);
+                            bear.setCage_counter(bear.getCage_counter()+2);
                             bear.setActivation(false);
                             return true;
                         }
@@ -579,7 +579,7 @@ public class Main_Manager {
                 else if (name.equalsIgnoreCase("Lion")){
                     for (Lion lion : lions){
                         if (lion.getX() == x && lion.getY() == y){
-                            lion.setCage_counter(lion.getCage_counter()+1);
+                            lion.setCage_counter(lion.getCage_counter()+2);
                             lion.setActivation(false);
                             return true;
                         }
@@ -588,7 +588,7 @@ public class Main_Manager {
                 else if (name.equalsIgnoreCase("Tiger")){
                     for (Tiger tiger : tigers){
                         if (tiger.getX() == x && tiger.getY() == y){
-                            tiger.setCage_counter(tiger.getCage_counter()+1);
+                            tiger.setCage_counter(tiger.getCage_counter()+2);
                             tiger.setActivation(false);
                             return true;
                         }
@@ -791,8 +791,10 @@ public class Main_Manager {
     }
 
     public boolean changeTurn(int n) {
-        missions.get(current_level-1).setTime_passed_in_this_level(missions.get(current_level-1).getTime_passed_in_this_level()+n);
+        missions.get(current_level-1).setTime_passed_in_this_level(missions.get(current_level-1).getTime_passed_in_this_level()+1);
         for (int i=0;i<n;i++){
+            missions.get(current_level-1).setTime_passed_in_this_level(missions.get(current_level-1).getTime_passed_in_this_level()+1);
+
             if (filling_well){
                 filling_well_CURRENT++;
                 if (filling_well_CURRENT==filling_well_MAX){
@@ -1041,6 +1043,12 @@ public class Main_Manager {
                     bear.simple_walk();
                     cell[bear.getX()-1][bear.getY()-1].AddAnimal("bear");
                 }
+                bear.passTime();
+                if (bear.caught()){
+                    cell[bear.getX()-1][bear.getY()-1].RemoveAnimal("bear");
+                    bears.remove(bear);
+                    warehouse.Add("wild_animal",Variable_Reading.getInstance().getWild_animal_capacity());
+                }
                 if (!bear.isActivation()&&cell[bear.getX()-1][bear.getY()-1].getProducts().size()>0){
                     int mm = bear.getX();
                     int nn = bear.getY();
@@ -1099,6 +1107,12 @@ public class Main_Manager {
                     lion.simple_walk();
                     cell[lion.getX()-1][lion.getY()-1].AddAnimal("lion");
                 }
+                lion.passTime();
+                if (lion.caught()){
+                    cell[lion.getX()-1][lion.getY()-1].RemoveAnimal("lion");
+                    lions.remove(lion);
+                    warehouse.Add("wild_animal",Variable_Reading.getInstance().getWild_animal_capacity());
+                }
                 if (!lion.isActivation()&&cell[lion.getX()-1][lion.getY()-1].getProducts().size()>0){
                     int mm = lion.getX();
                     int nn = lion.getY();
@@ -1156,6 +1170,12 @@ public class Main_Manager {
                     cell[tiger.getX()-1][tiger.getY()-1].RemoveAnimal("tiger");
                     tiger.simple_walk();
                     cell[tiger.getX()-1][tiger.getY()-1].AddAnimal("tiger");
+                }
+                tiger.passTime();
+                if (tiger.caught()){
+                    cell[tiger.getX()-1][tiger.getY()-1].RemoveAnimal("tiger");
+                    tigers.remove(tiger);
+                    warehouse.Add("wild_animal",Variable_Reading.getInstance().getWild_animal_capacity());
                 }
                 if (!tiger.isActivation()&&cell[tiger.getX()-1][tiger.getY()-1].getProducts().size()>0){
                     int mm = tiger.getX();
@@ -1283,8 +1303,77 @@ public class Main_Manager {
                 }
             }
 
+            for (HunterDog hunterDog : hunterDogs){
+                cell[hunterDog.getX()-1][hunterDog.getY()-1].RemoveAnimal("hunterDog");
+                hunterDog.Cat_walk();
+                cell[hunterDog.getX()-1][hunterDog.getY()-1].AddAnimal("hunterDog");
+                boolean deed = false;
+                if (!deed){
+                    for (Bear bear : bears){
+                        if (bear.getX() == hunterDog.getX() && bear.getY() == hunterDog.getY() && !deed && bear.isActivation()){
+                            cell[hunterDog.getX()-1][hunterDog.getY()-1].RemoveAnimal("hunterDog");
+                            cell[bear.getX()-1][bear.getY()-1].RemoveAnimal("bear");
+                            hunterDogs.remove(hunterDog);
+                            bears.remove(bear);
+                            deed = true;
+                        }
+                    }
+                }
+                if (!deed){
+                    for (Lion lion : lions){
+                        if (lion.getX() == hunterDog.getX() && lion.getY() == hunterDog.getY() && !deed && lion.isActivation()){
+                            cell[hunterDog.getX()-1][hunterDog.getY()-1].RemoveAnimal("hunterDog");
+                            cell[lion.getX()-1][lion.getY()-1].RemoveAnimal("lion");
+                            hunterDogs.remove(hunterDog);
+                            lions.remove(lion);
+                            deed = true;
+                        }
+                    }
+                }
+                if (!deed){
+                    for (Tiger tiger : tigers){
+                        if (tiger.getX() == hunterDog.getX() && tiger.getY() == hunterDog.getY() && !deed && tiger.isActivation()){
+                            cell[hunterDog.getX()-1][hunterDog.getY()-1].RemoveAnimal("hunterDog");
+                            cell[tiger.getX()-1][tiger.getY()-1].RemoveAnimal("tiger");
+                            hunterDogs.remove(hunterDog);
+                            tigers.remove(tiger);
+                            deed = true;
+                        }
+                    }
+                }
+            }
+
+            if (missions.get(current_level-1).getBear_add_time().contains(missions.get(current_level-1).getTime_passed_in_this_level())){
+                Add_wild_animal("bear");
+            }
+
+            if (missions.get(current_level-1).getLion_add_time().contains(missions.get(current_level-1).getTime_passed_in_this_level())){
+                Add_wild_animal("lion");
+            }
+
+            if (missions.get(current_level-1).getTiger_add_time().contains(missions.get(current_level-1).getTime_passed_in_this_level())){
+                Add_wild_animal("tiger");
+            }
         }
         return true;
+    }
+
+    public void Add_wild_animal(String name){
+        if (name.equalsIgnoreCase("bear")){
+            Bear bear = new Bear();
+            bears.add(bear);
+            cell[bear.getX()-1][bear.getY()].AddAnimal("bear");
+        }
+        else if (name.equalsIgnoreCase("tiger")){
+            Tiger tiger = new Tiger();
+            tigers.add(tiger);
+            cell[tiger.getX()-1][tiger.getY()].AddAnimal("tiger");
+        }
+        else if (name.equalsIgnoreCase("lion")){
+            Lion lion = new Lion();
+            lions.add(lion);
+            cell[lion.getX()-1][lion.getY()].AddAnimal("lion");
+        }
     }
 
     public int SELLING_PROFIT(){
