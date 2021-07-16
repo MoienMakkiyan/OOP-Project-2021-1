@@ -58,58 +58,115 @@ public class Animal {
         //0  1  2
         //3     4
         //5  6  7
-        if (a == 0){
-            x--;
-            y--;
-            if (x<1) x+=2;
-            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
-            if (y<1) y+=2;
-            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
-        } else if (a == 1){
-            y--;
-            if (x<1) x+=2;
-            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
-            if (y<1) y+=2;
-            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
-        } else if (a == 2){
-            x++;
-            y--;
-            if (x<1) x+=2;
-            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
-            if (y<1) y+=2;
-            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
-        } else if (a == 3){
-            x--;
-            if (x<1) x+=2;
-            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
-            if (y<1) y+=2;
-            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
-        } else if (a == 4){
-            x++;
-            if (x<1) x+=2;
-            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
-            if (y<1) y+=2;
-            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
-        } else if (a == 5){
-            x--;
-            y++;
-            if (x<1) x+=2;
-            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
-            if (y<1) y+=2;
-            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
-        } else if (a == 6){
-            y++;
-            if (x<1) x+=2;
-            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
-            if (y<1) y+=2;
-            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
-        } else if (a == 7){
-            x++;
-            y++;
-            if (x<1) x+=2;
-            if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
-            if (y<1) y+=2;
-            if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+        if (speed == 1){
+            if (a == 0){
+                x--;
+                y--;
+                if (x<1) x+=2;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+                if (y<1) y+=2;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+            } else if (a == 1){
+                y--;
+                if (x<1) x+=2;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+                if (y<1) y+=2;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+            } else if (a == 2){
+                x++;
+                y--;
+                if (x<1) x+=2;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+                if (y<1) y+=2;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+            } else if (a == 3){
+                x--;
+                if (x<1) x+=2;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+                if (y<1) y+=2;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+            } else if (a == 4){
+                x++;
+                if (x<1) x+=2;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+                if (y<1) y+=2;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+            } else if (a == 5){
+                x--;
+                y++;
+                if (x<1) x+=2;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+                if (y<1) y+=2;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+            } else if (a == 6){
+                y++;
+                if (x<1) x+=2;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+                if (y<1) y+=2;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+            } else if (a == 7){
+                x++;
+                y++;
+                if (x<1) x+=2;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=2;
+                if (y<1) y+=2;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=2;
+            }
+        }
+        else if (speed == 2){
+            if (a == 0){
+                x-=2;
+                y-=2;
+                if (x<1) x+=4;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=4;
+                if (y<1) y+=4;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=4;
+            } else if (a == 1){
+                y-=2;
+                if (x<1) x+=4;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=4;
+                if (y<1) y+=4;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=4;
+            } else if (a == 2){
+                x+=2;
+                y-=2;
+                if (x<1) x+=4;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=4;
+                if (y<1) y+=4;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=4;
+            } else if (a == 3){
+                x-=2;
+                if (x<1) x+=4;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=4;
+                if (y<1) y+=4;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=4;
+            } else if (a == 4){
+                x+=2;
+                if (x<1) x+=4;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=4;
+                if (y<1) y+=4;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=4;
+            } else if (a == 5){
+                x-=2;
+                y+=2;
+                if (x<1) x+=4;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=4;
+                if (y<1) y+=4;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=4;
+            } else if (a == 6){
+                y+=2;
+                if (x<1) x+=4;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=4;
+                if (y<1) y+=4;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=4;
+            } else if (a == 7){
+                x+=2;
+                y+=2;
+                if (x<1) x+=4;
+                if (x> Variable_Reading.getInstance().getMap_size()[0]) x-=4;
+                if (y<1) y+=4;
+                if (y> Variable_Reading.getInstance().getMap_size()[1]) y-=4;
+            }
         }
     }
 

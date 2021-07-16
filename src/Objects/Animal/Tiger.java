@@ -10,7 +10,7 @@ public class Tiger extends Animal {
         X_Y xy = Random_Location.getInstance().random();
         this.x = xy.getX();
         this.y = xy.getY();
-        this.speed = 1;
+        this.speed = 2;
         this.type = "wild";
         this.activation = true;
         this.lives = 4;

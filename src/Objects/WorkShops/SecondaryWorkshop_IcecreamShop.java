@@ -1,5 +1,6 @@
 package Objects.WorkShops;
 
+import Functions.Main_Manager;
 import Functions.Variable_Reading;
 
 public class SecondaryWorkshop_IcecreamShop extends Workshop{
@@ -11,5 +12,6 @@ public class SecondaryWorkshop_IcecreamShop extends Workshop{
 
     public void Upgrade(){
         this.level = this.level + 1;
+        Main_Manager.getInstance().setIcecreamshop_work_MAX(Main_Manager.getInstance().getIcecreamshop_work_MAX()/2);
     }
 }

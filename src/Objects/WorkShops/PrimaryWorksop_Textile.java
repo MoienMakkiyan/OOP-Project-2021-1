@@ -1,5 +1,6 @@
 package Objects.WorkShops;
 
+import Functions.Main_Manager;
 import Functions.Variable_Reading;
 
 public class PrimaryWorksop_Textile extends Workshop{
@@ -11,5 +12,6 @@ public class PrimaryWorksop_Textile extends Workshop{
 
     public void Upgrade(){
         this.level = this.level + 1;
+        Main_Manager.getInstance().setTailoring_work_MAX(Main_Manager.getInstance().getTextile_work_MAX()/2);
     }
 }

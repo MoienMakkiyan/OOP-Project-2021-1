@@ -1,5 +1,6 @@
 package Objects.WorkShops;
 
+import Functions.Main_Manager;
 import Functions.Variable_Reading;
 
 public class PrimaryWorksop_MilkPacking extends Workshop {
@@ -12,6 +13,6 @@ public class PrimaryWorksop_MilkPacking extends Workshop {
 
     public void Upgrade(){
         this.level = this.level + 1;
-
+        Main_Manager.getInstance().setMilkpacking_work_MAX(Main_Manager.getInstance().getMilkpacking_work_MAX()/2);
     }
 }

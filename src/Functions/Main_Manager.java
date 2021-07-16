@@ -609,8 +609,23 @@ public class Main_Manager {
 
     public boolean MilkPacking_Work() {
         if (is_sth_in_WereHouse("BuffaloMilk")&&primaryWorkshop_milkPackings.size()>0&&!milkpacking_work) {
-            milkpacking_work = true;
-            warehouse.Remove("BuffaloMilk", Variable_Reading.getInstance().item_capacity("BuffaloMilk"));
+            if (primaryWorkshop_milkPackings.get(0).getLevel() == 1){
+                milkpacking_work = true;
+                warehouse.Remove("BuffaloMilk", Variable_Reading.getInstance().item_capacity("BuffaloMilk"));
+            }
+            else if (primaryWorkshop_milkPackings.get(0).getLevel() == 2){
+                if (is_sth_in_WereHouse_double("BuffaloMilk")){
+                    mill_work = true;
+                    warehouse.Remove("BuffaloMilk", Variable_Reading.getInstance().item_capacity("BuffaloMilk"));
+                    warehouse.Remove("BuffaloMilk", Variable_Reading.getInstance().item_capacity("BuffaloMilk"));
+                    milkpacking_work_2 = true;
+                }
+                else {
+                    mill_work = true;
+                    warehouse.Remove("BuffaloMilk", Variable_Reading.getInstance().item_capacity("BuffaloMilk"));
+                    milkpacking_work_2 = false;
+                }
+            }
             return true;
         } else {
             return false;
@@ -630,6 +645,11 @@ public class Main_Manager {
                     warehouse.Remove("Egg", Variable_Reading.getInstance().item_capacity("Egg"));
                     mill_work_2 = true;
                 }
+                else {
+                    mill_work = true;
+                    warehouse.Remove("Egg", Variable_Reading.getInstance().item_capacity("Egg"));
+                    mill_work_2 = false;
+                }
             }
             return true;
         } else {
@@ -639,8 +659,23 @@ public class Main_Manager {
 
     public boolean Textile_Work() {
         if (is_sth_in_WereHouse("TurkeyFeather")&&primaryWorkshop_textiles.size()>0&&!textile_work) {
-            textile_work = true;
-            warehouse.Remove("TurkeyFeather", Variable_Reading.getInstance().item_capacity("TurkeyFeather"));
+            if (primaryWorkshop_textiles.get(0).getLevel() == 1){
+                textile_work = true;
+                warehouse.Remove("TurkeyFeather", Variable_Reading.getInstance().item_capacity("TurkeyFeather"));
+            }
+            else if (primaryWorkshop_textiles.get(0).getLevel() == 2){
+                if (is_sth_in_WereHouse_double("TurkeyFeather")){
+                    textile_work = true;
+                    warehouse.Remove("TurkeyFeather", Variable_Reading.getInstance().item_capacity("TurkeyFeather"));
+                    warehouse.Remove("TurkeyFeather", Variable_Reading.getInstance().item_capacity("TurkeyFeather"));
+                    textile_work_2 = true;
+                }
+                else {
+                    textile_work = true;
+                    warehouse.Remove("TurkeyFeather", Variable_Reading.getInstance().item_capacity("TurkeyFeather"));
+                    textile_work_2 = false;
+                }
+            }
             return true;
         } else {
             return false;
@@ -649,8 +684,23 @@ public class Main_Manager {
 
     public boolean Bakery_Work() {
         if (is_sth_in_WereHouse("Flour")&&secondaryWorkshop_bakeries.size()>0&&!bakery_work) {
-            bakery_work = true;
-            warehouse.Remove("Flour", Variable_Reading.getInstance().item_capacity("Flour"));
+            if (secondaryWorkshop_bakeries.get(0).getLevel() == 1){
+                bakery_work = true;
+                warehouse.Remove("Flour", Variable_Reading.getInstance().item_capacity("Flour"));
+            }
+            else if (secondaryWorkshop_bakeries.get(0).getLevel() == 2){
+                if (is_sth_in_WereHouse_double("Flour")){
+                    bakery_work = true;
+                    warehouse.Remove("Flour", Variable_Reading.getInstance().item_capacity("Flour"));
+                    warehouse.Remove("Flour", Variable_Reading.getInstance().item_capacity("Flour"));
+                    bakery_work_2 = true;
+                }
+                else {
+                    bakery_work = true;
+                    warehouse.Remove("Flour", Variable_Reading.getInstance().item_capacity("Flour"));
+                    bakery_work_2 = false;
+                }
+            }
             return true;
         } else {
             return false;
@@ -659,8 +709,21 @@ public class Main_Manager {
 
     public boolean IcecreamShop_Work() {
         if (is_sth_in_WereHouse("PocketMilk")&&secondaryWorkshop_icecreamShops.size()>0&&!icecreamshop_work) {
-            icecreamshop_work = true;
-            warehouse.Remove("PocketMilk", Variable_Reading.getInstance().item_capacity("PocketMilk"));
+            if (secondaryWorkshop_icecreamShops.get(0).getLevel() == 1){
+                icecreamshop_work = true;
+                warehouse.Remove("PocketMilk", Variable_Reading.getInstance().item_capacity("PocketMilk"));
+            }
+            else if (secondaryWorkshop_icecreamShops.get(0).getLevel() == 2){
+                icecreamshop_work = true;
+                warehouse.Remove("PocketMilk", Variable_Reading.getInstance().item_capacity("PocketMilk"));
+                warehouse.Remove("PocketMilk", Variable_Reading.getInstance().item_capacity("PocketMilk"));
+                icecreamshop_work_2 = true;
+            }
+            else {
+                icecreamshop_work = true;
+                warehouse.Remove("PocketMilk", Variable_Reading.getInstance().item_capacity("PocketMilk"));
+                icecreamshop_work_2 = false;
+            }
             return true;
         } else {
             return false;
@@ -669,8 +732,23 @@ public class Main_Manager {
 
     public boolean Tailoring_Work() {
         if (is_sth_in_WereHouse("Textile")&&secondaryWorkshop_tailorings.size()>0&&!textile_work) {
-            textile_work = true;
-            warehouse.Remove("Textile", Variable_Reading.getInstance().item_capacity("Textile"));
+            if (secondaryWorkshop_tailorings.get(0).getLevel() == 1){
+                tailoring_work = true;
+                warehouse.Remove("Textile", Variable_Reading.getInstance().item_capacity("Textile"));
+            }
+            else if (secondaryWorkshop_tailorings.get(0).getLevel() == 2){
+                if (is_sth_in_WereHouse_double("Textile")){
+                    tailoring_work = true;
+                    warehouse.Remove("Textile", Variable_Reading.getInstance().item_capacity("Textile"));
+                    warehouse.Remove("Textile", Variable_Reading.getInstance().item_capacity("Textile"));
+                    tailoring_work_2 = true;
+                }
+                else {
+                    tailoring_work = true;
+                    warehouse.Remove("Textile", Variable_Reading.getInstance().item_capacity("Textile"));
+                    tailoring_work_2 = false;
+                }
+            }
             return true;
         } else {
             return false;
@@ -700,7 +778,7 @@ public class Main_Manager {
     private void Add_Primary_Products(int x, int y, String animal) {
         if (animal.equalsIgnoreCase("chicken")) {
             eggs.add(new Egg(x, y));
-            cell[eggs.get(eggs.size() - 1).getX() - 1][eggs.get(eggs.size() - 1).getY() - 1].AddProduct("egg", eggs.size()-1);
+            cell[x - 1][y - 1].AddProduct("egg", eggs.size()-1);
         } else if (animal.equalsIgnoreCase("Buffalo")) {
             buffaloMilks.add(new BuffaloMilk(x, y));
             cell[x - 1][y - 1].AddProduct("buffaloMilk", buffaloMilks.size()-1);
@@ -708,7 +786,7 @@ public class Main_Manager {
             turkeyFeathers.add(new TurkeyFeather(x, y));
             cell[x - 1][y - 1].AddProduct("turkeyFeather", turkeyFeathers.size()-1);
         } else {
-            //TODO
+            //TODO never happen
         }
     }
 
@@ -723,54 +801,189 @@ public class Main_Manager {
                     filling_well=false;
                 }
             }
+
             if (mill_work){
                 mill_work_CURRENT++;
-                if (mill_work_CURRENT==mill_work_MAX){
-                    flours.add(new Flour());
-                    mill_work_CURRENT=0;
-                    mill_work=false;
+                if (primaryWorkshop_mills.get(0).getLevel() == 1){
+                    if (mill_work_CURRENT==mill_work_MAX){
+                        flours.add(new Flour());
+                        mill_work_CURRENT=0;
+                        mill_work=false;
+                    }
                 }
+                else if (primaryWorkshop_mills.get(0).getLevel() == 2){
+                    if (mill_work_2){
+                        if (mill_work_CURRENT==mill_work_MAX*2){
+                            flours.add(new Flour());
+                            flours.add(new Flour());
+                            mill_work_CURRENT=0;
+                            mill_work=false;
+                            mill_work_2=false;
+                        }
+                    }
+                    else {
+                        if (mill_work_CURRENT==mill_work_MAX){
+                            flours.add(new Flour());
+                            mill_work_CURRENT=0;
+                            mill_work=false;
+                            mill_work_2=false;
+                        }
+                    }
+                }
+
             }
+
             if (textile_work){
                 textile_work_CURRENT++;
-                if (textile_work_CURRENT==textile_work_MAX){
-                    textiles.add(new Textile());
-                    textile_work_CURRENT=0;
-                    textile_work=false;
+                if (primaryWorkshop_textiles.get(0).getLevel() == 1){
+                    if (textile_work_CURRENT==textile_work_MAX){
+                        textiles.add(new Textile());
+                        textile_work_CURRENT=0;
+                        textile_work=false;
+                    }
+                }
+                else if (primaryWorkshop_textiles.get(0).getLevel() == 2){
+                    if (textile_work_2){
+                        if (textile_work_CURRENT==textile_work_MAX*2){
+                            textiles.add(new Textile());
+                            textiles.add(new Textile());
+                            textile_work_CURRENT=0;
+                            textile_work=false;
+                            textile_work_2=false;
+                        }
+                    }
+                    else {
+                        if (textile_work_CURRENT==textile_work_MAX){
+                            textiles.add(new Textile());
+                            textile_work_CURRENT=0;
+                            textile_work=false;
+                            textile_work_2=false;
+                        }
+                    }
                 }
             }
+
             if (milkpacking_work){
                 milkpacking_work_CURRENT++;
-                if (milkpacking_work_CURRENT==milkpacking_work_MAX){
-                    pocketMilks.add(new PocketMilk());
-                    milkpacking_work_CURRENT=0;
-                    milkpacking_work=false;
+                if (primaryWorkshop_milkPackings.get(0).getLevel() == 1){
+                    if (milkpacking_work_CURRENT==milkpacking_work_MAX){
+                        pocketMilks.add(new PocketMilk());
+                        milkpacking_work_CURRENT=0;
+                        milkpacking_work=false;
+                    }
+                }
+                else if (primaryWorkshop_milkPackings.get(0).getLevel() == 2){
+                    if (milkpacking_work_2){
+                        if (milkpacking_work_CURRENT==milkpacking_work_MAX*2){
+                            pocketMilks.add(new PocketMilk());
+                            pocketMilks.add(new PocketMilk());
+                            milkpacking_work_CURRENT=0;
+                            milkpacking_work=false;
+                            milkpacking_work_2=true;
+                        }
+                    }
+                    else {
+                        if (milkpacking_work_CURRENT==milkpacking_work_MAX){
+                            pocketMilks.add(new PocketMilk());
+                            milkpacking_work_CURRENT=0;
+                            milkpacking_work=false;
+                            milkpacking_work_2=true;
+                        }
+                    }
                 }
             }
+
             if (bakery_work){
                 bakery_work_CURRENT++;
-                if (bakery_work_CURRENT==bakery_work_MAX){
-                    breads.add(new Bread());
-                    bakery_work_CURRENT=0;
-                    bakery_work=false;
+                if (secondaryWorkshop_bakeries.get(0).getLevel() == 1){
+                    if (bakery_work_CURRENT==bakery_work_MAX){
+                        breads.add(new Bread());
+                        bakery_work_CURRENT=0;
+                        bakery_work=false;
+                    }
+                }
+                else if (secondaryWorkshop_bakeries.get(0).getLevel() == 2){
+                    if (bakery_work_2){
+                        if (bakery_work_CURRENT==bakery_work_MAX*2){
+                            breads.add(new Bread());
+                            breads.add(new Bread());
+                            bakery_work_CURRENT=0;
+                            bakery_work=false;
+                            bakery_work_2=false;
+                        }
+                    }
+                    else {
+                        if (bakery_work_CURRENT==bakery_work_MAX){
+                            breads.add(new Bread());
+                            bakery_work_CURRENT=0;
+                            bakery_work=false;
+                            bakery_work_2=false;
+                        }
+                    }
                 }
             }
+
             if (tailoring_work){
                 tailoring_work_CURRENT++;
-                if (tailoring_work_CURRENT==tailoring_work_MAX){
-                    shirts.add(new Shirt());
-                    tailoring_work_CURRENT=0;
-                    tailoring_work=false;
+                if (secondaryWorkshop_tailorings.get(0).getLevel() == 1){
+                    if (tailoring_work_CURRENT==tailoring_work_MAX){
+                        shirts.add(new Shirt());
+                        tailoring_work_CURRENT=0;
+                        tailoring_work=false;
+                    }
                 }
+                else if (secondaryWorkshop_tailorings.get(0).getLevel() == 2){
+                    if (tailoring_work_2){
+                        if (tailoring_work_CURRENT==tailoring_work_MAX*2){
+                            shirts.add(new Shirt());
+                            shirts.add(new Shirt());
+                            tailoring_work_CURRENT=0;
+                            tailoring_work=false;
+                            tailoring_work_2=false;
+                        }
+                    }
+                    else {
+                        if (tailoring_work_CURRENT==tailoring_work_MAX){
+                            shirts.add(new Shirt());
+                            tailoring_work_CURRENT=0;
+                            tailoring_work=false;
+                            tailoring_work_2=false;
+                        }
+                    }
+                }
+
             }
+
             if (icecreamshop_work){
                 icecreamshop_work_CURRENT++;
-                if (icecreamshop_work_CURRENT==icecreamshop_work_MAX){
-                    icecreams.add(new Icecream());
-                    icecreamshop_work_CURRENT=0;
-                    icecreamshop_work=false;
+                if (secondaryWorkshop_icecreamShops.get(0).getLevel() == 1){
+                    if (icecreamshop_work_CURRENT==icecreamshop_work_MAX){
+                        icecreams.add(new Icecream());
+                        icecreamshop_work_CURRENT=0;
+                        icecreamshop_work=false;
+                    }
+                }
+                else if (secondaryWorkshop_icecreamShops.get(0).getLevel() == 2){
+                    if (icecreamshop_work_2){
+                        if (icecreamshop_work_CURRENT==icecreamshop_work_MAX*2){
+                            icecreams.add(new Icecream());
+                            icecreams.add(new Icecream());
+                            icecreamshop_work_CURRENT=0;
+                            icecreamshop_work=false;
+                            icecreamshop_work_2=false;
+                        }
+                    }
+                    else {
+                        if (icecreamshop_work_CURRENT==icecreamshop_work_MAX){
+                            icecreams.add(new Icecream());
+                            icecreamshop_work_CURRENT=0;
+                            icecreamshop_work=false;
+                            icecreamshop_work_2=false;
+                        }
+                    }
                 }
             }
+
             if (truck_working){
                 truck_working_CURRENT++;
                 if (truck_working_CURRENT==truck_working_MAX){
@@ -779,32 +992,65 @@ public class Main_Manager {
                     truck_working=false;
                 }
             }
+
             for (Buffalo buffalo : buffalos){
-                cell[buffalo.getX()-1][buffalo.getY()].RemoveAnimal("buffalo");
-                buffalo.walking();
-                cell[buffalo.getX()-1][buffalo.getY()].AddAnimal("buffalo");
+                cell[buffalo.getX()-1][buffalo.getY()-1].RemoveAnimal("buffalo");
+                buffalo.walk();
+                cell[buffalo.getX()-1][buffalo.getY()-1].AddAnimal("buffalo");
                 buffalo.time_pass();
                 if (buffalo.time_to_produce()){
                     Add_Primary_Products(buffalo.getX(),buffalo.getY(),"buffalo");
                 }
             }
+
             for (Chicken chicken : chickens){
-                cell[chicken.getX()-1][chicken.getY()].RemoveAnimal("chicken");
-                chicken.walking();
-                cell[chicken.getX()-1][chicken.getY()].AddAnimal("chicken");
+                cell[chicken.getX()-1][chicken.getY()-1].RemoveAnimal("chicken");
+                chicken.walk();
+                cell[chicken.getX()-1][chicken.getY()-1].AddAnimal("chicken");
                 chicken.time_pass();
                 if (chicken.time_to_produce()){
                     Add_Primary_Products(chicken.getX(),chicken.getY(),"chicken");
                 }
             }
+
             for (Ostrich ostrich : ostriches){
-                cell[ostrich.getX()-1][ostrich.getY()].RemoveAnimal("ostrich");
-                ostrich.walking();
-                cell[ostrich.getX()-1][ostrich.getY()].AddAnimal("ostrich");
+                cell[ostrich.getX()-1][ostrich.getY()-1].RemoveAnimal("ostrich");
+                ostrich.walk();
+                cell[ostrich.getX()-1][ostrich.getY()-1].AddAnimal("ostrich");
                 ostrich.time_pass();
                 if (ostrich.time_to_produce()){
                     Add_Primary_Products(ostrich.getX(),ostrich.getY(),"ostrich");
                 }
+            }
+
+            for (Bear bear : bears){
+                if (bear.isActivation()){
+                    cell[bear.getX()-1][bear.getY()-1].RemoveAnimal("bear");
+                    bear.simple_walk();
+                    cell[bear.getX()-1][bear.getY()-1].AddAnimal("bear");
+                }
+            }
+
+            for (Lion lion : lions){
+                if (lion.isActivation()){
+                    cell[lion.getX()-1][lion.getY()-1].RemoveAnimal("lion");
+                    lion.simple_walk();
+                    cell[lion.getX()-1][lion.getY()-1].AddAnimal("lion");
+                }
+            }
+
+            for (Tiger tiger : tigers){
+                if (tiger.isActivation()){
+                    cell[tiger.getX()-1][tiger.getY()-1].RemoveAnimal("tiger");
+                    tiger.simple_walk();
+                    cell[tiger.getX()-1][tiger.getY()-1].AddAnimal("tiger");
+                }
+            }
+
+            for (CollectorCat collectorCat : collectorCats){
+                cell[collectorCat.getX()][collectorCat.getY()-1].RemoveAnimal("collectorCat");
+                collectorCat.Cat_walk();
+                cell[collectorCat.getX()][collectorCat.getY()-1].AddAnimal("collectorCat");
             }
 
         }
