@@ -1400,6 +1400,9 @@ public class Main_Manager {
             if (missions.get(current_level-1).getTiger_add_time().contains(missions.get(current_level-1).getTime_passed_in_this_level())){
                 Add_wild_animal("tiger");
             }
+            if (check_level_task()){
+                break;
+            }
         }
         return true;
     }
@@ -1502,6 +1505,137 @@ public class Main_Manager {
         }
         truck.clear();
         return sum;
+    }
+
+    public boolean check_level_task(){
+        boolean coin = CURRENT_USER.getCoin() >= missions.get(current_level-1).getCoin();
+        boolean wild_animal = wild_animal_n >= missions.get(current_level-1).getWild_animal();
+        boolean bread = bread_n >= missions.get(current_level-1).getBread();
+        boolean buffalo_milk = buffalo_milk_n >= missions.get(current_level-1).getBuffalo_milk();
+        boolean egg = egg_n >= missions.get(current_level-1).getEgg();
+        boolean flour = flour_n >= missions.get(current_level-1).getFlour();
+        boolean icecream = icecream_n >= missions.get(current_level-1).getIcecream();
+        boolean pocketmilk = pocketmilk_n >= missions.get(current_level-1).getPocketmilk();
+        boolean shirt = shirt_n >= missions.get(current_level-1).getShirt();
+        boolean textile = textile_n >= missions.get(current_level-1).getTextile();
+        boolean turkey_feather = turkey_feather_n >= missions.get(current_level-1).getTurkey_feather();
+        if (coin&&wild_animal&&bread&&buffalo_milk&&egg&&flour&&icecream&&pocketmilk&&shirt&&textile&&turkey_feather){
+            System.out.println("this level passed");
+            if (missions.get(current_level-1).getTime_passed_in_this_level()<=missions.get(current_level-1).getGolden_Time()){
+                CURRENT_USER.setCoin(CURRENT_USER.getCoin()+missions.get(current_level-1).getGolden_Price());
+            }
+            else if (missions.get(current_level-1).getTime_passed_in_this_level()<=missions.get(current_level-1).getSilver_Time()){
+                CURRENT_USER.setCoin(CURRENT_USER.getCoin()+missions.get(current_level-1).getSilver_Price());
+            }
+            current_level++;
+            if (CURRENT_USER.getLevel()<= current_level){
+                CURRENT_USER.setLevel(current_level);
+            }
+            Variable_Reading.getInstance().getUsers().remove(back_index_of_user(CURRENT_USER.getName()));
+            Variable_Reading.getInstance().getUsers().add(CURRENT_USER);
+
+            make_map(Variable_Reading.getInstance().getMap_size()[0],Variable_Reading.getInstance().getMap_size()[1]);
+            this.warehouse = new Warehouse(Variable_Reading.getInstance().warehouse_info());
+            this.bucket_of_water = new Bucket_of_Water(Variable_Reading.getInstance().Well_info());
+            this.wateringSystem = new WateringSystem(Variable_Reading.getInstance().Well_Time(), bucket_of_water);
+            this.missions = Variable_Reading.getInstance().getMissions();
+            this.truck = new Truck();
+            this.animals = new ArrayList<>();
+            this.workshops = new ArrayList<>();
+            this.products = new ArrayList<>();
+
+            this.mill_work_2 = false;
+            this.textile_work_2 = false;
+            this.milkpacking_work_2 = false;
+            this.bakery_work_2 = false;
+            this.tailoring_work_2 = false;
+            this.icecreamshop_work_2 = false;
+
+            this.breads.clear();
+            this.buffaloMilks.clear();
+            this.eggs.clear();
+            this.flours.clear();
+            this.icecreams.clear();
+            this.pocketMilks.clear();
+            this.turkeyFeathers.clear();
+            this.shirts.clear();
+            this.textiles.clear();
+
+            this.primaryWorkshop_milkPackings.clear();
+            this.primaryWorkshop_mills.clear();
+            this.primaryWorkshop_textiles.clear();
+            this.secondaryWorkshop_bakeries.clear();
+            this.secondaryWorkshop_icecreamShops.clear();
+            this.secondaryWorkshop_tailorings.clear();
+
+            this.bears.clear();
+            this.buffalos.clear();
+            this.chickens.clear();
+            this.collectorCats.clear();
+            this.hunterDogs.clear();
+            this.lions.clear();
+            this.ostriches.clear();
+            this.tigers.clear();
+
+            this.filling_well = false;
+            this.add_egg = false;
+            this.add_turkeyfeather = false;
+            this.add_buffalomilk = false;
+            this.mill_work = false;
+            this.textile_work = false;
+            this.milkpacking_work = false;
+            this.bakery_work = false;
+            this.tailoring_work = false;
+            this.icecreamshop_work = false;
+            this.truck_working = false;
+
+            this.filling_well_MAX = Variable_Reading.getInstance().Well_Time();
+            this.add_egg_MAX = Variable_Reading.getInstance().each_time_needed("egg");
+            this.add_turkeyfeather_MAX = Variable_Reading.getInstance().each_time_needed("turkeyfeather");
+            this.add_buffalomilk_MAX = Variable_Reading.getInstance().each_time_needed("buffalomilk");
+            this.mill_work_MAX = Variable_Reading.getInstance().Get_WorkShops_Time("mill");
+            this.textile_work_MAX = Variable_Reading.getInstance().Get_WorkShops_Time("textile");
+            this.milkpacking_work_MAX = Variable_Reading.getInstance().Get_WorkShops_Time("milkpacking");
+            this.bakery_work_MAX = Variable_Reading.getInstance().Get_WorkShops_Time("bakery");
+            this.tailoring_work_MAX = Variable_Reading.getInstance().Get_WorkShops_Time("tailpring");
+            this.icecreamshop_work_MAX = Variable_Reading.getInstance().Get_WorkShops_Time("icecreamshop");
+            this.truck_working_MAX = Variable_Reading.getInstance().truck_time();
+
+            this.filling_well_CURRENT = 0;
+            this.add_egg_CURRENT = 0;
+            this.add_turkeyfeather_CURRENT = 0;
+            this.add_buffalomilk_CURRENT = 0;
+            this.mill_work_CURRENT = 0;
+            this.textile_work_CURRENT = 0;
+            this.milkpacking_work_CURRENT = 0;
+            this.bakery_work_CURRENT = 0;
+            this.tailoring_work_CURRENT = 0;
+            this.icecreamshop_work_CURRENT = 0;
+            this.truck_working_CURRENT = 0;
+
+            this.wild_animal_n = 0;
+            this.bread_n = 0;
+            this.buffalo_milk_n = 0;
+            this.egg_n = 0;
+            this.flour_n = 0;
+            this.icecream_n = 0;
+            this.pocketmilk_n = 0;
+            this.shirt_n = 0;
+            this.textile_n = 0;
+            this.turkey_feather_n = 0;
+            return true;
+        }
+        else return false;
+    }
+
+    public int back_index_of_user(String name){
+        int i = -1;
+        for (i = 0 ; i < Variable_Reading.getInstance().getUsers().size() ; i++){
+            if (Variable_Reading.getInstance().getUsers().get(i).getName().equalsIgnoreCase(name)){
+                break;
+            }
+        }
+        return i;
     }
 
     public static void setInstance(Main_Manager instance) {

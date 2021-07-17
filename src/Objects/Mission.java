@@ -47,6 +47,38 @@ public class Mission {
         this.time_passed_in_this_level = 0;
     }
 
+    public int getSilver_Time() {
+        return Silver_Time;
+    }
+
+    public void setSilver_Time(int silver_Time) {
+        Silver_Time = silver_Time;
+    }
+
+    public int getSilver_Price() {
+        return Silver_Price;
+    }
+
+    public void setSilver_Price(int silver_Price) {
+        Silver_Price = silver_Price;
+    }
+
+    public int getGolden_Time() {
+        return Golden_Time;
+    }
+
+    public void setGolden_Time(int golden_Time) {
+        Golden_Time = golden_Time;
+    }
+
+    public int getGolden_Price() {
+        return Golden_Price;
+    }
+
+    public void setGolden_Price(int golden_Price) {
+        Golden_Price = golden_Price;
+    }
+
     public int getLevel() {
         return level;
     }
