@@ -176,15 +176,46 @@ public class Variable_Reading {
                 scape_time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
             }
             else if (file.getName().equalsIgnoreCase("All_User.txt")){
-                System.out.println("1");
                 while (FileReader.hasNextLine()){
                     String[] data = FileReader.nextLine().split("\\s");
                     try {
-                        System.out.println(data.toString());
                         users.add(new User(data[0],data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3])));
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
+                }
+            }
+            else if (file.getName().equalsIgnoreCase("Missions.txt")){
+                while (FileReader.hasNextLine()){
+                    int level = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    int coin = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    int wild_animal = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    int bread = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    int buffalo_milk = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    int egg = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    int flour = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    int icecream = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    int pocketmilk = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    int shirt = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    int textile = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    int turkey_feather = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    int Silver_Time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    int Silver_Price = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    int Golden_Time = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    int Golden_Price = Integer.parseInt(FileReader.nextLine().split("\\s")[2]);
+                    String[] bear_add_time = FileReader.nextLine().split("\\s");
+                    ArrayList<Integer> bear = new ArrayList<>();
+                    for (int i = 2 ; i < bear_add_time.length ; i++)
+                        bear.add(Integer.parseInt(bear_add_time[i]));
+                    String[] lion_add_time = FileReader.nextLine().split("\\s");
+                    ArrayList<Integer> lion = new ArrayList<>();
+                    for (int i = 2 ; i < lion_add_time.length ; i++)
+                        lion.add(Integer.parseInt(lion_add_time[i]));
+                    String[] tiger_add_time = FileReader.nextLine().split("\\s");
+                    ArrayList<Integer> tiger = new ArrayList<>();
+                    for (int i = 2 ; i < tiger_add_time.length ; i++)
+                        tiger.add(Integer.parseInt(tiger_add_time[i]));
+                    missions.add(new Mission(level,coin,wild_animal,bread,buffalo_milk,egg,flour,icecream,pocketmilk,shirt,textile,turkey_feather,Silver_Time,Silver_Price,Golden_Time,Golden_Price,bear,lion,tiger));
                 }
             }
             FileReader.close();
@@ -205,6 +236,14 @@ public class Variable_Reading {
                 myWriter.write("\n");
             }
             myWriter.close();
+    }
+
+    public void Save_All() throws IOException {
+        save();
+    }
+
+    public void Load_All(){
+        initializing();
     }
 
     public ArrayList<Mission> getMissions() {

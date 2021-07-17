@@ -211,6 +211,10 @@ public class Animal {
         }
     }
 
+    public int getLives() {
+        return lives;
+    }
+
     public void cat_directed_walk(){
         ArrayList<X_Y> x_yArrayList = new ArrayList<>();
         ArrayList<Integer> distance = new ArrayList<>();

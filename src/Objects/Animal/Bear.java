@@ -40,4 +40,6 @@ public class Bear extends Animal{
         }
         else return false;
     }
+
+
 }

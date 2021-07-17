@@ -63,4 +63,8 @@ public class Cell {
     public ArrayList<String> getProducts() {
         return products;
     }
+
+    public int getHasGrass() {
+        return hasGrass;
+    }
 }

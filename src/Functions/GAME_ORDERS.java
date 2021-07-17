@@ -247,7 +247,7 @@ public class GAME_ORDERS {
         }
     }
 
-    public boolean Turn (int n , User user){
+    public boolean Turn (int n , User user) throws IOException {
         if (Main_Manager.getInstance().changeTurn(n)){
             //TODO
             return true;

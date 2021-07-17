@@ -23,7 +23,7 @@ public class Input {
         this.users = users;
     }*/
 
-    public void run(){
+    public void run() throws IOException {
         Scanner scanner = new Scanner(System.in);
         int EXIT = -1;
         while (EXIT != 0){
@@ -119,7 +119,7 @@ public class Input {
         return a;
     }
 
-    public int second_menu(Scanner scanner){
+    public int second_menu(Scanner scanner) throws IOException {
         int end = -1;
         while (end == -1){
             System.out.println("1) START [level]");
@@ -156,9 +156,10 @@ public class Input {
         else return false;
     }
 
-    public void Game_Orders (Scanner scanner,int level) {
+    public void Game_Orders (Scanner scanner,int level) throws IOException {
         GAME_ORDERS.getInstance().set_level_tasks(level,Main_Manager.getInstance().getCURRENT_USER());
         String input;
+        System.out.print("Enter your command : ");
         while (!(input = scanner.nextLine()).equalsIgnoreCase("LOG OUT")){
             System.out.print("Enter your command : ");
             if (input.split("\\s")[0].equalsIgnoreCase("BUY")){
@@ -252,6 +253,9 @@ public class Input {
                         Logger.getInstance().getLogger().warning("Truck : Unsuccessful Going! ");
                     }
                 }
+            }
+            else if (input.equalsIgnoreCase("inquiry")){
+                Main_Manager.getInstance().print();
             }
             else {
                 System.out.println("Invalid Command, Please try again ...");

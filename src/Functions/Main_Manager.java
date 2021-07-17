@@ -4,6 +4,8 @@ import Objects.*;
 import Objects.Animal.*;
 import Objects.Products.*;
 import Objects.WorkShops.*;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main_Manager {
@@ -815,7 +817,7 @@ public class Main_Manager {
         }
     }
 
-    public boolean changeTurn(int n) {
+    public boolean changeTurn(int n) throws IOException {
         missions.get(current_level-1).setTime_passed_in_this_level(missions.get(current_level-1).getTime_passed_in_this_level()+1);
         for (int i=0;i<n;i++){
             missions.get(current_level-1).setTime_passed_in_this_level(missions.get(current_level-1).getTime_passed_in_this_level()+1);
@@ -1400,6 +1402,7 @@ public class Main_Manager {
             if (missions.get(current_level-1).getTiger_add_time().contains(missions.get(current_level-1).getTime_passed_in_this_level())){
                 Add_wild_animal("tiger");
             }
+            print();
             if (check_level_task()){
                 break;
             }
@@ -1507,7 +1510,7 @@ public class Main_Manager {
         return sum;
     }
 
-    public boolean check_level_task(){
+    public boolean check_level_task() throws IOException {
         boolean coin = CURRENT_USER.getCoin() >= missions.get(current_level-1).getCoin();
         boolean wild_animal = wild_animal_n >= missions.get(current_level-1).getWild_animal();
         boolean bread = bread_n >= missions.get(current_level-1).getBread();
@@ -1533,6 +1536,8 @@ public class Main_Manager {
             }
             Variable_Reading.getInstance().getUsers().remove(back_index_of_user(CURRENT_USER.getName()));
             Variable_Reading.getInstance().getUsers().add(CURRENT_USER);
+
+            Save_Date();
 
             make_map(Variable_Reading.getInstance().getMap_size()[0],Variable_Reading.getInstance().getMap_size()[1]);
             this.warehouse = new Warehouse(Variable_Reading.getInstance().warehouse_info());
@@ -1653,6 +1658,108 @@ public class Main_Manager {
 
     public void Load_Data(){
         //TODO
+    }
+
+    public void Save_Date() throws IOException {
+        Variable_Reading.getInstance().save();
+    }
+
+    public void print(){
+        System.out.println("Time passed in this level until now : "+missions.get(current_level-1).getTime_passed_in_this_level());
+        System.out.println();
+        System.out.println("Grass in Map :");
+        for(int i = 0 ; i < Variable_Reading.getInstance().getMap_size()[0] ; i++){
+            for (int j = 0 ; j < Variable_Reading.getInstance().getMap_size()[1] ; j++){
+                System.out.print(" "+cell[i][j].getHasGrass());
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("Animals :");
+        for (Bear bear : bears){
+            System.out.println("Bear : "+bear.getCage_counter()+" ["+bear.getX()+","+bear.getY()+"]");
+        }
+        for (Buffalo buffalo : buffalos){
+            System.out.println("Buffalo : "+buffalo.getLives()+"% ["+buffalo.getX()+","+buffalo.getY()+"]");
+        }
+        for (Chicken chicken : chickens){
+            System.out.println("Chicken : "+chicken.getLives()+"% ["+chicken.getX()+","+chicken.getY()+"]");
+        }
+        for (CollectorCat collectorCat : collectorCats){
+            System.out.println("CollectorCat : ["+collectorCat.getX()+","+collectorCat.getY()+"]");
+        }
+        for (HunterDog hunterDog : hunterDogs){
+            System.out.println("HunterDog : ["+hunterDog.getX()+","+hunterDog.getY()+"]");
+        }
+        for (Lion lion : lions){
+            System.out.println("Lion : "+lion.getCage_counter()+" ["+lion.getX()+","+lion.getY()+"]");
+        }
+        for (Ostrich ostrich : ostriches){
+            System.out.println("Ostrich : "+ostrich.getLives()+"% ["+ostrich.getX()+","+ostrich.getY()+"]");
+        }
+        for (Tiger tiger : tigers){
+            System.out.println("Tiger : "+tiger.getCage_counter()+" ["+tiger.getX()+","+tiger.getY()+"]");
+        }
+        System.out.println();
+        System.out.println("Products in Map : ");
+        for (Bread bread : breads){
+            if (bread.isInMap()){
+                System.out.println("Bread : ["+bread.getX()+","+bread.getY()+"]");
+            }
+        }
+        for (BuffaloMilk buffaloMilk : buffaloMilks){
+            if (buffaloMilk.isInMap()){
+                System.out.println("BuffaloMilk : ["+buffaloMilk.getX()+","+buffaloMilk.getY()+"]");
+            }
+        }
+        for (Egg egg : eggs){
+            if (egg.isInMap()){
+                System.out.println("Egg : ["+egg.getX()+","+egg.getY()+"]");
+            }
+        }
+        for (Flour flour : flours){
+            if (flour.isInMap()){
+                System.out.println("Flour : ["+flour.getX()+","+flour.getY()+"]");
+            }
+        }
+        for (Icecream icecream : icecreams){
+            if (icecream.isInMap()){
+                System.out.println("Icecream : ["+icecream.getX()+","+icecream.getY()+"]");
+            }
+        }
+        for (PocketMilk pocketMilk : pocketMilks){
+            if (pocketMilk.isInMap()){
+                System.out.println("PocketMilk : ["+pocketMilk.getX()+","+pocketMilk.getY()+"]");
+            }
+        }
+        for (Shirt shirt : shirts){
+            if (shirt.isInMap()){
+                System.out.println("Shirt : ["+shirt.getX()+","+shirt.getY()+"]");
+            }
+        }
+        for (Textile textile : textiles){
+            if (textile.isInMap()){
+                System.out.println("Textile : ["+textile.getX()+","+textile.getY()+"]");
+            }
+        }
+        for (TurkeyFeather turkeyFeather : turkeyFeathers){
+            if (turkeyFeather.isInMap()){
+                System.out.println("TurkeyFeather : ["+turkeyFeather.getX()+","+turkeyFeather.getY()+"]");
+            }
+        }
+        System.out.println();
+        System.out.println("Tasks status : ");
+        System.out.println("COIN : "+CURRENT_USER.getCoin()+"/"+missions.get(current_level-1).getCoin());
+        System.out.println("WILD ANIMAL CATCH : "+wild_animal_n+"/"+missions.get(current_level-1).getWild_animal());
+        System.out.println("BREAD : "+bread_n+"/"+missions.get(current_level-1).getBread());
+        System.out.println("BUFFALO MILK : "+buffalo_milk_n+"/"+missions.get(current_level-1).getBuffalo_milk());
+        System.out.println("EGG : "+egg_n+"/"+missions.get(current_level-1).getEgg());
+        System.out.println("FLOUR : "+flour_n+"/"+missions.get(current_level-1).getFlour());
+        System.out.println("ICECREAM : "+icecream_n+"/"+missions.get(current_level-1).getIcecream());
+        System.out.println("POCKETMILK : "+pocketmilk_n+"/"+missions.get(current_level-1).getPocketmilk());
+        System.out.println("SHIRT : "+shirt_n+"/"+missions.get(current_level-1).getShirt());
+        System.out.println("TEXTILE : "+textile_n+"/"+missions.get(current_level-1).getTextile());
+        System.out.println("TURKEY FEATHER : "+turkey_feather_n+"/"+missions.get(current_level-1).getTurkey_feather());
     }
 
     public Cell[][] getCell() {
